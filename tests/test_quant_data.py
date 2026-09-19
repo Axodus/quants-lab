@@ -10,6 +10,8 @@ from core.quant_data import (
     InMemoryHistoricalSource,
     LookAheadViolation,
     reconstruct_historical_market_state,
+    validate_market_state_schema,
+    MarketStateValidationError,
 )
 from core.quant_foundations.models import DatasetManifest
 
@@ -108,6 +110,44 @@ class QuantDataTests(unittest.TestCase):
         self.assertEqual(registry.resolve("fixture:btc-usdt-1m", "2.0.0").records[0].value["close"], "101")
         with self.assertRaises(ValueError):
             registry.register(self.builder.build(InMemoryHistoricalSource([candle(1, "102")]), manifest("1.0.0")))
+
+
+
+    def test_validate_market_state_schema_enforces_cross_epic_conformance(self):
+        valid_state = {
+            "marketStateId": "historical:fixture:1:obs-1",
+            "instrument": "BTC-USDT",
+            "venue": "synthetic",
+            "timeframe": "1m",
+            "marketTime": "2024-01-01T00:01:00.000Z",
+            "observedAt": "2024-01-01T00:01:00.000Z",
+            "constructedAt": "2024-01-01T00:01:00.000Z",
+            "validityContext": "historical",
+            "freshness": "historical",
+            "schemaVersion": "1.0.0",
+            "features": [{"featureId": "close", "featureVersion": "1.0.0", "value": "100", "computedAt": "2024-01-01T00:01:00.000Z"}],
+            "sourceRefs": ["fixture:synthetic"],
+            "completeness": "complete",
+            "validationRefs": ["historical-causality-v1"],
+        }
+        # Valid state passes
+        validate_market_state_schema(valid_state)
+
+        # Missing required field fails
+        invalid_missing = dict(valid_state)
+        del invalid_missing["schemaVersion"]
+        with self.assertRaises(MarketStateValidationError):
+            validate_market_state_schema(invalid_missing)
+
+        # Invalid feature fails
+        invalid_feat = dict(valid_state, features=[{"featureId": "close", "featureVersion": "1.0.0", "computedAt": "2024-01-01T00:01:00.000Z"}])
+        with self.assertRaises(MarketStateValidationError):
+            validate_market_state_schema(invalid_feat)
+
+        # Live context with non-current freshness fails
+        invalid_live = dict(valid_state, validityContext="live", freshness="stale")
+        with self.assertRaises(MarketStateValidationError):
+            validate_market_state_schema(invalid_live)
 
 
 if __name__ == "__main__":

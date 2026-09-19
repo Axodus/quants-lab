@@ -227,6 +227,7 @@ class QuantValidationTests(unittest.TestCase):
         self.assertEqual(val_res.fold_results[1].status, "FAILED")
         self.assertIn("simulated fold failure", val_res.fold_results[1].error_reason or "")
         self.assertTrue(any("FAILED_FOLDS_PRESENT" in lim for lim in val_res.limitations))
+        self.assertEqual(val_res.statistical_diagnostics, {})
 
     def test_reproducibility_deterministic_replay(self):
         wf_plan = WalkForwardPlan(train_window_steps=2, test_window_steps=2, step_size=2, mode="ROLLING")

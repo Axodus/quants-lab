@@ -229,9 +229,6 @@ class ValidationPlanExecutor:
         if not fold_results:
             raise ValueError("Insufficient states to generate at least one walk-forward fold")
 
-        pnl_vals = [Decimal(f.metrics["netPnl"]) for f in fold_results if f.status == "COMPLETED" and "netPnl" in f.metrics]
-        pnl_diag = StatisticalAnalyzer.analyze_series("netPnl", pnl_vals)
-
         failed_folds = sum(1 for f in fold_results if f.status != "COMPLETED")
         status = "COMPLETED" if failed_folds == 0 else "PARTIAL"
         max_pop = max((f.selection_snapshot.candidate_population_size for f in fold_results), default=1)
@@ -242,7 +239,12 @@ class ValidationPlanExecutor:
             "NO_MONTE_CARLO: does not simulate resampled market return paths",
         ]
         if failed_folds > 0:
-            limitations.append(f"FAILED_FOLDS_PRESENT: {failed_folds} folds failed during simulation")
+            limitations.append(f"FAILED_FOLDS_PRESENT: {failed_folds} folds failed during simulation; aggregated statistical diagnostics withheld (fail-closed)")
+            statistical_diagnostics: dict[str, Any] = {}
+        else:
+            pnl_vals = [Decimal(f.metrics["netPnl"]) for f in fold_results if f.status == "COMPLETED" and "netPnl" in f.metrics]
+            pnl_diag = StatisticalAnalyzer.analyze_series("netPnl", pnl_vals)
+            statistical_diagnostics = {"netPnl": pnl_diag}
 
         val_id = f"val:wf:{sha256_digest({'plan': plan.to_canonical_dict(), 'folds': len(fold_results)})}"
         return ValidationResult(
@@ -252,7 +254,7 @@ class ValidationPlanExecutor:
             dataset_reference=plan.dataset_reference,
             status=status,
             fold_results=tuple(fold_results),
-            statistical_diagnostics={"netPnl": pnl_diag},
+            statistical_diagnostics=statistical_diagnostics,
             selection_bias_warning=bias_warn,
             candidate_population_size=max_pop,
             limitations=tuple(limitations),

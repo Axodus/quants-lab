@@ -5,7 +5,7 @@ from .normalization import CandleNormalizer, HistoricalSourceAdapter, InMemoryHi
 from .pipeline import DatasetBuilder, DatasetBuildError
 from .registry import DatasetRegistry, DatasetUnavailableError
 from .storage import DatasetStorage, InMemoryDatasetStorage, JsonlDatasetStorage
-from .market_state import LookAheadViolation, reconstruct_historical_market_state
+from .market_state import LookAheadViolation, MarketStateValidationError, reconstruct_historical_market_state, validate_market_state_schema
 
 __all__ = [
     "CanonicalHistoricalRecord",
@@ -22,5 +22,7 @@ __all__ = [
     "InMemoryHistoricalSource",
     "JsonlDatasetStorage",
     "LookAheadViolation",
+    "MarketStateValidationError",
     "reconstruct_historical_market_state",
+    "validate_market_state_schema",
 ]
