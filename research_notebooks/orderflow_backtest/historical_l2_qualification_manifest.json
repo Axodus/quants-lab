@@ -1,0 +1,40 @@
+{
+  "requestId": "AXODUS-TRADING-REQ-QUANT-L2-SOURCE-01",
+  "datasetId": "axodus-l2-source-qualification-pilot-20260924",
+  "datasetRevision": "pilot-1",
+  "provider": "Tardis.dev sample + Binance public market-data pilot",
+  "venue": "Binance USD-M Futures",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDC"
+  ],
+  "historicalWindow": "2024-09-01 bounded samples only",
+  "historicalCoverage90d": false,
+  "rawInputs": [
+    "binance_rest_btcusdt_depth100.json",
+    "binance_rest_btcusdt_trades.json",
+    "binance_rest_ethusdc_depth100.json",
+    "binance_rest_ethusdc_trades.json",
+    "tardis_btcusdt_incremental_l2.csv",
+    "tardis_btcusdt_snapshot_25.csv",
+    "tardis_ethusdc_incremental_l2.csv",
+    "tardis_ethusdc_snapshot_25.csv"
+  ],
+  "tardisSchemaSequence": "ABSENT_IN_OBSERVED_CSV",
+  "binanceProspectiveSequence": [
+    "lastUpdateId",
+    "U",
+    "u",
+    "pu"
+  ],
+  "qualification": "HISTORICAL_L2_SOURCE_PARTIAL_PROSPECTIVE_CAPTURE_QUALIFIED",
+  "bulkAcquisitionReady": false,
+  "checksumPolicy": "SHA-256 for raw partitions; fixture hashes can be generated at ingestion",
+  "limitations": [
+    "Tardis downloadable CSV sample has no sequence identifiers",
+    "Tardis licensing and pricing not frozen",
+    "No 90-day historical bulk acquisition performed",
+    "Prospective pilot is bounded and not production deployment"
+  ],
+  "fingerprint": "sha256:f5898151bab4b6d231c165628a1deefdff3563f781cc48a2d0fa33bdca00bb06"
+}
