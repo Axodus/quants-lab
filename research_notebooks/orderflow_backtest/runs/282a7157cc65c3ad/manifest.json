@@ -1,0 +1,24 @@
+{
+  "run_id": "282a7157cc65c3ad",
+  "data_mode": "synthetic",
+  "validation_label": "ENGINE_VALIDATION_SYNTHETIC",
+  "disposition": "DATASET_INSUFFICIENT / RESEARCH_CONTINUE",
+  "promotion_allowed": false,
+  "scenario": "STRESS_2",
+  "seed": 42,
+  "timestamp_utc": "reproducible-input-derived",
+  "config": {
+    "pair": "ETHUSDC",
+    "days": 90,
+    "initial_capital": 10000.0,
+    "position_size_usd": 1000.0,
+    "max_open_positions": 1,
+    "scenario": "STRESS_2",
+    "data_mode": "synthetic",
+    "interval_seconds": 60,
+    "slippage_bps": null,
+    "taker_fee_rate": null,
+    "maker_fee_rate": null
+  },
+  "ticks_evaluated": 129600
+}
