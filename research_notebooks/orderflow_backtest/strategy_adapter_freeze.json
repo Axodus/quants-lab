@@ -1,0 +1,36 @@
+{
+  "freezeDate": "2026-09-24",
+  "freezeScope": "AXODUS-TRADING-REQ-QUANT-ORDERFLOW-01",
+  "adaptersFile": "quants-lab/research_notebooks/orderflow_backtest/source_equivalent_adapters.py",
+  "contractsFile": "quants-lab/research_notebooks/orderflow_backtest/orderflow_contracts.py",
+  "equivalenceStatus": "MATHEMATICALLY_AND_SEMANTICALLY_EQUIVALENT_TO_SOURCE",
+  "adapters": [
+    {
+      "strategyId": "orderflow.momentum.aggression",
+      "adapterFunction": "momentum_observe",
+      "sourceModule": "strategies.orderflow.momentum",
+      "status": "SOURCE_EQUIVALENT",
+      "inputMapping": "OrderFlowFrameV1 (Decimal price, buy, sell, obi, spread_ticks)",
+      "parameterMapping": "SourceStrategyConfigV1 window=20, depth=5, tick_size=0.01, slope_z=1.5, imbalance=0.65, max_spread_ticks=1",
+      "differences": "None for signal decision logic; pure functional implementation without CLI wrapper."
+    },
+    {
+      "strategyId": "orderflow.absorption.fade",
+      "adapterFunction": "absorption_observe",
+      "sourceModule": "strategies.orderflow.absorption",
+      "status": "SOURCE_EQUIVALENT",
+      "inputMapping": "OrderFlowFrameV1 (Decimal price, buy, sell, obi, spread_ticks)",
+      "parameterMapping": "SourceStrategyConfigV1 window=20, volume_multiple=2.5, aggression_fraction=0.7, absorption_move_ticks=1, confirmation_delta=1, tick_size=0.01, max_spread_ticks=1",
+      "differences": "None for signal decision logic; institutional attribution claims explicitly excluded."
+    },
+    {
+      "strategyId": "orderflow.cvd.divergence.reversal",
+      "adapterFunction": "divergence_observe",
+      "sourceModule": "strategies.orderflow.divergence",
+      "status": "SOURCE_EQUIVALENT",
+      "inputMapping": "OrderFlowFrameV1 (Decimal price, buy, sell, obi, spread_ticks)",
+      "parameterMapping": "SourceStrategyConfigV1 window=20, divergence_price_ticks=1, divergence_delta=1, tick_size=0.01, max_spread_ticks=1",
+      "differences": "None for signal decision logic; trailing bounds over past window preserved exactly."
+    }
+  ]
+}

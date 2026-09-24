@@ -1,0 +1,60 @@
+{
+  "freezeStatus": "SOURCE_EQUIVALENT_ADAPTERS_IMPLEMENTED_WHERE_POSSIBLE",
+  "validationPromotionPolicy": "Synthetic mode is ENGINE_VALIDATION_SYNTHETIC only and must emit DATASET_INSUFFICIENT / RESEARCH_CONTINUE, never PROMOTION_CANDIDATE.",
+  "strategies": [
+    {
+      "strategyId": "orderflow.momentum.aggression",
+      "revision": "freeze-2026-09-24-adapter-v1",
+      "implementation": "strategies.AggressionMomentumScalper",
+      "status": "FROZEN_ADAPTER",
+      "entry": "At decision bar idx, after lookback warmup, compute standardized delta z=(current.delta-mean(prior 20 deltas))/pstdev(prior 20 deltas). Long if z>=1.5, order_imbalance>=0.45, abs(close-vwap)/close<=0.01, and close breaks above prior 5-bar high. Short mirrors with z<=-1.5, order_imbalance<=-0.45, and close below prior 5-bar low.",
+      "entryTiming": "Decision at bar idx; fill no earlier than next bar open/snapshot.",
+      "entryOrder": "TAKER",
+      "exitOrder": "TAKER in frozen adapter; scenario STRESS_2/STRESS_3 can force taker-heavy exits.",
+      "stop": "20 bps adverse from actual entry reference price.",
+      "takeProfit": "35 bps favorable from actual entry reference price.",
+      "timeExit": "60 bars after entry.",
+      "invalidation": "No signal before max(20 delta lookback, 5 breakout lookback); no signal if prior delta standard deviation is zero; no same-bar entry.",
+      "lookback": {"deltaStandardizationBars": 20, "breakoutBars": 5},
+      "thresholds": {"deltaZ": 1.5, "obi": 0.45, "spreadProxyMax": 0.01},
+      "sizing": "Fixed 1000 USD notional per trade by default, one open position per strategy run.",
+      "requiredInputs": ["timestamp", "open", "high", "low", "close", "delta", "order_imbalance", "vwap"]
+    },
+    {
+      "strategyId": "orderflow.absorption.fade",
+      "revision": "freeze-2026-09-24-adapter-v1",
+      "implementation": "strategies.InstitutionalAbsorptionFade (compatibility class name; report name Absorption Fade)",
+      "status": "FROZEN_ADAPTER_RENAMED_LOGIC_NO_INSTITUTIONAL_PROOF",
+      "entry": "Two consecutive intervals must confirm absorption proxy. Long after two bars each have absorption_score>=2.5, order_imbalance<=-0.30, bid_skew>=0.35. Short mirrors with order_imbalance>=0.30 and bid_skew<=-0.35.",
+      "entryTiming": "Decision at bar idx after second confirmation; fill no earlier than next bar open/snapshot.",
+      "entryOrder": "MAKER; synthetic maker fill is ASSUMED, not book-executable.",
+      "exitOrder": "MAKER unless stress scenario forces taker-heavy exits; synthetic maker fill is ASSUMED.",
+      "stop": "18 bps adverse from actual entry reference price.",
+      "takeProfit": "40 bps favorable from actual entry reference price.",
+      "timeExit": "60 bars after entry.",
+      "invalidation": "No signal without two-interval confirmation; no institutional assertion is used as evidence.",
+      "lookback": {"confirmationIntervals": 2},
+      "thresholds": {"absorptionScore": 2.5, "depthSkew": 0.35, "orderImbalanceAbs": 0.30},
+      "sizing": "Fixed 1000 USD notional per trade by default, one open position per strategy run.",
+      "requiredInputs": ["timestamp", "open", "high", "low", "close", "absorption_score", "order_imbalance", "bid_skew"]
+    },
+    {
+      "strategyId": "orderflow.cvd.divergence.reversal",
+      "revision": "freeze-2026-09-24-adapter-v1",
+      "implementation": "strategies.CVDDivergenceReversal",
+      "status": "FROZEN_ADAPTER",
+      "entry": "Use only prior 15 bars as trailing bounds. Bullish if current low is below prior trailing low by at least 0.05% and current CVD is higher than CVD at that prior low, with current delta>=0. Bearish mirrors using current high above prior trailing high by at least 0.05%, current CVD lower than CVD at prior high, and current delta<=0.",
+      "entryTiming": "Decision at bar idx; fill no earlier than next bar open/snapshot.",
+      "entryOrder": "TAKER",
+      "exitOrder": "TAKER in frozen adapter; stress scenarios can force taker-heavy exits.",
+      "stop": "25 bps adverse from actual entry reference price.",
+      "takeProfit": "50 bps favorable from actual entry reference price.",
+      "timeExit": "60 bars after entry.",
+      "invalidation": "No signal before 15-bar lookback; no future extrema or non-causal trailing bounds.",
+      "lookback": {"trailingBoundsBars": 15},
+      "thresholds": {"priceTickThresholdPct": 0.0005, "deltaThreshold": 0.0},
+      "sizing": "Fixed 1000 USD notional per trade by default, one open position per strategy run.",
+      "requiredInputs": ["timestamp", "open", "high", "low", "close", "cvd", "delta"]
+    }
+  ]
+}

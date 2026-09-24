@@ -73,4 +73,3 @@ class TrendExampleController(DirectionalTradingControllerBase):
 
         self.processed_data.update(df.iloc[-1].to_dict())
         self.processed_data["features"] = df
-

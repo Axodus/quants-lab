@@ -1,0 +1,13 @@
+# Order Flow strategy canonicalization and functional differences
+
+## Canonical source definitions
+The source modules are in `/home/mzfshark/.openclaw/workspace/strategies/orderflow/`. They emit offline research observations (`LONG`, `SHORT`, `NO_SIGNAL`), use `Decimal`, accept validated L2/tape frames, and do **not** model executions. QuantLab adapters consume the synthetic/historical bar schema and model a separate execution layer. Therefore similar names do **not** imply semantic identity.
+
+| Strategy | Source module | Source rule | QuantLab implementation | Functional diff / frozen status |
+|---|---|---|---|---|
+| `orderflow.momentum.aggression` | `momentum.py` | Current delta standardized against prior deltas; OBI threshold; spread filter; prior-window price breakout | `strategies.AggressionMomentumScalper` | Adapter implements standardized delta, imbalance proxy, prior 5-bar breakout and next-bar entry. Source OBI/spread are L2-exact; QuantLab synthetic uses `order_imbalance` and a VWAP-distance proxy, not source L2 spread ticks. **NOT semantic identity. FROZEN_ADAPTER; requires historical L2 mapping before validation.** |
+| `orderflow.absorption.fade` | `absorption.py` | Candidate high-volume stalled move, then a distinct counter-aggression / price confirmation interval; hypothesis only | `strategies.InstitutionalAbsorptionFade` (compatibility name only; report: `Absorption Fade`) | Adapter uses two consecutive `absorption_score`/imbalance/depth-skew confirmations. It does not yet reproduce source volume baseline, tick-stall calculation, or counter-aggression confirmation. Synthetic maker fills are assumed. **MATERIAL MISMATCH / BLOCKED for historical validation until adapter is made source-equivalent.** |
+| `orderflow.cvd.divergence.reversal` | `divergence.py` | Current point versus prior causal price/CVD trailing bounds, explicit price-tick and delta thresholds | `strategies.CVDDivergenceReversal` | Adapter applies prior-only 15-bar bounds and explicit 0.05% price threshold / delta threshold. Source uses tick-size/absolute CVD thresholds; QuantLab uses percentage threshold / sign. **NOT semantic identity. FROZEN_ADAPTER; requires historical L2/tape-equivalent parameter translation.** |
+
+## Common execution-model changes
+All QuantLab adapters decide on bar *t* and may enter no earlier than bar *t+1* open. Same-bar TP/SL collisions are conservatively stop-first. These are anti-lookahead execution corrections rather than claims about source semantics. Each validation run is individual, fixed 1,000 USD notional, and allows one open position. No combined strategy result is a validation result.

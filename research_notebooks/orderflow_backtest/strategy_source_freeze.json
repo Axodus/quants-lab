@@ -1,0 +1,40 @@
+{
+  "freezeDate": "2026-09-24",
+  "freezeScope": "AXODUS-TRADING-REQ-QUANT-ORDERFLOW-01",
+  "sourceLocation": "/home/mzfshark/.openclaw/workspace/strategies/orderflow/",
+  "sourceFiles": {
+    "momentum.py": {
+      "sha256": "1103d74f86f96bfd70e86fa0d70034afeb5124bd16b0f4f03b69c88a6c43addf",
+      "strategyId": "orderflow.momentum.aggression",
+      "strategyName": "Aggression Momentum Scalper",
+      "entrySemantics": "Long iff slope_z > threshold, delta > 0, OBI > imbalance, spread_ticks <= max_spread_ticks, and current price strictly exceeds max price of prior window. Short mirrors with slope_z < -threshold, delta < 0, OBI < -imbalance, and price strictly below min price of prior window.",
+      "exitSemantics": "Not defined in source prototype (research signal only). Backtest harness assigns 35 bps TP, 20 bps SL, 60-bar time exit.",
+      "requiredInputs": ["timestamp_ms", "book_timestamp_ms", "price", "buy_volume", "sell_volume", "bids", "asks"]
+    },
+    "absorption.py": {
+      "sha256": "081d26731beb5548dc4e20c576009f18c63a791f7d442fdd0390f71d9652274d",
+      "strategyId": "orderflow.absorption.fade",
+      "strategyName": "Absorption Fade",
+      "entrySemantics": "Candidate spike on history[-1] (volume > baseline mean * volume_multiple, abs(price - baseline[-1].price) <= move_ticks * tick_size, spread_ticks <= max_spread_ticks). Long iff candidate sell fraction > aggression_fraction AND current delta >= confirmation_delta AND current price > candidate price. Short mirrors for buy candidate with current delta <= -confirmation_delta AND current price < candidate price.",
+      "exitSemantics": "Not defined in source prototype. Backtest harness assigns 40 bps TP, 18 bps SL, 60-bar time exit.",
+      "requiredInputs": ["timestamp_ms", "book_timestamp_ms", "price", "buy_volume", "sell_volume", "bids", "asks"]
+    },
+    "divergence.py": {
+      "sha256": "cce544060c6bb9dcef50ada52698cb76358f557de8f2fde01799f197b5d6bb65",
+      "strategyId": "orderflow.cvd.divergence.reversal",
+      "strategyName": "CVD Divergence Reversal",
+      "entrySemantics": "Trailing extrema over prior window. Long iff current price <= prior min price - divergence_price_ticks * tick_size, current CVD >= prior min CVD + divergence_delta, and current delta > 0. Short iff current price >= prior max price + divergence_price_ticks * tick_size, current CVD <= prior max CVD - divergence_delta, and current delta < 0.",
+      "exitSemantics": "Not defined in source prototype. Backtest harness assigns 50 bps TP, 25 bps SL, 60-bar time exit.",
+      "requiredInputs": ["timestamp_ms", "book_timestamp_ms", "price", "buy_volume", "sell_volume", "bids", "asks"]
+    },
+    "metrics.py": {
+      "sha256": "52e21da8a0e2252f0118b0bed3e54877cb93ced9a1796a2c4624ff377971e484"
+    },
+    "cli.py": {
+      "sha256": "e719a0ae3a104de568a6807dd7cc435f9f1b85c651737c38ea7b9ca4a362764b"
+    },
+    "test_orderflow.py": {
+      "sha256": "4000ac8a30a74f86a7c8533c4b4a1ad197fdda634864d8f36d09f331b6130ab6"
+    }
+  }
+}
