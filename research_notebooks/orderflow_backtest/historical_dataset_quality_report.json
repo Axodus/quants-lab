@@ -1,0 +1,137 @@
+{
+  "reportId": "historical-dataset-quality-report-14d-v1",
+  "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+  "datasetRevision": "v1",
+  "generatedAt": "2026-09-25T02:57:27Z",
+  "window": {
+    "start": "2026-06-23T00:00:00Z",
+    "end": "2026-07-06T23:59:59.999Z"
+  },
+  "isSplit": {
+    "start": "2026-06-23T00:00:00Z",
+    "end": "2026-07-02T23:59:59.999Z",
+    "days": 10
+  },
+  "oosSplit": {
+    "start": "2026-07-03T00:00:00Z",
+    "end": "2026-07-06T23:59:59.999Z",
+    "days": 4
+  },
+  "provider": {
+    "source": "CryptoHFTData",
+    "product": "Binance USD-M Futures Order Book & Trades (Hourly Parquet/Zstd)",
+    "qualificationStatus": "CRYPTOHFTDATA_QUALIFIED"
+  },
+  "corePartitions": {
+    "expected": 1344,
+    "accounted": 1344,
+    "rawSha256Valid": 1344,
+    "schemaValid": 1344,
+    "missing": 0,
+    "quarantined": 0,
+    "downloadFailures": 0,
+    "retries": 0,
+    "btcOrderbookPartitions": 336,
+    "btcTradePartitions": 336,
+    "ethOrderbookPartitions": 336,
+    "ethTradePartitions": 336
+  },
+  "storage": {
+    "rawPrimaryBytes": 11896791040,
+    "normalizedAuxiliaryBytes": 55130445,
+    "format": "Parquet + Zstandard",
+    "dataPath": "/run/media/mzfshark/Storage/Axodus/Trading/market-data"
+  },
+  "symbols": {
+    "BTCUSDT": {
+      "logicalEvents": 44877401,
+      "snapshotRows": 50000,
+      "snapshotEvents": 25,
+      "rowLevelInitialFindings": 37,
+      "rowLevelArtifactsRemoved": 36,
+      "logicalFindings": 1,
+      "trueGaps": 0,
+      "duplicates": 0,
+      "outOfOrder": 0,
+      "qualifiedSeconds": 1209599.999,
+      "invalidSeconds": 0,
+      "qualifiedCoveragePct": 100.0,
+      "isQualifiedCoveragePct": 100.0,
+      "oosQualifiedCoveragePct": 100.0,
+      "segmentCount": 1,
+      "invalidIntervalCount": 0,
+      "largestQualifiedSegmentSec": 1209599.999,
+      "maxInvalidIntervalSec": 0,
+      "preWindowBootstrap": "VALID_PRE_WINDOW_BOOTSTRAP_CONTINUATION via 2026-06-22/22Z snapshot 10869949249143",
+      "reconstruction": "PASS over qualified segment; full bounded replay not completed by existing scripts",
+      "snapshotReconciliation": "PASS by focused qualification suite",
+      "tapeCausality": {
+        "futureL2Exclusion": "PASS",
+        "futureTapeExclusion": "PASS",
+        "causalOrdering": "PASS",
+        "aggressorMapping": "PASS"
+      },
+      "fundingMarkPrice": "PASS; 1208380 rows",
+      "metadata": "PASS; tickSize 0.10; stepSize 0.001; minQty 0.001"
+    },
+    "ETHUSDC": {
+      "logicalEvents": 33358480,
+      "snapshotRows": 49000,
+      "snapshotEvents": 25,
+      "rowLevelInitialFindings": 39,
+      "rowLevelArtifactsRemoved": 29,
+      "logicalFindings": 10,
+      "trueGaps": 9,
+      "duplicates": 0,
+      "outOfOrder": 0,
+      "qualifiedSeconds": 821626.998,
+      "invalidSeconds": 387973.001,
+      "qualifiedCoveragePct": 67.9255,
+      "isQualifiedCoveragePct": 61.8059,
+      "oosQualifiedCoveragePct": 83.2245,
+      "segmentCount": 9,
+      "invalidIntervalCount": 9,
+      "largestQualifiedSegmentSec": 321885.048,
+      "maxInvalidIntervalSec": 85803.467,
+      "preWindowBootstrap": "VALID_PRE_WINDOW_BOOTSTRAP_CONTINUATION via 2026-06-22/14Z snapshot 10867286016586",
+      "reconstruction": "PARTIAL; qualified segments identified, full bounded replay not completed by existing scripts",
+      "snapshotReconciliation": "NOT COMPLETELY EVIDENCED for all qualified segments",
+      "tapeCausality": {
+        "futureL2Exclusion": "PASS on representative 2026-06-23/00 sample",
+        "futureTapeExclusion": "PASS on representative 2026-06-23/00 sample",
+        "causalOrdering": "PASS on representative sample",
+        "aggressorMapping": "PASS"
+      },
+      "fundingMarkPrice": "PASS; 1208380 rows",
+      "metadata": "PASS; tickSize 0.01; stepSize 0.001; minQty 0.001"
+    }
+  },
+  "commonQualifiedCoverage": {
+    "contiguousCalendarDays": 14,
+    "btcQualifiedCoveragePct": 100.0,
+    "ethQualifiedCoveragePct": 67.9255,
+    "commonSynchronousQualifiedPct": 67.9255,
+    "isCommonQualifiedPct": 61.8059,
+    "oosCommonQualifiedPct": 83.2245
+  },
+  "regressionSuite": {
+    "fullQuantsLab": "79 passed / 0 failed",
+    "orderflowFocused": "34 passed / 0 failed",
+    "total": "113 passed / 0 failed"
+  },
+  "isolation": {
+    "r3e": "PASS",
+    "r3h": "PASS",
+    "b1": "PASS"
+  },
+  "safety": {
+    "externalTradingMutations": 0,
+    "testnetMutations": 0,
+    "mainnetMutations": 0,
+    "realCapital": 0,
+    "jevCalls": 0,
+    "secretsExposed": false
+  },
+  "disposition": "HISTORICAL_DATASET_PARTIAL",
+  "dispositionRationale": "BTCUSDT has complete qualified coverage. ETHUSDC has 9 true sequence gaps and 67.9255% qualified coverage; invalid intervals are explicitly excluded. Full continuous two-symbol acceptance is not supported."
+}

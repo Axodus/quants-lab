@@ -1,0 +1,66 @@
+{
+  "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+  "datasetRevision": "v1",
+  "window": {
+    "start": "2026-06-23T00:00:00Z",
+    "end": "2026-07-06T23:59:59.999Z",
+    "contiguousDays": 14
+  },
+  "isSplit": {
+    "start": "2026-06-23T00:00:00Z",
+    "end": "2026-07-02T23:59:59.999Z",
+    "days": 10
+  },
+  "oosSplit": {
+    "start": "2026-07-03T00:00:00Z",
+    "end": "2026-07-06T23:59:59.999Z",
+    "days": 4
+  },
+  "provider": {
+    "source": "CryptoHFTData",
+    "venue": "Binance USD-M Futures",
+    "product": "Order Book & Trades Hourly Parquet (Zstandard)",
+    "qualification": "CRYPTOHFTDATA_QUALIFIED"
+  },
+  "globalQualification": "HISTORICAL_DATASET_PARTIAL",
+  "symbolQualification": {
+    "BTCUSDT": {
+      "status": "QUALIFIED",
+      "qualifiedCoveragePct": 100.0,
+      "isQualifiedCoveragePct": 100.0,
+      "oosQualifiedCoveragePct": 100.0,
+      "trueSequenceGaps": 0,
+      "qualifiedSegments": 1,
+      "invalidIntervals": 0
+    },
+    "ETHUSDC": {
+      "status": "PARTIAL",
+      "qualifiedCoveragePct": 67.9255,
+      "isQualifiedCoveragePct": 61.8059,
+      "oosQualifiedCoveragePct": 83.2245,
+      "trueSequenceGaps": 9,
+      "qualifiedSegments": 9,
+      "invalidIntervals": 9
+    }
+  },
+  "accounting": {
+    "expectedPartitions": 1344,
+    "accountedPartitions": 1344,
+    "rawSha256Valid": 1344,
+    "schemaValid": 1344,
+    "missingPartitions": 0,
+    "quarantinedPartitions": 0,
+    "downloadFailures": 0,
+    "retries": 0
+  },
+  "artifacts": {
+    "rawRoot": "/run/media/mzfshark/Storage/Axodus/Trading/market-data/raw",
+    "qualityReportJson": ".instructions/reports/historical_dataset_quality_report.json",
+    "qualityReportMd": ".instructions/reports/historical_dataset_quality_report.md",
+    "sequenceLedger": ".instructions/reports/AXODUS-TRADING-REQ-QUANT-HIST-DATA-02-SEQUENCE-LEDGER.json",
+    "qualifiedSegments": ".instructions/reports/AXODUS-TRADING-REQ-QUANT-HIST-DATA-02-QUALIFIED-SEGMENTS.json",
+    "fundingMetadata": ".instructions/reports/AXODUS-TRADING-REQ-QUANT-HIST-DATA-02-FUNDING-METADATA.json"
+  },
+  "feeModelClassification": "CONSERVATIVE_ASSUMPTION",
+  "updatedAt": "2026-09-25T12:00:00Z"
+}
