@@ -1,0 +1,2435 @@
+{
+  "timestamp": 1782175087235,
+  "rawRows": 343,
+  "canonicalEvents": 1,
+  "identity": {
+    "event_time": 1782175087235,
+    "transaction_time": 1782175087234,
+    "event_type": "update",
+    "first_update_id": 10870485568957,
+    "final_update_id": 10870485587889,
+    "prev_final_update_id": 10870485568887,
+    "last_update_id": null
+  },
+  "previous71Classification": "INCOMPLETE_EVENT",
+  "bidRows": 196,
+  "askRows": 147,
+  "before": {
+    "bid": "63958.2",
+    "ask": "63958.3"
+  },
+  "after71Rows": {
+    "bid": "63958.2",
+    "ask": "63957.80"
+  },
+  "afterCompleteEvent": {
+    "bid": "63957.7",
+    "ask": "63957.8"
+  },
+  "decimalFullBookEquality": true,
+  "levelChanges": [
+    {
+      "side": "ask",
+      "price": "63957.80",
+      "previousQuantity": "0",
+      "incomingQuantity": "21.668",
+      "resultingQuantity": "21.668"
+    },
+    {
+      "side": "ask",
+      "price": "63957.90",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.011",
+      "resultingQuantity": "0.011"
+    },
+    {
+      "side": "ask",
+      "price": "63958.00",
+      "previousQuantity": "0",
+      "incomingQuantity": "4.271",
+      "resultingQuantity": "4.271"
+    },
+    {
+      "side": "ask",
+      "price": "63958.10",
+      "previousQuantity": "0",
+      "incomingQuantity": "2.377",
+      "resultingQuantity": "2.377"
+    },
+    {
+      "side": "ask",
+      "price": "63958.20",
+      "previousQuantity": "0",
+      "incomingQuantity": "6.929",
+      "resultingQuantity": "6.929"
+    },
+    {
+      "side": "ask",
+      "price": "63958.30",
+      "previousQuantity": "3.581",
+      "incomingQuantity": "2.181",
+      "resultingQuantity": "2.181"
+    },
+    {
+      "side": "ask",
+      "price": "63958.40",
+      "previousQuantity": "0.011",
+      "incomingQuantity": "0.008",
+      "resultingQuantity": "0.008"
+    },
+    {
+      "side": "ask",
+      "price": "63958.50",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "63958.60",
+      "previousQuantity": "0.007",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "ask",
+      "price": "63959.00",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.040",
+      "resultingQuantity": "0.040"
+    },
+    {
+      "side": "ask",
+      "price": "63959.20",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.009",
+      "resultingQuantity": "0.009"
+    },
+    {
+      "side": "ask",
+      "price": "63959.40",
+      "previousQuantity": "0.01",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "ask",
+      "price": "63959.50",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "ask",
+      "price": "63959.80",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "ask",
+      "price": "63959.90",
+      "previousQuantity": "0.096",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63961.30",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "63961.60",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "ask",
+      "price": "63961.70",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.272",
+      "resultingQuantity": "0.272"
+    },
+    {
+      "side": "ask",
+      "price": "63962.20",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.813",
+      "resultingQuantity": "0.813"
+    },
+    {
+      "side": "ask",
+      "price": "63962.30",
+      "previousQuantity": "0.237",
+      "incomingQuantity": "0.257",
+      "resultingQuantity": "0.257"
+    },
+    {
+      "side": "ask",
+      "price": "63962.40",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "ask",
+      "price": "63962.80",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63962.90",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.092",
+      "resultingQuantity": "0.092"
+    },
+    {
+      "side": "ask",
+      "price": "63963.10",
+      "previousQuantity": "0.028",
+      "incomingQuantity": "0.070",
+      "resultingQuantity": "0.070"
+    },
+    {
+      "side": "ask",
+      "price": "63963.30",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "ask",
+      "price": "63963.80",
+      "previousQuantity": "0.055",
+      "incomingQuantity": "0.055",
+      "resultingQuantity": "0.055"
+    },
+    {
+      "side": "ask",
+      "price": "63963.90",
+      "previousQuantity": "1.49",
+      "incomingQuantity": "0.068",
+      "resultingQuantity": "0.068"
+    },
+    {
+      "side": "ask",
+      "price": "63964.00",
+      "previousQuantity": "0.621",
+      "incomingQuantity": "0.006",
+      "resultingQuantity": "0.006"
+    },
+    {
+      "side": "ask",
+      "price": "63964.60",
+      "previousQuantity": "0.292",
+      "incomingQuantity": "0.100",
+      "resultingQuantity": "0.100"
+    },
+    {
+      "side": "ask",
+      "price": "63964.90",
+      "previousQuantity": "0.013",
+      "incomingQuantity": "0.074",
+      "resultingQuantity": "0.074"
+    },
+    {
+      "side": "ask",
+      "price": "63965.50",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63965.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.313",
+      "resultingQuantity": "0.313"
+    },
+    {
+      "side": "ask",
+      "price": "63965.80",
+      "previousQuantity": "0.135",
+      "incomingQuantity": "0.015",
+      "resultingQuantity": "0.015"
+    },
+    {
+      "side": "ask",
+      "price": "63966.00",
+      "previousQuantity": "0.267",
+      "incomingQuantity": "0.012",
+      "resultingQuantity": "0.012"
+    },
+    {
+      "side": "ask",
+      "price": "63966.70",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "63967.00",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "1.428",
+      "resultingQuantity": "1.428"
+    },
+    {
+      "side": "ask",
+      "price": "63967.10",
+      "previousQuantity": "0.821",
+      "incomingQuantity": "0.012",
+      "resultingQuantity": "0.012"
+    },
+    {
+      "side": "ask",
+      "price": "63967.20",
+      "previousQuantity": "0.164",
+      "incomingQuantity": "0.162",
+      "resultingQuantity": "0.162"
+    },
+    {
+      "side": "ask",
+      "price": "63967.40",
+      "previousQuantity": "0.925",
+      "incomingQuantity": "0.922",
+      "resultingQuantity": "0.922"
+    },
+    {
+      "side": "ask",
+      "price": "63967.70",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "ask",
+      "price": "63968.20",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.158",
+      "resultingQuantity": "0.158"
+    },
+    {
+      "side": "ask",
+      "price": "63968.50",
+      "previousQuantity": "0.486",
+      "incomingQuantity": "0.315",
+      "resultingQuantity": "0.315"
+    },
+    {
+      "side": "ask",
+      "price": "63969.20",
+      "previousQuantity": "1.282",
+      "incomingQuantity": "0.966",
+      "resultingQuantity": "0.966"
+    },
+    {
+      "side": "ask",
+      "price": "63969.60",
+      "previousQuantity": "0.036",
+      "incomingQuantity": "0.955",
+      "resultingQuantity": "0.955"
+    },
+    {
+      "side": "ask",
+      "price": "63970.80",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "1.004",
+      "resultingQuantity": "1.004"
+    },
+    {
+      "side": "ask",
+      "price": "63971.60",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "ask",
+      "price": "63971.70",
+      "previousQuantity": "0.793",
+      "incomingQuantity": "0.637",
+      "resultingQuantity": "0.637"
+    },
+    {
+      "side": "ask",
+      "price": "63971.80",
+      "previousQuantity": "0.448",
+      "incomingQuantity": "0.448",
+      "resultingQuantity": "0.448"
+    },
+    {
+      "side": "ask",
+      "price": "63972.30",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.018",
+      "resultingQuantity": "0.018"
+    },
+    {
+      "side": "ask",
+      "price": "63972.80",
+      "previousQuantity": "1.001",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63973.70",
+      "previousQuantity": "0.568",
+      "incomingQuantity": "0.900",
+      "resultingQuantity": "0.900"
+    },
+    {
+      "side": "ask",
+      "price": "63974.10",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "63974.20",
+      "previousQuantity": "0.392",
+      "incomingQuantity": "0.377",
+      "resultingQuantity": "0.377"
+    },
+    {
+      "side": "ask",
+      "price": "63974.50",
+      "previousQuantity": "0.335",
+      "incomingQuantity": "0.491",
+      "resultingQuantity": "0.491"
+    },
+    {
+      "side": "ask",
+      "price": "63974.70",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.466",
+      "resultingQuantity": "0.466"
+    },
+    {
+      "side": "ask",
+      "price": "63975.30",
+      "previousQuantity": "0.098",
+      "incomingQuantity": "0.095",
+      "resultingQuantity": "0.095"
+    },
+    {
+      "side": "ask",
+      "price": "63975.60",
+      "previousQuantity": "0.006",
+      "incomingQuantity": "0.005",
+      "resultingQuantity": "0.005"
+    },
+    {
+      "side": "ask",
+      "price": "63976.00",
+      "previousQuantity": "0.394",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "ask",
+      "price": "63976.10",
+      "previousQuantity": "0.943",
+      "incomingQuantity": "0.943",
+      "resultingQuantity": "0.943"
+    },
+    {
+      "side": "ask",
+      "price": "63976.90",
+      "previousQuantity": "0.822",
+      "incomingQuantity": "0.824",
+      "resultingQuantity": "0.824"
+    },
+    {
+      "side": "ask",
+      "price": "63977.90",
+      "previousQuantity": "0.464",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "63978.00",
+      "previousQuantity": "0.08",
+      "incomingQuantity": "0.100",
+      "resultingQuantity": "0.100"
+    },
+    {
+      "side": "ask",
+      "price": "63978.50",
+      "previousQuantity": "0.232",
+      "incomingQuantity": "0.076",
+      "resultingQuantity": "0.076"
+    },
+    {
+      "side": "ask",
+      "price": "63978.60",
+      "previousQuantity": "0.096",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63979.00",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.017",
+      "resultingQuantity": "0.017"
+    },
+    {
+      "side": "ask",
+      "price": "63979.30",
+      "previousQuantity": "0.008",
+      "incomingQuantity": "0.006",
+      "resultingQuantity": "0.006"
+    },
+    {
+      "side": "ask",
+      "price": "63979.60",
+      "previousQuantity": "0.228",
+      "incomingQuantity": "0.229",
+      "resultingQuantity": "0.229"
+    },
+    {
+      "side": "ask",
+      "price": "63979.90",
+      "previousQuantity": "0.465",
+      "incomingQuantity": "0.450",
+      "resultingQuantity": "0.450"
+    },
+    {
+      "side": "ask",
+      "price": "63980.10",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.005",
+      "resultingQuantity": "0.005"
+    },
+    {
+      "side": "ask",
+      "price": "63980.20",
+      "previousQuantity": "0.569",
+      "incomingQuantity": "0.549",
+      "resultingQuantity": "0.549"
+    },
+    {
+      "side": "ask",
+      "price": "63980.40",
+      "previousQuantity": "0.08",
+      "incomingQuantity": "0.080",
+      "resultingQuantity": "0.080"
+    },
+    {
+      "side": "ask",
+      "price": "63980.70",
+      "previousQuantity": "0.317",
+      "incomingQuantity": "0.374",
+      "resultingQuantity": "0.374"
+    },
+    {
+      "side": "ask",
+      "price": "63980.90",
+      "previousQuantity": "1.139",
+      "incomingQuantity": "1.199",
+      "resultingQuantity": "1.199"
+    },
+    {
+      "side": "ask",
+      "price": "63981.00",
+      "previousQuantity": "1.349",
+      "incomingQuantity": "1.329",
+      "resultingQuantity": "1.329"
+    },
+    {
+      "side": "ask",
+      "price": "63981.20",
+      "previousQuantity": "0.802",
+      "incomingQuantity": "0.788",
+      "resultingQuantity": "0.788"
+    },
+    {
+      "side": "ask",
+      "price": "63982.30",
+      "previousQuantity": "0.178",
+      "incomingQuantity": "0.193",
+      "resultingQuantity": "0.193"
+    },
+    {
+      "side": "ask",
+      "price": "63982.90",
+      "previousQuantity": "0.845",
+      "incomingQuantity": "0.965",
+      "resultingQuantity": "0.965"
+    },
+    {
+      "side": "ask",
+      "price": "63983.40",
+      "previousQuantity": "0.012",
+      "incomingQuantity": "0.154",
+      "resultingQuantity": "0.154"
+    },
+    {
+      "side": "ask",
+      "price": "63983.50",
+      "previousQuantity": "0.043",
+      "incomingQuantity": "0.043",
+      "resultingQuantity": "0.043"
+    },
+    {
+      "side": "ask",
+      "price": "63983.80",
+      "previousQuantity": "0.085",
+      "incomingQuantity": "0.227",
+      "resultingQuantity": "0.227"
+    },
+    {
+      "side": "ask",
+      "price": "63983.90",
+      "previousQuantity": "0.768",
+      "incomingQuantity": "0.611",
+      "resultingQuantity": "0.611"
+    },
+    {
+      "side": "ask",
+      "price": "63984.80",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.124",
+      "resultingQuantity": "0.124"
+    },
+    {
+      "side": "ask",
+      "price": "63984.90",
+      "previousQuantity": "1.212",
+      "incomingQuantity": "1.064",
+      "resultingQuantity": "1.064"
+    },
+    {
+      "side": "ask",
+      "price": "63985.80",
+      "previousQuantity": "0.058",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63987.00",
+      "previousQuantity": "0.008",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63987.60",
+      "previousQuantity": "0.097",
+      "incomingQuantity": "0.187",
+      "resultingQuantity": "0.187"
+    },
+    {
+      "side": "ask",
+      "price": "63987.70",
+      "previousQuantity": "0.674",
+      "incomingQuantity": "0.751",
+      "resultingQuantity": "0.751"
+    },
+    {
+      "side": "ask",
+      "price": "63987.80",
+      "previousQuantity": "0.566",
+      "incomingQuantity": "0.486",
+      "resultingQuantity": "0.486"
+    },
+    {
+      "side": "ask",
+      "price": "63988.40",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.018",
+      "resultingQuantity": "0.018"
+    },
+    {
+      "side": "ask",
+      "price": "63988.50",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.078",
+      "resultingQuantity": "0.078"
+    },
+    {
+      "side": "ask",
+      "price": "63988.60",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63990.30",
+      "previousQuantity": "0.672",
+      "incomingQuantity": "0.238",
+      "resultingQuantity": "0.238"
+    },
+    {
+      "side": "ask",
+      "price": "63990.60",
+      "previousQuantity": "0.134",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "63991.60",
+      "previousQuantity": "0.008",
+      "incomingQuantity": "0.007",
+      "resultingQuantity": "0.007"
+    },
+    {
+      "side": "ask",
+      "price": "63991.70",
+      "previousQuantity": "0.144",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63991.90",
+      "previousQuantity": "0.271",
+      "incomingQuantity": "0.270",
+      "resultingQuantity": "0.270"
+    },
+    {
+      "side": "ask",
+      "price": "63992.00",
+      "previousQuantity": "0.809",
+      "incomingQuantity": "0.808",
+      "resultingQuantity": "0.808"
+    },
+    {
+      "side": "ask",
+      "price": "63994.70",
+      "previousQuantity": "0.333",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63995.20",
+      "previousQuantity": "0.185",
+      "incomingQuantity": "0.095",
+      "resultingQuantity": "0.095"
+    },
+    {
+      "side": "ask",
+      "price": "63995.40",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.157",
+      "resultingQuantity": "0.157"
+    },
+    {
+      "side": "ask",
+      "price": "63995.50",
+      "previousQuantity": "0.134",
+      "incomingQuantity": "0.094",
+      "resultingQuantity": "0.094"
+    },
+    {
+      "side": "ask",
+      "price": "63996.10",
+      "previousQuantity": "16.91",
+      "incomingQuantity": "16.850",
+      "resultingQuantity": "16.850"
+    },
+    {
+      "side": "ask",
+      "price": "63998.70",
+      "previousQuantity": "0.333",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "63999.30",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "ask",
+      "price": "64000.80",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.139",
+      "resultingQuantity": "0.139"
+    },
+    {
+      "side": "ask",
+      "price": "64000.90",
+      "previousQuantity": "0.609",
+      "incomingQuantity": "0.447",
+      "resultingQuantity": "0.447"
+    },
+    {
+      "side": "ask",
+      "price": "64001.30",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "ask",
+      "price": "64001.80",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "ask",
+      "price": "64002.10",
+      "previousQuantity": "0.031",
+      "incomingQuantity": "0.047",
+      "resultingQuantity": "0.047"
+    },
+    {
+      "side": "ask",
+      "price": "64002.20",
+      "previousQuantity": "0.017",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "64004.00",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.041",
+      "resultingQuantity": "0.041"
+    },
+    {
+      "side": "ask",
+      "price": "64004.10",
+      "previousQuantity": "0.039",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "64006.70",
+      "previousQuantity": "0.117",
+      "incomingQuantity": "0.133",
+      "resultingQuantity": "0.133"
+    },
+    {
+      "side": "ask",
+      "price": "64006.90",
+      "previousQuantity": "0.017",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "64012.60",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "64016.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.149",
+      "resultingQuantity": "0.149"
+    },
+    {
+      "side": "ask",
+      "price": "64016.80",
+      "previousQuantity": "0.263",
+      "incomingQuantity": "0.086",
+      "resultingQuantity": "0.086"
+    },
+    {
+      "side": "ask",
+      "price": "64020.40",
+      "previousQuantity": "0.099",
+      "incomingQuantity": "0.077",
+      "resultingQuantity": "0.077"
+    },
+    {
+      "side": "ask",
+      "price": "64025.00",
+      "previousQuantity": "0.034",
+      "incomingQuantity": "0.073",
+      "resultingQuantity": "0.073"
+    },
+    {
+      "side": "ask",
+      "price": "64025.40",
+      "previousQuantity": "0.824",
+      "incomingQuantity": "0.800",
+      "resultingQuantity": "0.800"
+    },
+    {
+      "side": "ask",
+      "price": "64025.50",
+      "previousQuantity": "0.45",
+      "incomingQuantity": "0.411",
+      "resultingQuantity": "0.411"
+    },
+    {
+      "side": "ask",
+      "price": "64027.50",
+      "previousQuantity": "0.612",
+      "incomingQuantity": "0.651",
+      "resultingQuantity": "0.651"
+    },
+    {
+      "side": "ask",
+      "price": "64027.60",
+      "previousQuantity": "1.452",
+      "incomingQuantity": "1.413",
+      "resultingQuantity": "1.413"
+    },
+    {
+      "side": "ask",
+      "price": "64031.80",
+      "previousQuantity": "1.224",
+      "incomingQuantity": "1.200",
+      "resultingQuantity": "1.200"
+    },
+    {
+      "side": "ask",
+      "price": "64032.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.162",
+      "resultingQuantity": "0.162"
+    },
+    {
+      "side": "ask",
+      "price": "64032.80",
+      "previousQuantity": "0.204",
+      "incomingQuantity": "0.012",
+      "resultingQuantity": "0.012"
+    },
+    {
+      "side": "ask",
+      "price": "64038.10",
+      "previousQuantity": "0.026",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "64044.50",
+      "previousQuantity": "0.035",
+      "incomingQuantity": "0.009",
+      "resultingQuantity": "0.009"
+    },
+    {
+      "side": "ask",
+      "price": "64058.20",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.633",
+      "resultingQuantity": "0.633"
+    },
+    {
+      "side": "ask",
+      "price": "64062.90",
+      "previousQuantity": "0.565",
+      "incomingQuantity": "0.581",
+      "resultingQuantity": "0.581"
+    },
+    {
+      "side": "ask",
+      "price": "64063.10",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "64069.30",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.016",
+      "resultingQuantity": "0.016"
+    },
+    {
+      "side": "ask",
+      "price": "64069.50",
+      "previousQuantity": "0.324",
+      "incomingQuantity": "0.308",
+      "resultingQuantity": "0.308"
+    },
+    {
+      "side": "ask",
+      "price": "64069.70",
+      "previousQuantity": "0.023",
+      "incomingQuantity": "0.805",
+      "resultingQuantity": "0.805"
+    },
+    {
+      "side": "ask",
+      "price": "64070.50",
+      "previousQuantity": "0.783",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "64075.70",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.016",
+      "resultingQuantity": "0.016"
+    },
+    {
+      "side": "ask",
+      "price": "64075.90",
+      "previousQuantity": "0.332",
+      "incomingQuantity": "0.316",
+      "resultingQuantity": "0.316"
+    },
+    {
+      "side": "ask",
+      "price": "64080.00",
+      "previousQuantity": "0.53",
+      "incomingQuantity": "2.875",
+      "resultingQuantity": "2.875"
+    },
+    {
+      "side": "ask",
+      "price": "64080.90",
+      "previousQuantity": "2.345",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "64086.00",
+      "previousQuantity": "4.009",
+      "incomingQuantity": "4.009",
+      "resultingQuantity": "4.009"
+    },
+    {
+      "side": "ask",
+      "price": "64597.40",
+      "previousQuantity": "0.587",
+      "incomingQuantity": "0.593",
+      "resultingQuantity": "0.593"
+    },
+    {
+      "side": "ask",
+      "price": "64597.80",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.022",
+      "resultingQuantity": "0.022"
+    },
+    {
+      "side": "ask",
+      "price": "64597.90",
+      "previousQuantity": "0.008",
+      "incomingQuantity": "0.008",
+      "resultingQuantity": "0.008"
+    },
+    {
+      "side": "ask",
+      "price": "64943.80",
+      "previousQuantity": "0.65",
+      "incomingQuantity": "0.648",
+      "resultingQuantity": "0.648"
+    },
+    {
+      "side": "ask",
+      "price": "64948.20",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "ask",
+      "price": "64949.00",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "ask",
+      "price": "89523.20",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "13458.20",
+      "previousQuantity": "1.33",
+      "incomingQuantity": "1.288",
+      "resultingQuantity": "1.288"
+    },
+    {
+      "side": "bid",
+      "price": "13658.10",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.014",
+      "resultingQuantity": "0.014"
+    },
+    {
+      "side": "bid",
+      "price": "13658.20",
+      "previousQuantity": "0.378",
+      "incomingQuantity": "0.392",
+      "resultingQuantity": "0.392"
+    },
+    {
+      "side": "bid",
+      "price": "13758.20",
+      "previousQuantity": "1.022",
+      "incomingQuantity": "0.994",
+      "resultingQuantity": "0.994"
+    },
+    {
+      "side": "bid",
+      "price": "13858.10",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.014",
+      "resultingQuantity": "0.014"
+    },
+    {
+      "side": "bid",
+      "price": "13858.20",
+      "previousQuantity": "1.47",
+      "incomingQuantity": "1.498",
+      "resultingQuantity": "1.498"
+    },
+    {
+      "side": "bid",
+      "price": "57562.30",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "62679.10",
+      "previousQuantity": "0.028",
+      "incomingQuantity": "0.013",
+      "resultingQuantity": "0.013"
+    },
+    {
+      "side": "bid",
+      "price": "63318.10",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63318.50",
+      "previousQuantity": "0.021",
+      "incomingQuantity": "0.035",
+      "resultingQuantity": "0.035"
+    },
+    {
+      "side": "bid",
+      "price": "63318.60",
+      "previousQuantity": "0.01",
+      "incomingQuantity": "0.008",
+      "resultingQuantity": "0.008"
+    },
+    {
+      "side": "bid",
+      "price": "63452.60",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.018",
+      "resultingQuantity": "0.018"
+    },
+    {
+      "side": "bid",
+      "price": "63572.50",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.037",
+      "resultingQuantity": "0.037"
+    },
+    {
+      "side": "bid",
+      "price": "63643.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.038",
+      "resultingQuantity": "0.038"
+    },
+    {
+      "side": "bid",
+      "price": "63702.90",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63740.80",
+      "previousQuantity": "0.02",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63745.90",
+      "previousQuantity": "0.038",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63790.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.047",
+      "resultingQuantity": "0.047"
+    },
+    {
+      "side": "bid",
+      "price": "63803.50",
+      "previousQuantity": "0.011",
+      "incomingQuantity": "0.057",
+      "resultingQuantity": "0.057"
+    },
+    {
+      "side": "bid",
+      "price": "63814.90",
+      "previousQuantity": "0.065",
+      "incomingQuantity": "0.028",
+      "resultingQuantity": "0.028"
+    },
+    {
+      "side": "bid",
+      "price": "63816.20",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.046",
+      "resultingQuantity": "0.046"
+    },
+    {
+      "side": "bid",
+      "price": "63833.10",
+      "previousQuantity": "3.909",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63835.90",
+      "previousQuantity": "0",
+      "incomingQuantity": "3.909",
+      "resultingQuantity": "3.909"
+    },
+    {
+      "side": "bid",
+      "price": "63850.00",
+      "previousQuantity": "0.555",
+      "incomingQuantity": "0.571",
+      "resultingQuantity": "0.571"
+    },
+    {
+      "side": "bid",
+      "price": "63850.10",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63855.80",
+      "previousQuantity": "0.784",
+      "incomingQuantity": "0.784",
+      "resultingQuantity": "0.784"
+    },
+    {
+      "side": "bid",
+      "price": "63856.40",
+      "previousQuantity": "0.415",
+      "incomingQuantity": "0.431",
+      "resultingQuantity": "0.431"
+    },
+    {
+      "side": "bid",
+      "price": "63856.50",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63858.40",
+      "previousQuantity": "0.129",
+      "incomingQuantity": "0.525",
+      "resultingQuantity": "0.525"
+    },
+    {
+      "side": "bid",
+      "price": "63861.10",
+      "previousQuantity": "2.373",
+      "incomingQuantity": "2.373",
+      "resultingQuantity": "2.373"
+    },
+    {
+      "side": "bid",
+      "price": "63862.80",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.017",
+      "resultingQuantity": "0.017"
+    },
+    {
+      "side": "bid",
+      "price": "63862.90",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63871.30",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.040",
+      "resultingQuantity": "0.040"
+    },
+    {
+      "side": "bid",
+      "price": "63871.40",
+      "previousQuantity": "0.049",
+      "incomingQuantity": "0.010",
+      "resultingQuantity": "0.010"
+    },
+    {
+      "side": "bid",
+      "price": "63874.60",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.061",
+      "resultingQuantity": "0.061"
+    },
+    {
+      "side": "bid",
+      "price": "63874.90",
+      "previousQuantity": "1.011",
+      "incomingQuantity": "1.012",
+      "resultingQuantity": "1.012"
+    },
+    {
+      "side": "bid",
+      "price": "63883.60",
+      "previousQuantity": "0.101",
+      "incomingQuantity": "0.100",
+      "resultingQuantity": "0.100"
+    },
+    {
+      "side": "bid",
+      "price": "63883.80",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.032",
+      "resultingQuantity": "0.032"
+    },
+    {
+      "side": "bid",
+      "price": "63885.70",
+      "previousQuantity": "0.172",
+      "incomingQuantity": "0.126",
+      "resultingQuantity": "0.126"
+    },
+    {
+      "side": "bid",
+      "price": "63887.90",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63888.10",
+      "previousQuantity": "5.022",
+      "incomingQuantity": "5.024",
+      "resultingQuantity": "5.024"
+    },
+    {
+      "side": "bid",
+      "price": "63889.20",
+      "previousQuantity": "1.832",
+      "incomingQuantity": "1.871",
+      "resultingQuantity": "1.871"
+    },
+    {
+      "side": "bid",
+      "price": "63889.30",
+      "previousQuantity": "0.451",
+      "incomingQuantity": "0.412",
+      "resultingQuantity": "0.412"
+    },
+    {
+      "side": "bid",
+      "price": "63892.20",
+      "previousQuantity": "0.08",
+      "incomingQuantity": "0.290",
+      "resultingQuantity": "0.290"
+    },
+    {
+      "side": "bid",
+      "price": "63892.40",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.313",
+      "resultingQuantity": "0.313"
+    },
+    {
+      "side": "bid",
+      "price": "63897.20",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.020",
+      "resultingQuantity": "0.020"
+    },
+    {
+      "side": "bid",
+      "price": "63897.40",
+      "previousQuantity": "0.023",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "bid",
+      "price": "63898.40",
+      "previousQuantity": "0.261",
+      "incomingQuantity": "0.215",
+      "resultingQuantity": "0.215"
+    },
+    {
+      "side": "bid",
+      "price": "63898.60",
+      "previousQuantity": "0.29",
+      "incomingQuantity": "0.080",
+      "resultingQuantity": "0.080"
+    },
+    {
+      "side": "bid",
+      "price": "63899.60",
+      "previousQuantity": "0.007",
+      "incomingQuantity": "0.006",
+      "resultingQuantity": "0.006"
+    },
+    {
+      "side": "bid",
+      "price": "63899.80",
+      "previousQuantity": "0.184",
+      "incomingQuantity": "0.214",
+      "resultingQuantity": "0.214"
+    },
+    {
+      "side": "bid",
+      "price": "63900.60",
+      "previousQuantity": "0.146",
+      "incomingQuantity": "0.150",
+      "resultingQuantity": "0.150"
+    },
+    {
+      "side": "bid",
+      "price": "63901.90",
+      "previousQuantity": "0.142",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63904.20",
+      "previousQuantity": "0.024",
+      "incomingQuantity": "0.040",
+      "resultingQuantity": "0.040"
+    },
+    {
+      "side": "bid",
+      "price": "63904.30",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63909.00",
+      "previousQuantity": "0.413",
+      "incomingQuantity": "0.503",
+      "resultingQuantity": "0.503"
+    },
+    {
+      "side": "bid",
+      "price": "63911.10",
+      "previousQuantity": "0.046",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63913.90",
+      "previousQuantity": "0.011",
+      "incomingQuantity": "0.036",
+      "resultingQuantity": "0.036"
+    },
+    {
+      "side": "bid",
+      "price": "63914.00",
+      "previousQuantity": "3.132",
+      "incomingQuantity": "3.252",
+      "resultingQuantity": "3.252"
+    },
+    {
+      "side": "bid",
+      "price": "63914.90",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63915.00",
+      "previousQuantity": "1.067",
+      "incomingQuantity": "1.052",
+      "resultingQuantity": "1.052"
+    },
+    {
+      "side": "bid",
+      "price": "63915.50",
+      "previousQuantity": "0.937",
+      "incomingQuantity": "0.936",
+      "resultingQuantity": "0.936"
+    },
+    {
+      "side": "bid",
+      "price": "63915.60",
+      "previousQuantity": "0.336",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "bid",
+      "price": "63915.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.028",
+      "resultingQuantity": "0.028"
+    },
+    {
+      "side": "bid",
+      "price": "63916.30",
+      "previousQuantity": "0.093",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "bid",
+      "price": "63916.60",
+      "previousQuantity": "1.006",
+      "incomingQuantity": "1.008",
+      "resultingQuantity": "1.008"
+    },
+    {
+      "side": "bid",
+      "price": "63917.10",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63919.20",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "bid",
+      "price": "63920.50",
+      "previousQuantity": "0.896",
+      "incomingQuantity": "0.564",
+      "resultingQuantity": "0.564"
+    },
+    {
+      "side": "bid",
+      "price": "63921.10",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.016",
+      "resultingQuantity": "0.016"
+    },
+    {
+      "side": "bid",
+      "price": "63922.00",
+      "previousQuantity": "1.114",
+      "incomingQuantity": "0.994",
+      "resultingQuantity": "0.994"
+    },
+    {
+      "side": "bid",
+      "price": "63922.10",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.079",
+      "resultingQuantity": "0.079"
+    },
+    {
+      "side": "bid",
+      "price": "63922.90",
+      "previousQuantity": "0.077",
+      "incomingQuantity": "0.052",
+      "resultingQuantity": "0.052"
+    },
+    {
+      "side": "bid",
+      "price": "63923.00",
+      "previousQuantity": "0.857",
+      "incomingQuantity": "0.853",
+      "resultingQuantity": "0.853"
+    },
+    {
+      "side": "bid",
+      "price": "63923.90",
+      "previousQuantity": "0.94",
+      "incomingQuantity": "0.956",
+      "resultingQuantity": "0.956"
+    },
+    {
+      "side": "bid",
+      "price": "63924.40",
+      "previousQuantity": "0.342",
+      "incomingQuantity": "0.327",
+      "resultingQuantity": "0.327"
+    },
+    {
+      "side": "bid",
+      "price": "63925.00",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.083",
+      "resultingQuantity": "0.083"
+    },
+    {
+      "side": "bid",
+      "price": "63926.40",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.054",
+      "resultingQuantity": "0.054"
+    },
+    {
+      "side": "bid",
+      "price": "63928.20",
+      "previousQuantity": "2.989",
+      "incomingQuantity": "3.046",
+      "resultingQuantity": "3.046"
+    },
+    {
+      "side": "bid",
+      "price": "63928.80",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.037",
+      "resultingQuantity": "0.037"
+    },
+    {
+      "side": "bid",
+      "price": "63930.70",
+      "previousQuantity": "0.1",
+      "incomingQuantity": "0.180",
+      "resultingQuantity": "0.180"
+    },
+    {
+      "side": "bid",
+      "price": "63930.80",
+      "previousQuantity": "0.996",
+      "incomingQuantity": "0.939",
+      "resultingQuantity": "0.939"
+    },
+    {
+      "side": "bid",
+      "price": "63931.50",
+      "previousQuantity": "0.333",
+      "incomingQuantity": "0.332",
+      "resultingQuantity": "0.332"
+    },
+    {
+      "side": "bid",
+      "price": "63931.70",
+      "previousQuantity": "0.052",
+      "incomingQuantity": "0.077",
+      "resultingQuantity": "0.077"
+    },
+    {
+      "side": "bid",
+      "price": "63932.60",
+      "previousQuantity": "1.638",
+      "incomingQuantity": "1.658",
+      "resultingQuantity": "1.658"
+    },
+    {
+      "side": "bid",
+      "price": "63933.40",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.022",
+      "resultingQuantity": "0.022"
+    },
+    {
+      "side": "bid",
+      "price": "63933.60",
+      "previousQuantity": "0.129",
+      "incomingQuantity": "0.079",
+      "resultingQuantity": "0.079"
+    },
+    {
+      "side": "bid",
+      "price": "63934.10",
+      "previousQuantity": "0.02",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63934.40",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.019",
+      "resultingQuantity": "0.019"
+    },
+    {
+      "side": "bid",
+      "price": "63934.50",
+      "previousQuantity": "0.007",
+      "incomingQuantity": "0.007",
+      "resultingQuantity": "0.007"
+    },
+    {
+      "side": "bid",
+      "price": "63935.50",
+      "previousQuantity": "0.597",
+      "incomingQuantity": "0.009",
+      "resultingQuantity": "0.009"
+    },
+    {
+      "side": "bid",
+      "price": "63935.70",
+      "previousQuantity": "0.042",
+      "incomingQuantity": "0.605",
+      "resultingQuantity": "0.605"
+    },
+    {
+      "side": "bid",
+      "price": "63935.80",
+      "previousQuantity": "0.571",
+      "incomingQuantity": "0.569",
+      "resultingQuantity": "0.569"
+    },
+    {
+      "side": "bid",
+      "price": "63935.90",
+      "previousQuantity": "0.077",
+      "incomingQuantity": "0.039",
+      "resultingQuantity": "0.039"
+    },
+    {
+      "side": "bid",
+      "price": "63936.00",
+      "previousQuantity": "0.03",
+      "incomingQuantity": "0.026",
+      "resultingQuantity": "0.026"
+    },
+    {
+      "side": "bid",
+      "price": "63936.10",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.157",
+      "resultingQuantity": "0.157"
+    },
+    {
+      "side": "bid",
+      "price": "63936.50",
+      "previousQuantity": "0.121",
+      "incomingQuantity": "0.141",
+      "resultingQuantity": "0.141"
+    },
+    {
+      "side": "bid",
+      "price": "63937.10",
+      "previousQuantity": "0.037",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63937.20",
+      "previousQuantity": "0.044",
+      "incomingQuantity": "0.051",
+      "resultingQuantity": "0.051"
+    },
+    {
+      "side": "bid",
+      "price": "63937.50",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63937.60",
+      "previousQuantity": "0.096",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63937.70",
+      "previousQuantity": "0.463",
+      "incomingQuantity": "0.320",
+      "resultingQuantity": "0.320"
+    },
+    {
+      "side": "bid",
+      "price": "63937.90",
+      "previousQuantity": "0.283",
+      "incomingQuantity": "0.127",
+      "resultingQuantity": "0.127"
+    },
+    {
+      "side": "bid",
+      "price": "63938.20",
+      "previousQuantity": "0.488",
+      "incomingQuantity": "0.568",
+      "resultingQuantity": "0.568"
+    },
+    {
+      "side": "bid",
+      "price": "63939.00",
+      "previousQuantity": "0.876",
+      "incomingQuantity": "0.869",
+      "resultingQuantity": "0.869"
+    },
+    {
+      "side": "bid",
+      "price": "63939.30",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.565",
+      "resultingQuantity": "0.565"
+    },
+    {
+      "side": "bid",
+      "price": "63939.40",
+      "previousQuantity": "0.568",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "bid",
+      "price": "63940.30",
+      "previousQuantity": "0.627",
+      "incomingQuantity": "0.484",
+      "resultingQuantity": "0.484"
+    },
+    {
+      "side": "bid",
+      "price": "63940.60",
+      "previousQuantity": "0.366",
+      "incomingQuantity": "0.365",
+      "resultingQuantity": "0.365"
+    },
+    {
+      "side": "bid",
+      "price": "63940.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.118",
+      "resultingQuantity": "0.118"
+    },
+    {
+      "side": "bid",
+      "price": "63940.90",
+      "previousQuantity": "0.335",
+      "incomingQuantity": "0.667",
+      "resultingQuantity": "0.667"
+    },
+    {
+      "side": "bid",
+      "price": "63941.00",
+      "previousQuantity": "0.551",
+      "incomingQuantity": "0.707",
+      "resultingQuantity": "0.707"
+    },
+    {
+      "side": "bid",
+      "price": "63941.70",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63942.10",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.565",
+      "resultingQuantity": "0.565"
+    },
+    {
+      "side": "bid",
+      "price": "63942.40",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "bid",
+      "price": "63942.70",
+      "previousQuantity": "0.449",
+      "incomingQuantity": "0.913",
+      "resultingQuantity": "0.913"
+    },
+    {
+      "side": "bid",
+      "price": "63943.00",
+      "previousQuantity": "0.142",
+      "incomingQuantity": "0.091",
+      "resultingQuantity": "0.091"
+    },
+    {
+      "side": "bid",
+      "price": "63943.10",
+      "previousQuantity": "0.282",
+      "incomingQuantity": "0.202",
+      "resultingQuantity": "0.202"
+    },
+    {
+      "side": "bid",
+      "price": "63943.40",
+      "previousQuantity": "0.082",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63943.60",
+      "previousQuantity": "0.748",
+      "incomingQuantity": "0.865",
+      "resultingQuantity": "0.865"
+    },
+    {
+      "side": "bid",
+      "price": "63943.70",
+      "previousQuantity": "0.399",
+      "incomingQuantity": "0.398",
+      "resultingQuantity": "0.398"
+    },
+    {
+      "side": "bid",
+      "price": "63943.80",
+      "previousQuantity": "0.939",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63943.90",
+      "previousQuantity": "0.564",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63944.00",
+      "previousQuantity": "0.294",
+      "incomingQuantity": "1.233",
+      "resultingQuantity": "1.233"
+    },
+    {
+      "side": "bid",
+      "price": "63944.30",
+      "previousQuantity": "0.372",
+      "incomingQuantity": "0.434",
+      "resultingQuantity": "0.434"
+    },
+    {
+      "side": "bid",
+      "price": "63944.40",
+      "previousQuantity": "0.566",
+      "incomingQuantity": "0.098",
+      "resultingQuantity": "0.098"
+    },
+    {
+      "side": "bid",
+      "price": "63944.50",
+      "previousQuantity": "0.018",
+      "incomingQuantity": "0.409",
+      "resultingQuantity": "0.409"
+    },
+    {
+      "side": "bid",
+      "price": "63944.90",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63945.00",
+      "previousQuantity": "0.708",
+      "incomingQuantity": "0.127",
+      "resultingQuantity": "0.127"
+    },
+    {
+      "side": "bid",
+      "price": "63945.10",
+      "previousQuantity": "1.136",
+      "incomingQuantity": "1.148",
+      "resultingQuantity": "1.148"
+    },
+    {
+      "side": "bid",
+      "price": "63945.20",
+      "previousQuantity": "0.014",
+      "incomingQuantity": "0.025",
+      "resultingQuantity": "0.025"
+    },
+    {
+      "side": "bid",
+      "price": "63945.50",
+      "previousQuantity": "0.241",
+      "incomingQuantity": "0.124",
+      "resultingQuantity": "0.124"
+    },
+    {
+      "side": "bid",
+      "price": "63945.80",
+      "previousQuantity": "0.552",
+      "incomingQuantity": "0.088",
+      "resultingQuantity": "0.088"
+    },
+    {
+      "side": "bid",
+      "price": "63945.90",
+      "previousQuantity": "0.02",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63946.10",
+      "previousQuantity": "0.08",
+      "incomingQuantity": "0.079",
+      "resultingQuantity": "0.079"
+    },
+    {
+      "side": "bid",
+      "price": "63946.20",
+      "previousQuantity": "0.316",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63946.40",
+      "previousQuantity": "0.392",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63946.60",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.016",
+      "resultingQuantity": "0.016"
+    },
+    {
+      "side": "bid",
+      "price": "63946.70",
+      "previousQuantity": "0.283",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "bid",
+      "price": "63946.80",
+      "previousQuantity": "0.023",
+      "incomingQuantity": "0.023",
+      "resultingQuantity": "0.023"
+    },
+    {
+      "side": "bid",
+      "price": "63947.00",
+      "previousQuantity": "0.031",
+      "incomingQuantity": "1.031",
+      "resultingQuantity": "1.031"
+    },
+    {
+      "side": "bid",
+      "price": "63947.20",
+      "previousQuantity": "0.323",
+      "incomingQuantity": "0.305",
+      "resultingQuantity": "0.305"
+    },
+    {
+      "side": "bid",
+      "price": "63947.40",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63947.50",
+      "previousQuantity": "0.564",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63947.60",
+      "previousQuantity": "0.081",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63947.70",
+      "previousQuantity": "0.257",
+      "incomingQuantity": "0.017",
+      "resultingQuantity": "0.017"
+    },
+    {
+      "side": "bid",
+      "price": "63947.80",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63948.10",
+      "previousQuantity": "0.365",
+      "incomingQuantity": "0.361",
+      "resultingQuantity": "0.361"
+    },
+    {
+      "side": "bid",
+      "price": "63948.30",
+      "previousQuantity": "0.006",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "bid",
+      "price": "63948.40",
+      "previousQuantity": "0.141",
+      "incomingQuantity": "0.061",
+      "resultingQuantity": "0.061"
+    },
+    {
+      "side": "bid",
+      "price": "63948.50",
+      "previousQuantity": "0.041",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63948.60",
+      "previousQuantity": "0.584",
+      "incomingQuantity": "0.019",
+      "resultingQuantity": "0.019"
+    },
+    {
+      "side": "bid",
+      "price": "63948.80",
+      "previousQuantity": "1.491",
+      "incomingQuantity": "1.249",
+      "resultingQuantity": "1.249"
+    },
+    {
+      "side": "bid",
+      "price": "63949.30",
+      "previousQuantity": "0.06",
+      "incomingQuantity": "0.063",
+      "resultingQuantity": "0.063"
+    },
+    {
+      "side": "bid",
+      "price": "63949.60",
+      "previousQuantity": "1",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63949.70",
+      "previousQuantity": "0.392",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63949.80",
+      "previousQuantity": "0.201",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63949.90",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.004",
+      "resultingQuantity": "0.004"
+    },
+    {
+      "side": "bid",
+      "price": "63950.10",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63950.20",
+      "previousQuantity": "1.5",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63950.30",
+      "previousQuantity": "0.659",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63950.40",
+      "previousQuantity": "0.956",
+      "incomingQuantity": "0.017",
+      "resultingQuantity": "0.017"
+    },
+    {
+      "side": "bid",
+      "price": "63950.50",
+      "previousQuantity": "0.806",
+      "incomingQuantity": "0.006",
+      "resultingQuantity": "0.006"
+    },
+    {
+      "side": "bid",
+      "price": "63950.60",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.017",
+      "resultingQuantity": "0.017"
+    },
+    {
+      "side": "bid",
+      "price": "63950.80",
+      "previousQuantity": "0.061",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63951.00",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.044",
+      "resultingQuantity": "0.044"
+    },
+    {
+      "side": "bid",
+      "price": "63951.20",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63951.30",
+      "previousQuantity": "1.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63951.40",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63951.60",
+      "previousQuantity": "0",
+      "incomingQuantity": "0.093",
+      "resultingQuantity": "0.093"
+    },
+    {
+      "side": "bid",
+      "price": "63952.10",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63952.20",
+      "previousQuantity": "0.618",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "bid",
+      "price": "63952.90",
+      "previousQuantity": "0.082",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63953.00",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63953.40",
+      "previousQuantity": "0.005",
+      "incomingQuantity": "0.003",
+      "resultingQuantity": "0.003"
+    },
+    {
+      "side": "bid",
+      "price": "63953.70",
+      "previousQuantity": "0.313",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63953.80",
+      "previousQuantity": "0.617",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63954.00",
+      "previousQuantity": "0.004",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63954.30",
+      "previousQuantity": "0.047",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63954.60",
+      "previousQuantity": "0.073",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63954.70",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.603",
+      "resultingQuantity": "0.603"
+    },
+    {
+      "side": "bid",
+      "price": "63955.00",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.009",
+      "resultingQuantity": "0.009"
+    },
+    {
+      "side": "bid",
+      "price": "63955.20",
+      "previousQuantity": "0.336",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63955.30",
+      "previousQuantity": "0.55",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63955.90",
+      "previousQuantity": "0.605",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63956.10",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63956.30",
+      "previousQuantity": "0.008",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63956.70",
+      "previousQuantity": "0.617",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63956.80",
+      "previousQuantity": "0.207",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63957.20",
+      "previousQuantity": "0.003",
+      "incomingQuantity": "0.001",
+      "resultingQuantity": "0.001"
+    },
+    {
+      "side": "bid",
+      "price": "63957.30",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63957.70",
+      "previousQuantity": "0.024",
+      "incomingQuantity": "0.002",
+      "resultingQuantity": "0.002"
+    },
+    {
+      "side": "bid",
+      "price": "63957.80",
+      "previousQuantity": "0.001",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63957.90",
+      "previousQuantity": "0.002",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63958.10",
+      "previousQuantity": "0.016",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    },
+    {
+      "side": "bid",
+      "price": "63958.20",
+      "previousQuantity": "1.726",
+      "incomingQuantity": "0.000",
+      "resultingQuantity": "0"
+    }
+  ],
+  "normalizedFileSha256": "8eb5d72e0d90eb61979b13e013e599590a70923f5310bfe2ba7e691d3ab77eb0",
+  "providerBookProvenCrossed": false
+}

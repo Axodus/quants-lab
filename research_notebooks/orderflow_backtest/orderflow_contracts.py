@@ -5,7 +5,7 @@ submit orders and are deliberately separate from the legacy synthetic
 ``MarketTick`` fixture used by the engine tests.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import Optional, Tuple
 
@@ -18,6 +18,16 @@ class OrderFlowFrameV1:
     sell: Decimal
     obi: Decimal
     spread_ticks: Decimal
+    best_bid: Decimal = field(default_factory=lambda: Decimal("0"))
+    best_ask: Decimal = field(default_factory=lambda: Decimal("0"))
+    bid_depth: Decimal = field(default_factory=lambda: Decimal("0"))
+    ask_depth: Decimal = field(default_factory=lambda: Decimal("0"))
+    depth_skew: Decimal = field(default_factory=lambda: Decimal("0"))
+    absolute_delta: Decimal = field(default_factory=lambda: Decimal("0"))
+    cvd: Decimal = field(default_factory=lambda: Decimal("0"))
+    price_displacement_ticks: Decimal = field(default_factory=lambda: Decimal("0"))
+    causal_trailing_high: Decimal = field(default_factory=lambda: Decimal("0"))
+    causal_trailing_low: Decimal = field(default_factory=lambda: Decimal("0"))
 
     @property
     def delta(self) -> Decimal:
