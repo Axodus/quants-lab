@@ -18,6 +18,7 @@ from typing import Any
 
 from .instrument_spec import InstrumentSpec
 from .scanner_selection_manifest import ScannerSelectionManifest, SelectionMode
+from .bootstrap_resolver import BootstrapResolution, BootstrapResolver
 
 # Canonical BTC frame-stream hash that must be reproduced by any refactored builder.
 BTC_CANONICAL_FRAME_HASH = "fae40ba4190bd13a9a0fb89c3b6f5a8d953de0c8a604ff3c7e5e174a3997ddbf"
@@ -131,6 +132,9 @@ class SymbolPipelineState:
     frame_count: int = 0
     frame_hash: str = ""
     error: str = ""
+    bootstrap_status: str = ""
+    bootstrap_resolution: dict = field(default_factory=dict)
+    expected_frames_for_qualified_window: int = 0
 
     def advance(self, new_state: str) -> None:
         if new_state not in PIPELINE_STATE_TRANSITIONS:
@@ -239,6 +243,28 @@ class MultiSymbolResearchPipeline:
         state = self.symbol_states[symbol]
         state.acquisition_manifest = manifest
         state.advance("ACQUIRED")
+
+    def resolve_bootstrap(self, symbol: str, events: list[dict], requested_start: str | None = None, requested_end: str | None = None) -> BootstrapResolution:
+        self._require_symbol(symbol)
+        resolution = BootstrapResolver().resolve(
+            symbol,
+            events,
+            requested_start or self.is_start,
+            requested_end or self.is_end,
+        )
+        state = self.symbol_states[symbol]
+        state.bootstrap_status = resolution.status
+        state.bootstrap_resolution = resolution.to_dict()
+        state.expected_frames_for_qualified_window = resolution.window.expected_frames_for_qualified_window
+        if resolution.status == "BOOTSTRAP_QUALIFIED":
+            state.advance("QUALIFICATION_REQUIRED")
+        elif resolution.status == "BOOTSTRAP_PARTIAL":
+            state.state = "BLOCKED"
+            state.error = "PARTIAL_CAUSAL_WINDOW"
+        else:
+            state.state = "BLOCKED"
+            state.error = resolution.bridge.get("reason", resolution.status)
+        return resolution
 
     def mark_acquisition_required(self, symbol: str) -> None:
         self._require_symbol(symbol)
