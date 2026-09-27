@@ -13,6 +13,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -35,16 +36,23 @@ Handler = Callable[[dict[str, Any]], dict[str, Any]]
 class RuntimePreflight:
     data_root: str
     runtime: str
+    runtime_executable: str | None
+    runtime_prefix: str | None
     available_capacity_bytes: int
     pyarrow_available: bool
     cryptohftdata_available: bool
     zstandard_available: bool
 
     @property
+    def runtime_matches_expected(self) -> bool:
+        return self.runtime_executable == self.runtime and self.runtime_prefix == str(Path(self.runtime).parent.parent)
+
+    @property
     def available(self) -> bool:
         return (
             Path(self.data_root).is_dir()
             and Path(self.runtime).is_file()
+            and self.runtime_matches_expected
             and self.pyarrow_available
             and self.cryptohftdata_available
             and self.zstandard_available
@@ -82,23 +90,31 @@ class BoundedResearchExecutor:
     def preflight(self) -> RuntimePreflight:
         if not self.data_root.is_dir() or not self.runtime.is_file():
             return RuntimePreflight(
-                data_root=str(self.data_root), runtime=str(self.runtime), available_capacity_bytes=0,
+                data_root=str(self.data_root), runtime=str(self.runtime), runtime_executable=None,
+                runtime_prefix=None, available_capacity_bytes=0,
                 pyarrow_available=False, cryptohftdata_available=False, zstandard_available=False,
             )
         available_capacity = shutil.disk_usage(self.data_root).free
         dependency_probe = subprocess.run(
-            [str(self.runtime), "-c", "import importlib.util,json; print(json.dumps({n: importlib.util.find_spec(n) is not None for n in ['pyarrow','cryptohftdata','zstandard']}))"],
+            [str(self.runtime), "-c", "import importlib.util,json,sys; print(json.dumps({'executable': sys.executable, 'prefix': sys.prefix, 'dependencies': {n: importlib.util.find_spec(n) is not None for n in ['pyarrow','cryptohftdata','zstandard']}}))"],
             check=False, capture_output=True, text=True, timeout=15,
         )
         dependencies = {}
+        runtime_executable = None
+        runtime_prefix = None
         if dependency_probe.returncode == 0:
             try:
-                dependencies = json.loads(dependency_probe.stdout.strip())
+                probe = json.loads(dependency_probe.stdout.strip())
+                runtime_executable = probe.get("executable")
+                runtime_prefix = probe.get("prefix")
+                dependencies = probe.get("dependencies", {})
             except json.JSONDecodeError:
                 dependencies = {}
         return RuntimePreflight(
             data_root=str(self.data_root),
             runtime=str(self.runtime),
+            runtime_executable=runtime_executable,
+            runtime_prefix=runtime_prefix,
             available_capacity_bytes=available_capacity,
             pyarrow_available=bool(dependencies.get("pyarrow")),
             cryptohftdata_available=bool(dependencies.get("cryptohftdata")),
@@ -135,13 +151,23 @@ class BoundedResearchExecutor:
 
     def _validate_runtime_if_needed(self, action: ResearchActionKind) -> None:
         if action in {
-            ResearchActionKind.INSPECT_SYMBOL,
             ResearchActionKind.GET_RUN_STATUS,
             ResearchActionKind.READ_CANONICAL_RESULTS,
         }:
             return
+        current_executable = str(Path(sys.executable))
+        expected_runtime = str(self.runtime)
+        if current_executable != expected_runtime:
+            raise RuntimeError(
+                f"EXPECTED_RUNTIME_MISMATCH: current={current_executable} expected={expected_runtime}"
+            )
         preflight = self.preflight()
         if not preflight.available:
+            if not preflight.runtime_matches_expected:
+                raise RuntimeError(
+                    "EXPECTED_RUNTIME_MISMATCH: "
+                    f"resolved={preflight.runtime_executable} expected={expected_runtime}"
+                )
             raise RuntimeError("RUNTIME_ENVIRONMENT_UNAVAILABLE")
 
     def _validate_paths(self, action: ResearchActionKind, arguments: dict[str, Any]) -> None:

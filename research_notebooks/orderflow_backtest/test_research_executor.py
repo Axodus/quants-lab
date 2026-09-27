@@ -42,6 +42,19 @@ def test_preflight_reports_data_root_and_runtime(tmp_path):
     assert pf.data_root == str(tmp_path.resolve())
     assert isinstance(pf.available_capacity_bytes, int)
     assert isinstance(pf.pyarrow_available, bool)
+    assert pf.runtime_matches_expected is True
+
+
+def test_historical_action_rejects_system_interpreter(monkeypatch, tmp_path):
+    exe = _executor(tmp_path, handlers={
+        ResearchActionKind.SCAN_MARKET: lambda kw: {"status": "scanner_ok"},
+    })
+    monkeypatch.setattr("sys.executable", "/usr/bin/python3")
+    with pytest.raises(RuntimeError, match="EXPECTED_RUNTIME_MISMATCH"):
+        exe.execute(
+            ResearchActionKind.SCAN_MARKET,
+            {"selection_mode": "FORWARD_SELECTED", "universe": "test", "selection_rule_version": "v1"},
+        )
 
 
 def test_preflight_missing_data_root_returns_unavailable():
