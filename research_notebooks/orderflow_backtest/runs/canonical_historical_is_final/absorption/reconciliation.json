@@ -1,0 +1,55 @@
+{
+  "strategyId": "orderflow.absorption.fade",
+  "shortName": "absorption",
+  "runId": "absorption-btcusdt-is-fae40ba4190bd13a",
+  "frameHash": "fae40ba4190bd13a9a0fb89c3b6f5a8d953de0c8a604ff3c7e5e174a3997ddbf",
+  "hashes": {
+    "signals": "4c7875e679299e24fdf968eac38a560b9a5b5a76aaa42d7c3d982075862f09cd",
+    "orders": "5650265bd7e9dd5d54a3b31bc68df74f1938a901a9d0e2bbd8bb06919a058868",
+    "fills": "24f4da6318d2353d38431f8c4ae255c17498411525b4d0a13b430db93d4002e0",
+    "trades": "e12492b81ac687b308097d3fca2d939517c32a4a3ee0b703aa46aec3fc29a0b6"
+  },
+  "manifestHash": "fb0458ff73c32730d94e07bc62a0d2272770ff323361081c9942e1098f55c101",
+  "aggregate": {
+    "trade_count": 1,
+    "wins": 0,
+    "losses": 1,
+    "flat": 0,
+    "long_trades": 1,
+    "short_trades": 0,
+    "gross_pnl": "-2.6716333481580607665312285933190071834953843118316",
+    "entry_fees": "0.2000",
+    "exit_fees": "0.2000",
+    "fees": "0.4000",
+    "slippage": "0",
+    "funding": "0",
+    "net_pnl": "-3.0716333481580607665312285933190071834953843118316",
+    "expectancy": "-3.0716333481580607665312285933190071834953843118316",
+    "profit_factor": "0E+49",
+    "max_drawdown": "3.0716333481580607665312285933190071834953843118316",
+    "daily_net_pnl": {
+      "2026-06-24": "-3.0716333481580607665312285933190071834953843118316",
+      "2026-06-23": "0",
+      "2026-06-25": "0",
+      "2026-06-26": "0",
+      "2026-06-27": "0",
+      "2026-06-28": "0",
+      "2026-06-29": "0",
+      "2026-06-30": "0",
+      "2026-07-01": "0",
+      "2026-07-02": "0"
+    },
+    "artifact_hashes": {
+      "signals": "4c7875e679299e24fdf968eac38a560b9a5b5a76aaa42d7c3d982075862f09cd",
+      "orders": "5650265bd7e9dd5d54a3b31bc68df74f1938a901a9d0e2bbd8bb06919a058868",
+      "fills": "24f4da6318d2353d38431f8c4ae255c17498411525b4d0a13b430db93d4002e0",
+      "trades": "e12492b81ac687b308097d3fca2d939517c32a4a3ee0b703aa46aec3fc29a0b6"
+    },
+    "run_manifest_hash": "fb0458ff73c32730d94e07bc62a0d2272770ff323361081c9942e1098f55c101"
+  },
+  "deterministicReplay": "PASS",
+  "fundingCrossingTrades": [],
+  "oosEventsConsumed": 0,
+  "dailySum": "-3.0716333481580607665312285933190071834953843118316",
+  "accountingDelta": "0.00"
+}

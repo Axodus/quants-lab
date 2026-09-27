@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://axodus.local/schemas/instrument-spec-v1.json",
+  "title": "Axodus InstrumentSpec v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "symbol", "venue", "marketType", "tickSize", "stepSize",
+    "priceScale", "quantityScale", "pricePrecision", "quantityPrecision",
+    "metadataSource", "metadataTimestamp", "metadataHash", "instrumentSpecHash",
+    "baseAsset", "quoteAsset", "settlementAsset", "feeClassification"
+  ],
+  "properties": {
+    "symbol": {"type": "string", "pattern": "^[A-Z0-9]+$"},
+    "venue": {"type": "string", "minLength": 1},
+    "marketType": {"type": "string", "minLength": 1},
+    "tickSize": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "stepSize": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?$"},
+    "priceScale": {"type": "integer", "minimum": 1},
+    "quantityScale": {"type": "integer", "minimum": 1},
+    "pricePrecision": {"type": "integer", "minimum": 0},
+    "quantityPrecision": {"type": "integer", "minimum": 0},
+    "metadataSource": {"type": "string", "minLength": 1},
+    "metadataTimestamp": {"type": "string", "format": "date-time"},
+    "metadataHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "baseAsset": {"type": "string"},
+    "quoteAsset": {"type": "string"},
+    "settlementAsset": {"type": "string"},
+    "minQuantity": {"type": ["string", "null"]},
+    "minNotional": {"type": ["string", "null"]},
+    "contractSize": {"type": ["string", "null"]},
+    "makerFee": {"type": ["string", "null"]},
+    "takerFee": {"type": ["string", "null"]},
+    "feeClassification": {"type": "string"},
+    "instrumentSpecHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

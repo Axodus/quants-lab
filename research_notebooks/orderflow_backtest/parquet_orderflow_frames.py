@@ -1,4 +1,4 @@
-"""Bounded-memory BTCUSDT Parquet to OrderFlowFrameV1 builder.
+"""Bounded-memory multi-symbol Parquet to OrderFlowFrameV1 builder.
 
 The builder is deliberately independent from the legacy MarketTick engine.
 It groups provider price-level rows into logical events, carries one book
@@ -25,6 +25,7 @@ import pyarrow.compute as pc
 import numpy as np
 
 from .orderflow_contracts import OrderFlowFrameV1
+from .instrument_spec import InstrumentSpec
 
 
 UTC = timezone.utc
@@ -101,22 +102,39 @@ class CausalParquetFrameBuilder:
         self,
         data_root: Path,
         symbol: str = "BTCUSDT",
-        tick_size: Decimal = Decimal("0.10"),
+        tick_size: Decimal | None = None,
+        instrument_spec: InstrumentSpec | None = None,
         depth: int = 5,
         is_start_ms: int = IS_START_MS,
         is_end_ms: int = IS_END_MS,
+        authorized_end_ms: int | None = None,
         revision: str = "parquet-orderflow-frame-builder-v1",
     ) -> None:
-        if symbol != "BTCUSDT":
-            raise ValueError("AEES permits BTCUSDT only")
-        if is_end_ms > IS_END_MS:
+        # The historical window is an input to the per-symbol qualification
+        # contract.  The default keeps the sealed BTC VAL-02A boundary, while
+        # another independently-qualified dataset must pass its own explicit
+        # end boundary rather than inheriting a BTC-specific constant.
+        authorized_end_ms = IS_END_MS if authorized_end_ms is None else authorized_end_ms
+        if is_end_ms > authorized_end_ms:
             raise ValueError("OOS boundary rejected before partition discovery")
+        if instrument_spec is None:
+            try:
+                instrument_spec = InstrumentSpec.from_registry(symbol)
+            except KeyError as exc:
+                raise ValueError(f"missing InstrumentSpec for {symbol}") from exc
+        instrument_spec.validate()
+        if instrument_spec.symbol != symbol:
+            raise ValueError("InstrumentSpec symbol does not match builder symbol")
+        if tick_size is not None and tick_size != instrument_spec.tick_size:
+            raise ValueError("tick_size conflicts with authoritative InstrumentSpec")
         self.data_root = Path(data_root)
         self.symbol = symbol
-        self.tick_size = tick_size
+        self.instrument_spec = instrument_spec
+        self.tick_size = tick_size if tick_size is not None else instrument_spec.tick_size
         self.depth = depth
         self.is_start_ms = is_start_ms
         self.is_end_ms = is_end_ms
+        self.authorized_end_ms = authorized_end_ms
         self.revision = revision
         self.book = _Book()
         self.trades_by_minute: dict[int, dict[str, Decimal | int]] = defaultdict(lambda: {
@@ -136,7 +154,8 @@ class CausalParquetFrameBuilder:
 
     @property
     def canonical_root(self) -> Path:
-        return self.data_root / "normalized" / "canonical"
+        canonical = self.data_root / "normalized" / "canonical"
+        return canonical if canonical.is_dir() else self.data_root / "normalized"
 
     def _paths(self, kind: str, start_ms: int | None = None) -> list[Path]:
         start = datetime.fromtimestamp((start_ms or self.is_start_ms) / 1000, tz=UTC).date()
@@ -320,11 +339,10 @@ class CausalParquetFrameBuilder:
 class FixedPointCausalParquetFrameBuilder(CausalParquetFrameBuilder):
     """PyArrow-vectorized equivalent using integer tick/step units."""
 
-    PRICE_SCALE = 10
-    QUANTITY_SCALE = 1000
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.PRICE_SCALE = self.instrument_spec.price_scale
+        self.QUANTITY_SCALE = self.instrument_spec.quantity_scale
         self._fixed_book_bids: dict[int, int] = {}
         self._fixed_book_asks: dict[int, int] = {}
         self._trade_steps_by_minute: dict[int, dict[str, int]] = defaultdict(lambda: {"buy": 0, "sell": 0, "count": 0})
@@ -385,8 +403,7 @@ class FixedPointCausalParquetFrameBuilder(CausalParquetFrameBuilder):
         values = pc.cast(pc.multiply(decimal, pa.scalar(scale, type=pa.int64())), pa.int64(), safe=True)
         return values.to_numpy(zero_copy_only=False)
 
-    @staticmethod
-    def _kernel_rows(batch: object) -> np.ndarray:
+    def _kernel_rows(self, batch: object) -> np.ndarray:
         def ints(name: str) -> np.ndarray:
             column = batch.column(batch.schema.get_field_index(name))
             if column.null_count:
@@ -395,8 +412,14 @@ class FixedPointCausalParquetFrameBuilder(CausalParquetFrameBuilder):
 
         event_type = np.asarray(pc.cast(pc.equal(batch.column(batch.schema.get_field_index("event_type")), "snapshot"), pa.int8()).to_numpy(), dtype=np.int64)
         side = np.asarray(pc.cast(pc.equal(batch.column(batch.schema.get_field_index("side")), "ask"), pa.int8()).to_numpy(), dtype=np.int64)
-        price = FixedPointCausalParquetFrameBuilder._primitive_fixed(batch.column(batch.schema.get_field_index("price")), 10)
-        quantity = FixedPointCausalParquetFrameBuilder._primitive_fixed(batch.column(batch.schema.get_field_index("quantity")), 1000)
+        price = self._primitive_fixed(batch.column(batch.schema.get_field_index("price")), self.PRICE_SCALE)
+        quantity = self._primitive_fixed(batch.column(batch.schema.get_field_index("quantity")), self.QUANTITY_SCALE)
+        price_increment = int(self.instrument_spec.tick_size * self.PRICE_SCALE)
+        quantity_increment = int(self.instrument_spec.step_size * self.QUANTITY_SCALE)
+        if np.any(price % price_increment != 0):
+            raise ValueError(f"price is not aligned to {self.instrument_spec.symbol} tick size")
+        if np.any(quantity % quantity_increment != 0):
+            raise ValueError(f"quantity is not aligned to {self.instrument_spec.symbol} step size")
         return np.column_stack((
             ints("event_time"), ints("transaction_time"), event_type,
             ints("first_update_id"), ints("final_update_id"), ints("prev_final_update_id"),
@@ -554,7 +577,7 @@ class FixedPointCausalParquetFrameBuilder(CausalParquetFrameBuilder):
             snapshot_index = index
             break
         if snapshot_index is None or snapshot_row is None:
-            raise RuntimeError("qualified pre-window BTCUSDT fixed-point bootstrap not found")
+            raise RuntimeError(f"qualified pre-window {self.symbol} fixed-point bootstrap not found")
 
         for path_index, path in enumerate(candidates[snapshot_index:], start=snapshot_index):
             offset = 0
@@ -578,7 +601,7 @@ class FixedPointCausalParquetFrameBuilder(CausalParquetFrameBuilder):
                         self._fixed_apply(side, price_ticks, quantity_steps)
         if self._fixed_book_bids and self._fixed_book_asks:
             return
-        raise RuntimeError("qualified pre-window BTCUSDT fixed-point bootstrap produced an empty book")
+        raise RuntimeError(f"qualified pre-window {self.symbol} fixed-point bootstrap produced an empty book")
 
     def _load_fixed_trades(self, max_files: int | None = None) -> None:
         for index, path in enumerate(self._paths("trades")):

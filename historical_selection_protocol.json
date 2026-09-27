@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "historical-selection-protocol-v1",
+  "allowedModes": {
+    "FIXED_UNIVERSE": {
+      "status": "SUPPORTED",
+      "requirements": ["freeze universe before evaluation outcomes", "record universe version, freeze timestamp, symbols, rationale"]
+    },
+    "POINT_IN_TIME": {
+      "status": "CONTRACT_SUPPORTED / DATA RECONSTRUCTION NOT IMPLEMENTED",
+      "requirements": ["selection timestamp <= evaluation start", "immutable historical snapshot id", "scanner inputs available at selection timestamp"]
+    }
+  },
+  "prohibited": ["FORWARD_SELECTED symbols used in retrospective IS", "selection based on later strategy outcomes", "silent alternate-window or BTC fallback"],
+  "btcVal02a": {
+    "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+    "datasetRevision": "v1",
+    "symbols": ["BTCUSDT"],
+    "selectionMode": "FIXED_UNIVERSE",
+    "historicalScannerClaim": false,
+    "note": "BTC is a frozen regression reference; current scanner selections are not retrospective evidence."
+  }
+}

@@ -1,0 +1,1 @@
+[{"delta":"17.771","frame_time_ms":1782267119999,"obi":"-0.6833560466907625762872548439","price":"62851.85","reason":"sell_absorption_hypothesis_with_counter_buying","run_id":"absorption-btcusdt-is-fae40ba4190bd13a","side":"LONG","signal_id":"absorption-btcusdt-is-fae40ba4190bd13a:signal:1","spread_ticks":"1","strategy_id":"orderflow.absorption.fade","volume":"34.099"}]

@@ -1,0 +1,173 @@
+{
+  "acquisition": {
+    "acquiredWindow": {
+      "end": "2026-07-02T23:59:59.999Z",
+      "start": "2026-06-23T00:00:00Z"
+    },
+    "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+    "datasetRevision": "v1",
+    "failures": 0,
+    "freezePath": "/opt/Axodus/Trading/.instructions/reports/historical_orderflow_dataset_freeze.json",
+    "freezeSha256": "3b4e0e6e62c1cc198d9e920fb9524b23b3732ca9d664247a60dcb50838643a59",
+    "instrumentSpec": {
+      "baseAsset": "BTC",
+      "contractSize": null,
+      "feeClassification": "CONSERVATIVE_ASSUMPTION",
+      "instrumentSpecHash": "b60f7444e9a25197cb16dfd6e53be726feb064d28d487fd7a8ffba3b880661e8",
+      "makerFee": "0.0002",
+      "marketType": "USD-M Futures",
+      "metadataHash": "e94672207d220535323d8408104331558ea0c8cb9b1d217414687b03a516ec6d",
+      "metadataSource": "Binance exchangeInfo (qualified 2026-06-23/2026-07-06)",
+      "metadataTimestamp": "2026-06-23T00:00:00Z",
+      "minNotional": null,
+      "minQuantity": "0.001",
+      "pricePrecision": 2,
+      "priceScale": 10,
+      "quantityPrecision": 3,
+      "quantityScale": 1000,
+      "quoteAsset": "USDT",
+      "settlementAsset": "USDT",
+      "stepSize": "0.001",
+      "symbol": "BTCUSDT",
+      "takerFee": "0.0005",
+      "tickSize": "0.10",
+      "venue": "Binance USD-M Futures"
+    },
+    "requestedWindow": {
+      "end": "2026-07-02T23:59:59.999Z",
+      "start": "2026-06-23T00:00:00Z"
+    },
+    "retries": 0,
+    "selection": {
+      "historicalSnapshotId": null,
+      "mode": "FIXED_UNIVERSE",
+      "selectedSymbols": [
+        "BTCUSDT"
+      ],
+      "selectionTimestamp": "2026-06-22T23:00:00Z"
+    },
+    "status": "PREEXISTING_DATASET_RESOLVED",
+    "symbol": "BTCUSDT"
+  },
+  "exchangeOrderMutations": 0,
+  "frames": {
+    "crossedBooks": 0,
+    "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+    "frameHash": "fae40ba4190bd13a9a0fb89c3b6f5a8d953de0c8a604ff3c7e5e174a3997ddbf",
+    "frames": 14400,
+    "framesPath": "/run/media/mzfshark/Storage/Axodus/Trading/market-data/tmp/aees-closure/full-1/frames.jsonl",
+    "framesSha256": "4260aa17d002e04f2ec2e4ef6b52f786345790ea46681e98763248756385a831",
+    "futureL2Violations": 0,
+    "futureTapeViolations": 0,
+    "statsPath": "/run/media/mzfshark/Storage/Axodus/Trading/market-data/tmp/aees-closure/full-1/stats.json",
+    "status": "FRAMES_BUILT",
+    "symbol": "BTCUSDT"
+  },
+  "mainnetMutations": 0,
+  "oosEventsConsumed": 0,
+  "preflight": {
+    "available": true,
+    "available_capacity_bytes": 842801045504,
+    "cryptohftdata_available": true,
+    "data_root": "/run/media/mzfshark/Storage/Axodus/Trading/market-data",
+    "pyarrow_available": true,
+    "runtime": "/run/media/mzfshark/Storage/Axodus/Trading/market-data/venv/bin/python",
+    "zstandard_available": true
+  },
+  "qualification": {
+    "causalCoveragePct": 100.0,
+    "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+    "datasetRevision": "v1",
+    "qualificationSource": "/opt/Axodus/Trading/.instructions/reports/historical_orderflow_dataset_freeze.json",
+    "replayAuthorized": true,
+    "status": "QUALIFIED",
+    "symbol": "BTCUSDT"
+  },
+  "realCapital": 0,
+  "replay": {
+    "aggregate": {
+      "artifact_hashes": {
+        "fills": "24f4da6318d2353d38431f8c4ae255c17498411525b4d0a13b430db93d4002e0",
+        "orders": "5650265bd7e9dd5d54a3b31bc68df74f1938a901a9d0e2bbd8bb06919a058868",
+        "signals": "4c7875e679299e24fdf968eac38a560b9a5b5a76aaa42d7c3d982075862f09cd",
+        "trades": "e12492b81ac687b308097d3fca2d939517c32a4a3ee0b703aa46aec3fc29a0b6"
+      },
+      "daily_net_pnl": {
+        "2026-06-23": "0",
+        "2026-06-24": "-3.0716333481580607665312285933190071834953843118316",
+        "2026-06-25": "0",
+        "2026-06-26": "0",
+        "2026-06-27": "0",
+        "2026-06-28": "0",
+        "2026-06-29": "0",
+        "2026-06-30": "0",
+        "2026-07-01": "0",
+        "2026-07-02": "0"
+      },
+      "entry_fees": "0.2000",
+      "exit_fees": "0.2000",
+      "expectancy": "-3.0716333481580607665312285933190071834953843118316",
+      "fees": "0.4000",
+      "flat": 0,
+      "funding": "0",
+      "gross_pnl": "-2.6716333481580607665312285933190071834953843118316",
+      "long_trades": 1,
+      "losses": 1,
+      "max_drawdown": "3.0716333481580607665312285933190071834953843118316",
+      "net_pnl": "-3.0716333481580607665312285933190071834953843118316",
+      "profit_factor": "0E+49",
+      "run_manifest_hash": "fb0458ff73c32730d94e07bc62a0d2272770ff323361081c9942e1098f55c101",
+      "short_trades": 0,
+      "slippage": "0",
+      "trade_count": 1,
+      "wins": 0
+    },
+    "artifactHashes": {
+      "fills": "24f4da6318d2353d38431f8c4ae255c17498411525b4d0a13b430db93d4002e0",
+      "manifest": "fb0458ff73c32730d94e07bc62a0d2272770ff323361081c9942e1098f55c101",
+      "orders": "5650265bd7e9dd5d54a3b31bc68df74f1938a901a9d0e2bbd8bb06919a058868",
+      "signals": "4c7875e679299e24fdf968eac38a560b9a5b5a76aaa42d7c3d982075862f09cd",
+      "trades": "e12492b81ac687b308097d3fca2d939517c32a4a3ee0b703aa46aec3fc29a0b6"
+    },
+    "artifactPaths": {
+      "fills": "/opt/Axodus/Trading/quants-lab/research_notebooks/orderflow_backtest/runs/canonical_historical_is_final/absorption/run-1/fill_ledger.json",
+      "manifest": "/opt/Axodus/Trading/quants-lab/research_notebooks/orderflow_backtest/runs/canonical_historical_is_final/absorption/run-1/run_manifest.json",
+      "orders": "/opt/Axodus/Trading/quants-lab/research_notebooks/orderflow_backtest/runs/canonical_historical_is_final/absorption/run-1/order_ledger.json",
+      "signals": "/opt/Axodus/Trading/quants-lab/research_notebooks/orderflow_backtest/runs/canonical_historical_is_final/absorption/run-1/signal_ledger.json",
+      "trades": "/opt/Axodus/Trading/quants-lab/research_notebooks/orderflow_backtest/runs/canonical_historical_is_final/absorption/run-1/trade_ledger.json"
+    },
+    "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+    "determinism": "PASS",
+    "frameHash": "fae40ba4190bd13a9a0fb89c3b6f5a8d953de0c8a604ff3c7e5e174a3997ddbf",
+    "oosEventsConsumed": 0,
+    "parametersChanged": false,
+    "runId": "absorption-btcusdt-is-fae40ba4190bd13a",
+    "status": "REPLAY_COMPLETE",
+    "strategyId": "orderflow.absorption.fade",
+    "symbol": "BTCUSDT"
+  },
+  "scan": {
+    "classification": "LIVE_SIGNAL_PATH_SMOKE_TEST",
+    "exchangeOrderMutations": 0,
+    "historicalSnapshotId": null,
+    "marketSnapshotTimestamp": "2026-06-22T23:00:00Z",
+    "selectedSymbols": [
+      "BTCUSDT"
+    ],
+    "selectionMode": "FIXED_UNIVERSE",
+    "selectionRuleVersion": "fixed-universe-pipeline-validation-v1",
+    "selectionTimestamp": "2026-06-22T23:00:00Z",
+    "universe": "BTCUSDT accepted regression universe"
+  },
+  "secretsExposed": false,
+  "status": "COMPLETE",
+  "testnetMutations": 0,
+  "workflow": [
+    "SCANNED",
+    "PREEXISTING_DATASET_RESOLVED",
+    "QUALIFIED",
+    "FRAMES_BUILT",
+    "REPLAY_COMPLETE",
+    "CANONICAL_EVIDENCE_PERSISTED"
+  ]
+}

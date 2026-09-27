@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "trinity-research-capabilities-v1",
+  "authority": "Axodus BoundedResearchExecutor",
+  "trinityRole": "typed research requestor only",
+  "arbitraryShell": false,
+  "credentialAccess": false,
+  "runtimeInstallation": false,
+  "exchangeMutation": false,
+  "capabilities": [
+    {"name": "scan_market", "runtime": "dedicated market-data venv", "sideEffects": ["persist timestamped scanner evidence"], "status": "bounded interface; live provider adapter not attached"},
+    {"name": "inspect_symbol", "runtime": "frozen InstrumentSpec registry", "sideEffects": [], "status": "implemented"},
+    {"name": "acquire_historical_dataset", "runtime": "dedicated market-data venv", "sideEffects": ["public market-data read", "raw partitions and manifest"], "status": "existing dataset resolution implemented; new bounded download adapter not attached"},
+    {"name": "qualify_historical_dataset", "runtime": "dedicated market-data venv", "sideEffects": ["persist qualification evidence"], "status": "frozen per-symbol qualification read implemented"},
+    {"name": "build_orderflow_frames", "runtime": "dedicated market-data venv", "sideEffects": ["persist frame identity"], "status": "canonical BTC artifact resolution; generic non-BTC build not yet wired"},
+    {"name": "run_frozen_orderflow_backtest", "runtime": "dedicated market-data venv", "sideEffects": ["canonical research evidence read"], "status": "accepted BTC canonical evidence resolution; no new strategy run"},
+    {"name": "get_run_status", "runtime": "bounded receipt store", "sideEffects": [], "status": "implemented"},
+    {"name": "read_canonical_results", "runtime": "canonical evidence store", "sideEffects": [], "status": "implemented"}
+  ],
+  "failureModes": ["UNKNOWN_ACTION", "UNSUPPORTED_ARGUMENTS", "PATH_OUTSIDE_APPROVED_DATA_ROOT", "RUNTIME_ENVIRONMENT_UNAVAILABLE", "SYMBOL_NOT_QUALIFIED", "TEMPORAL_SELECTION_LEAKAGE", "OOS_SEALED", "NO_SILENT_FALLBACK"]
+}
