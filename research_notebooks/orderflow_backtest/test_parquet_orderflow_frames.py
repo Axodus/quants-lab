@@ -119,3 +119,22 @@ def test_fixed_point_kernel_rejects_non_tick_aligned_non_btc_price(tmp_path):
     })
     with pytest.raises(ValueError, match="not aligned"):
         builder._kernel_rows(batch)
+
+
+def test_compiled_rows_exclude_events_after_authorized_end(tmp_path):
+    builder = FixedPointCausalParquetFrameBuilder(
+        tmp_path,
+        is_start_ms=0,
+        is_end_ms=100,
+        authorized_end_ms=100,
+    )
+    batch = pa.record_batch({
+        "event_time": [99, 101], "transaction_time": [99, 101],
+        "event_type": ["update", "update"],
+        "first_update_id": [10, 11], "final_update_id": [10, 11],
+        "prev_final_update_id": [9, 10], "last_update_id": [0, 0],
+        "side": ["bid", "ask"], "price": ["100.00", "100.10"],
+        "quantity": ["1.000", "1.000"],
+    })
+    rows = builder._kernel_rows(batch)
+    assert rows[:, 0].tolist() == [99]

@@ -1,0 +1,450 @@
+{
+  "ZECUSDT": {
+    "symbol": "ZECUSDT",
+    "startMs": 1782172800000,
+    "endMs": 1782431999999,
+    "expectedFrames": 4320,
+    "generatedFrames": 4320,
+    "frameHash": "410d77a3b141a7af0e8a71d720bf093154d93ab61ac13ed0d64edd96d8eb23bd",
+    "runtimeSeconds": 400.67988055801834,
+    "crossedBooks": 0,
+    "emptyBooks": 0,
+    "futureL2Violations": 0,
+    "futureTradeViolations": 0,
+    "strategies": {
+      "orderflow.momentum.aggression": {
+        "runId": "causal_72h_zecusdt_aggression",
+        "signals": 54,
+        "orders": 49,
+        "fills": 49,
+        "trades": 49,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 49,
+          "wins": 27,
+          "losses": 22,
+          "flat": 0,
+          "long_trades": 18,
+          "short_trades": 31,
+          "gross_pnl": "5.0093741913512675393472545675941170236193786334012",
+          "entry_fees": "2.45000",
+          "exit_fees": "2.45000",
+          "fees": "4.90000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "0.1093741913512675393472545675941170236193786334010",
+          "expectancy": "0.0022321263541075008030051952570227964003954823143061",
+          "profit_factor": "1.6774663141845070443423598497762802494135411469056",
+          "max_drawdown": "3.4085285361377321316682919443584927445748054846557",
+          "daily_net_pnl": {
+            "2026-06-23": "1.3557834296675436979811924904353976848257962475164",
+            "2026-06-24": "-0.16371981057275674120783784135041029744396953330452",
+            "2026-06-25": "-1.0826894277435194174261000814908703637624480808109"
+          },
+          "artifact_hashes": {
+            "signals": "a3fbb8b5712038c64a7b54984c485a54ff9c1381d5d4867827a1d0b3ca07e12b",
+            "orders": "be205a6fe3e8efe1784045036160c7b34d26bf62e14bfc23a9ccb0b4053dd37c",
+            "fills": "330906da4bfcbb5caf8f8ccb530e43c728f223d98b72ceec4542c7a3f84b0bab",
+            "trades": "3037f5d0109d2d98ab186c44674b7a0b040c3264799097ba7448e3e16ad29b49"
+          },
+          "run_manifest_hash": "dbf42c5fcd97fb25c8bf5379c3ce4e5f6775eef303a715282186b67308dbaeb7"
+        },
+        "artifactHashes": {
+          "signals": "a3fbb8b5712038c64a7b54984c485a54ff9c1381d5d4867827a1d0b3ca07e12b",
+          "orders": "be205a6fe3e8efe1784045036160c7b34d26bf62e14bfc23a9ccb0b4053dd37c",
+          "fills": "330906da4bfcbb5caf8f8ccb530e43c728f223d98b72ceec4542c7a3f84b0bab",
+          "trades": "3037f5d0109d2d98ab186c44674b7a0b040c3264799097ba7448e3e16ad29b49"
+        },
+        "manifestHash": "dbf42c5fcd97fb25c8bf5379c3ce4e5f6775eef303a715282186b67308dbaeb7"
+      },
+      "orderflow.absorption.fade": {
+        "runId": "causal_72h_zecusdt_fade",
+        "signals": 1,
+        "orders": 1,
+        "fills": 1,
+        "trades": 1,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 1,
+          "wins": 0,
+          "losses": 1,
+          "flat": 0,
+          "long_trades": 1,
+          "short_trades": 0,
+          "gross_pnl": "-0.21130734413081845577553397125739875856935323144157",
+          "entry_fees": "0.02000",
+          "exit_fees": "0.02000",
+          "fees": "0.04000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-0.25130734413081845577553397125739875856935323144157",
+          "expectancy": "-0.25130734413081845577553397125739875856935323144157",
+          "profit_factor": "0E+50",
+          "max_drawdown": "0.25130734413081845577553397125739875856935323144157",
+          "daily_net_pnl": {
+            "2026-06-25": "-0.25130734413081845577553397125739875856935323144157"
+          },
+          "artifact_hashes": {
+            "signals": "e0b694c1642a7557e4530a4e64b881c19a664464a0aeda8d98375e683d3bf0e6",
+            "orders": "7463bc58c5f18429f942b456a3c95edc39bec4bcba3a89640b27948f63a38c8e",
+            "fills": "a4d98777b3e8d1e6b794cfef3827ce98da05b4283bf8957ed44e20f301381027",
+            "trades": "c8af174eb0a425d20af91e4440fab9053e29e81df6ab38ce7944197a2514cd97"
+          },
+          "run_manifest_hash": "4b756d41796af32e8ae5df78028cf8c4cd822aee9884cd286b2c516c520bd3fa"
+        },
+        "artifactHashes": {
+          "signals": "e0b694c1642a7557e4530a4e64b881c19a664464a0aeda8d98375e683d3bf0e6",
+          "orders": "7463bc58c5f18429f942b456a3c95edc39bec4bcba3a89640b27948f63a38c8e",
+          "fills": "a4d98777b3e8d1e6b794cfef3827ce98da05b4283bf8957ed44e20f301381027",
+          "trades": "c8af174eb0a425d20af91e4440fab9053e29e81df6ab38ce7944197a2514cd97"
+        },
+        "manifestHash": "4b756d41796af32e8ae5df78028cf8c4cd822aee9884cd286b2c516c520bd3fa"
+      },
+      "orderflow.cvd.divergence.reversal": {
+        "runId": "causal_72h_zecusdt_reversal",
+        "signals": 166,
+        "orders": 95,
+        "fills": 95,
+        "trades": 95,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 95,
+          "wins": 32,
+          "losses": 63,
+          "flat": 0,
+          "long_trades": 53,
+          "short_trades": 42,
+          "gross_pnl": "-4.9232279935349578562205963738274661150360701029846",
+          "entry_fees": "4.75000",
+          "exit_fees": "4.75000",
+          "fees": "9.50000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-14.423227993534957856220596373827466115036070102985",
+          "expectancy": "-0.15182345256352587217074311972449964331616915897879",
+          "profit_factor": "0.79404965176132345513500367911201928118452765819331",
+          "max_drawdown": "15.849988952724038120263128036861947755781784234838",
+          "daily_net_pnl": {
+            "2026-06-23": "-4.5355849424122398359356412812337098409453583701627",
+            "2026-06-24": "-6.8761210972110003570726055860272758057564783948092",
+            "2026-06-25": "-3.0115219539117176632123495065664804683342333380128"
+          },
+          "artifact_hashes": {
+            "signals": "b5925703febefba430bb2ffb1eef0698ecc168c89fd70ef2861a667b55d90f6c",
+            "orders": "5c34b6dcd23ed7006aff1864ccb72d1c490ff3144d244d76e9e5711120f33d79",
+            "fills": "b45f3acfd4b0f909209603374c5aafc5d4b57656875ebd47a6217945d82166ab",
+            "trades": "21f88785c7361615a0d5a905d18d60882765a6cc38a2dc1886106781ad00f7cd"
+          },
+          "run_manifest_hash": "29adcbad24d1bde923054915ebd96b611067a0826d1f94ed02e9cabbb4cd8239"
+        },
+        "artifactHashes": {
+          "signals": "b5925703febefba430bb2ffb1eef0698ecc168c89fd70ef2861a667b55d90f6c",
+          "orders": "5c34b6dcd23ed7006aff1864ccb72d1c490ff3144d244d76e9e5711120f33d79",
+          "fills": "b45f3acfd4b0f909209603374c5aafc5d4b57656875ebd47a6217945d82166ab",
+          "trades": "21f88785c7361615a0d5a905d18d60882765a6cc38a2dc1886106781ad00f7cd"
+        },
+        "manifestHash": "29adcbad24d1bde923054915ebd96b611067a0826d1f94ed02e9cabbb4cd8239"
+      }
+    }
+  },
+  "SUIUSDT": {
+    "symbol": "SUIUSDT",
+    "startMs": 1782238800000,
+    "endMs": 1782497999999,
+    "expectedFrames": 4320,
+    "generatedFrames": 4320,
+    "frameHash": "17609c13bc032fc991a709d8e3a83d1ee797f0f3ffb100d1228ecbcbeda00bec",
+    "runtimeSeconds": 135.61188613300328,
+    "crossedBooks": 0,
+    "emptyBooks": 0,
+    "futureL2Violations": 0,
+    "futureTradeViolations": 0,
+    "strategies": {
+      "orderflow.momentum.aggression": {
+        "runId": "causal_72h_suiusdt_aggression",
+        "signals": 2,
+        "orders": 2,
+        "fills": 2,
+        "trades": 2,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 2,
+          "wins": 0,
+          "losses": 2,
+          "flat": 0,
+          "long_trades": 2,
+          "short_trades": 0,
+          "gross_pnl": "-0.47252924270738487682423402738744867532384928676071",
+          "entry_fees": "0.10000",
+          "exit_fees": "0.10000",
+          "fees": "0.20000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-0.67252924270738487682423402738744867532384928676071",
+          "expectancy": "-0.33626462135369243841211701369372433766192464338036",
+          "profit_factor": "0E+50",
+          "max_drawdown": "0.67252924270738487682423402738744867532384928676071",
+          "daily_net_pnl": {
+            "2026-06-23": "-0.31362956633198034607989745780816064943388164922026",
+            "2026-06-26": "-0.35889967637540453074433656957928802588996763754045"
+          },
+          "artifact_hashes": {
+            "signals": "e1cf96c5ac2e316e97ccd09e317b48d2d461105363f338c40137446c0979c536",
+            "orders": "e1527a4b6271c58146132d03e057986672a684c822e8470b89fd97da1bacf287",
+            "fills": "b919e3873e7555b2dc4b0314815c538a04e7220c103f29cf832801a308872caf",
+            "trades": "41851af6b63544a22e41d0047e9d02eadf0eb1e50e88649111b362d7ecf81d57"
+          },
+          "run_manifest_hash": "88a37ebb96bfe4793f7a644a81c7b83eb7a1e16c2ee67cbee155c4ebd952fabf"
+        },
+        "artifactHashes": {
+          "signals": "e1cf96c5ac2e316e97ccd09e317b48d2d461105363f338c40137446c0979c536",
+          "orders": "e1527a4b6271c58146132d03e057986672a684c822e8470b89fd97da1bacf287",
+          "fills": "b919e3873e7555b2dc4b0314815c538a04e7220c103f29cf832801a308872caf",
+          "trades": "41851af6b63544a22e41d0047e9d02eadf0eb1e50e88649111b362d7ecf81d57"
+        },
+        "manifestHash": "88a37ebb96bfe4793f7a644a81c7b83eb7a1e16c2ee67cbee155c4ebd952fabf"
+      },
+      "orderflow.absorption.fade": {
+        "runId": "causal_72h_suiusdt_fade",
+        "signals": 8,
+        "orders": 7,
+        "fills": 7,
+        "trades": 7,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 7,
+          "wins": 4,
+          "losses": 3,
+          "flat": 0,
+          "long_trades": 4,
+          "short_trades": 3,
+          "gross_pnl": "1.3470958993246518315018102981884385474815393938697",
+          "entry_fees": "0.14000",
+          "exit_fees": "0.14000",
+          "fees": "0.28000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "1.0670958993246518315018102981884385474815393938697",
+          "expectancy": "0.1524422713320931187859728997412055067830770562671",
+          "profit_factor": "3.6934283868646397972517159697209101293326942469719",
+          "max_drawdown": "0.35793595494715320999571746006606080518791138697460",
+          "daily_net_pnl": {
+            "2026-06-23": "0.37413780792574080685469475187433059621563727240271",
+            "2026-06-24": "-0.22940773657754789830261528374735921905733226487943",
+            "2026-06-25": "0.92236582797645892294973083006146717032323438634640"
+          },
+          "artifact_hashes": {
+            "signals": "92f1cdb4f6218a1bd3a664ca485de3622a38c13ebccb696e1eb965cf26a173f5",
+            "orders": "49faba01f570331e904dcc117ca6c0fede0f3dfe4fcf3b58680012d510ce69f7",
+            "fills": "054d25e7ee9980d403134fbbdacc946b7a143c38a5c4d3f0efcde5690be00c44",
+            "trades": "91dad8858c33b4d32bc0a4255bb1e4b46bcf29394cd076ec3289edf9ef85d0f2"
+          },
+          "run_manifest_hash": "b9fe43e96a48252833ee8fa4e0149653418d8abcc2af3b4940dbb0df9a0e4bb9"
+        },
+        "artifactHashes": {
+          "signals": "92f1cdb4f6218a1bd3a664ca485de3622a38c13ebccb696e1eb965cf26a173f5",
+          "orders": "49faba01f570331e904dcc117ca6c0fede0f3dfe4fcf3b58680012d510ce69f7",
+          "fills": "054d25e7ee9980d403134fbbdacc946b7a143c38a5c4d3f0efcde5690be00c44",
+          "trades": "91dad8858c33b4d32bc0a4255bb1e4b46bcf29394cd076ec3289edf9ef85d0f2"
+        },
+        "manifestHash": "b9fe43e96a48252833ee8fa4e0149653418d8abcc2af3b4940dbb0df9a0e4bb9"
+      },
+      "orderflow.cvd.divergence.reversal": {
+        "runId": "causal_72h_suiusdt_reversal",
+        "signals": 143,
+        "orders": 84,
+        "fills": 84,
+        "trades": 83,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 83,
+          "wins": 22,
+          "losses": 61,
+          "flat": 0,
+          "long_trades": 35,
+          "short_trades": 48,
+          "gross_pnl": "-9.4718848486471376673017031777037674109450230604838",
+          "entry_fees": "4.15000",
+          "exit_fees": "4.15000",
+          "fees": "8.30000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-17.771884848647137667301703177703767410945023060484",
+          "expectancy": "-0.21411909456201370683496027924944298085475931398173",
+          "profit_factor": "0.56662543908242596525540070741698390110963574030670",
+          "max_drawdown": "18.615239877969399602362704579039560396040613714128",
+          "daily_net_pnl": {
+            "2026-06-23": "-0.71761522953855715984299703872734302926009446695831",
+            "2026-06-24": "-5.8835293233854641070220895507266447233441254654067",
+            "2026-06-25": "-6.9402135737156042854194252249781239799036169088793",
+            "2026-06-26": "-4.2305267220075121150171913632716556784371862192400"
+          },
+          "artifact_hashes": {
+            "signals": "0e16195794c8f030a89ebea0d870abde50bf25e74fefab2f909a090cdbfa51b5",
+            "orders": "2a1a628d3a847684e5478d288dbce132bfa31433fbb8d017636a9d98981fd08a",
+            "fills": "ca512412c8e1a4e91bbc872605c822dec54a7f12173e508880809ba717787368",
+            "trades": "107ff68214cb4a1704d4945cd63ed21adf5cadf35b32f2ada63635e14893b9a3"
+          },
+          "run_manifest_hash": "d2bcc3e00ed03245bdfc9b03d9261b8086c5b0f0d981b779cc5278ab4198526a"
+        },
+        "artifactHashes": {
+          "signals": "0e16195794c8f030a89ebea0d870abde50bf25e74fefab2f909a090cdbfa51b5",
+          "orders": "2a1a628d3a847684e5478d288dbce132bfa31433fbb8d017636a9d98981fd08a",
+          "fills": "ca512412c8e1a4e91bbc872605c822dec54a7f12173e508880809ba717787368",
+          "trades": "107ff68214cb4a1704d4945cd63ed21adf5cadf35b32f2ada63635e14893b9a3"
+        },
+        "manifestHash": "d2bcc3e00ed03245bdfc9b03d9261b8086c5b0f0d981b779cc5278ab4198526a"
+      }
+    }
+  },
+  "WLDUSDT": {
+    "symbol": "WLDUSDT",
+    "startMs": 1782238800000,
+    "endMs": 1782497999999,
+    "expectedFrames": 4320,
+    "generatedFrames": 4320,
+    "frameHash": "63bcd266b0a1894576ea1a1ef03468bfca0c6b57b49524cbff3720c2d0b904e2",
+    "runtimeSeconds": 155.25332604697905,
+    "crossedBooks": 0,
+    "emptyBooks": 0,
+    "futureL2Violations": 0,
+    "futureTradeViolations": 0,
+    "strategies": {
+      "orderflow.momentum.aggression": {
+        "runId": "causal_72h_wldusdt_aggression",
+        "signals": 4,
+        "orders": 4,
+        "fills": 4,
+        "trades": 4,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 4,
+          "wins": 1,
+          "losses": 3,
+          "flat": 0,
+          "long_trades": 3,
+          "short_trades": 1,
+          "gross_pnl": "-0.54646890866122985308036636700063067911956605221512",
+          "entry_fees": "0.20000",
+          "exit_fees": "0.20000",
+          "fees": "0.40000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-0.94646890866122985308036636700063067911956605221512",
+          "expectancy": "-0.23661722716530746327009159175015766977989151305378",
+          "profit_factor": "0.45330816294578583631762287387413838135916789361702",
+          "max_drawdown": "1.2995922229346142526919749547663011937381872627017",
+          "daily_net_pnl": {
+            "2026-06-25": "-0.40543094397251121504247399064617734084184403932424",
+            "2026-06-26": "-0.54103796468871863803789237635445333827772201289088"
+          },
+          "artifact_hashes": {
+            "signals": "abbe617f4908cd50b2ac0164e7e2a88cffd2d186e940a459ef850015df0975ce",
+            "orders": "b7fd6e2d99fa7fe6fe6bad1c7126195554cff65a7be379c8aaf97de62362f419",
+            "fills": "1e6a7c8dd994a5ed463a3f8f1b2b7bba660759239696caa8f13d79f1538add75",
+            "trades": "75b42fb06d85afcd88fa579662a7f74c2c7d1e93bc244e37dea7953bb2a3a55c"
+          },
+          "run_manifest_hash": "d1e52e25f78920030b8e35cf905888da85a3a864e8d8bd5497dffe283d9dedd2"
+        },
+        "artifactHashes": {
+          "signals": "abbe617f4908cd50b2ac0164e7e2a88cffd2d186e940a459ef850015df0975ce",
+          "orders": "b7fd6e2d99fa7fe6fe6bad1c7126195554cff65a7be379c8aaf97de62362f419",
+          "fills": "1e6a7c8dd994a5ed463a3f8f1b2b7bba660759239696caa8f13d79f1538add75",
+          "trades": "75b42fb06d85afcd88fa579662a7f74c2c7d1e93bc244e37dea7953bb2a3a55c"
+        },
+        "manifestHash": "d1e52e25f78920030b8e35cf905888da85a3a864e8d8bd5497dffe283d9dedd2"
+      },
+      "orderflow.absorption.fade": {
+        "runId": "causal_72h_wldusdt_fade",
+        "signals": 9,
+        "orders": 9,
+        "fills": 9,
+        "trades": 9,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 9,
+          "wins": 1,
+          "losses": 8,
+          "flat": 0,
+          "long_trades": 3,
+          "short_trades": 6,
+          "gross_pnl": "-1.8738965806893444370247386485477722375668624691001",
+          "entry_fees": "0.18000",
+          "exit_fees": "0.18000",
+          "fees": "0.36000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-2.2338965806893444370247386485477722375668624691001",
+          "expectancy": "-0.2482107311877049374471931831719746930629847187889",
+          "profit_factor": "0.23282072820935853581859153691224820434917062384603",
+          "max_drawdown": "2.2338965806893444370247386485477722375668624691001",
+          "daily_net_pnl": {
+            "2026-06-24": "-1.0718376639912726891751098720737209943807121522217",
+            "2026-06-25": "-0.64988831153810834670094890945469894933176418930765",
+            "2026-06-26": "-0.51217060515996340114867986701935229385438612757072"
+          },
+          "artifact_hashes": {
+            "signals": "2eacdb9f2eb307d0e550143eacd74193ebd27fee998b30d8b62c2a7d025c3356",
+            "orders": "c7c411b3ddbdf14ffb9b820d01096547c814f824acc14819c09a8113cda26b88",
+            "fills": "0629160324ee6c97fefad7c5847a7041ef5440f95db5dc424f3e1dff9012cc80",
+            "trades": "ca392a4fe4ebe6b1ae9e72bc2dbff7be0f54cb3704b063316c0a6f29b4c592cb"
+          },
+          "run_manifest_hash": "507f3ac1575767fb44bdbc664ab7383006a04a842edb532ae587b1518f3818ff"
+        },
+        "artifactHashes": {
+          "signals": "2eacdb9f2eb307d0e550143eacd74193ebd27fee998b30d8b62c2a7d025c3356",
+          "orders": "c7c411b3ddbdf14ffb9b820d01096547c814f824acc14819c09a8113cda26b88",
+          "fills": "0629160324ee6c97fefad7c5847a7041ef5440f95db5dc424f3e1dff9012cc80",
+          "trades": "ca392a4fe4ebe6b1ae9e72bc2dbff7be0f54cb3704b063316c0a6f29b4c592cb"
+        },
+        "manifestHash": "507f3ac1575767fb44bdbc664ab7383006a04a842edb532ae587b1518f3818ff"
+      },
+      "orderflow.cvd.divergence.reversal": {
+        "runId": "causal_72h_wldusdt_reversal",
+        "signals": 126,
+        "orders": 94,
+        "fills": 94,
+        "trades": 94,
+        "triggerGate": "IS_PASS",
+        "aggregate": {
+          "trade_count": 94,
+          "wins": 35,
+          "losses": 59,
+          "flat": 0,
+          "long_trades": 51,
+          "short_trades": 43,
+          "gross_pnl": "-4.7851942959254798861399259892303078109453413000811",
+          "entry_fees": "4.70000",
+          "exit_fees": "4.70000",
+          "fees": "9.40000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-14.185194295925479886139925989230307810945341300081",
+          "expectancy": "-0.15090632229707957325680772328968412564835469468171",
+          "profit_factor": "0.81586890644050078908516575124672762035549674412897",
+          "max_drawdown": "14.948002883781626565546657723531921603789105288040",
+          "daily_net_pnl": {
+            "2026-06-23": "-0.16082314943775309364404600676570969732757391552440",
+            "2026-06-24": "-4.7630588358804281114947584542381835387847777961633",
+            "2026-06-25": "-4.7678669689819572319602257127351429563718470703916",
+            "2026-06-26": "-4.4934453416253414490408958154912716184611425180021"
+          },
+          "artifact_hashes": {
+            "signals": "1c4bc667ca7ed7b70e7c676f66198ac864354871cd12b9429ee8b1aeeb5d6e1b",
+            "orders": "a693938c5468f9b3175f8362b17772931b4e5e1d98d6196bbfd62e4b06f77d72",
+            "fills": "0d96449ca46b6b4d19e3e8b39f89d22f603aa8cd4d2ff229b7f97c996dab5ef6",
+            "trades": "bf6817f6485fe3843006ae4d2012f8006d4d84bcd95e932222f3069a8a092b60"
+          },
+          "run_manifest_hash": "8a144da9699d2f95ed031746bee6b8300ecca43f1cda09ce1e2f7a8dc62a6e9b"
+        },
+        "artifactHashes": {
+          "signals": "1c4bc667ca7ed7b70e7c676f66198ac864354871cd12b9429ee8b1aeeb5d6e1b",
+          "orders": "a693938c5468f9b3175f8362b17772931b4e5e1d98d6196bbfd62e4b06f77d72",
+          "fills": "0d96449ca46b6b4d19e3e8b39f89d22f603aa8cd4d2ff229b7f97c996dab5ef6",
+          "trades": "bf6817f6485fe3843006ae4d2012f8006d4d84bcd95e932222f3069a8a092b60"
+        },
+        "manifestHash": "8a144da9699d2f95ed031746bee6b8300ecca43f1cda09ce1e2f7a8dc62a6e9b"
+      }
+    }
+  }
+}

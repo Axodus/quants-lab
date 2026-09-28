@@ -1,0 +1,1 @@
+[{"delta":"297701","frame_time_ms":1782641579999,"obi":"0.65031230485254606686122250359450409628721845348788","price":"0.45505","reason":"positive_aggression_breakout","run_id":"canonical_oos_wldusdt_aggression","side":"LONG","signal_id":"canonical_oos_wldusdt_aggression:signal:1","spread_ticks":"1","strategy_id":"orderflow.momentum.aggression","volume":"436273"}]

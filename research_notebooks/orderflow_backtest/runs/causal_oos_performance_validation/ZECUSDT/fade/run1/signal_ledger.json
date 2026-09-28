@@ -1,0 +1,1 @@
+[{"delta":"-24.408","frame_time_ms":1782785519999,"obi":"-0.19020784655090789694720605977306394221224477329302","price":"397.015","reason":"buy_absorption_hypothesis_with_counter_selling","run_id":"canonical_oos_zecusdt_fade","side":"SHORT","signal_id":"canonical_oos_zecusdt_fade:signal:1","spread_ticks":"1","strategy_id":"orderflow.absorption.fade","volume":"643.790"}]

@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "deployment-routing-summary-v1",
+  "routes": {
+    "ZECUSDT::orderflow.momentum.aggression": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "ZECUSDT::orderflow.absorption.fade": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "ZECUSDT::orderflow.cvd.divergence.reversal": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "SUIUSDT::orderflow.momentum.aggression": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "SUIUSDT::orderflow.absorption.fade": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "SUIUSDT::orderflow.cvd.divergence.reversal": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "WLDUSDT::orderflow.momentum.aggression": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "WLDUSDT::orderflow.absorption.fade": {
+      "historicalValidationStatus": "OOS_EVIDENCE_POSITIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    },
+    "WLDUSDT::orderflow.cvd.divergence.reversal": {
+      "historicalValidationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "currentCompatibility": "COMPATIBLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED"
+    }
+  }
+}

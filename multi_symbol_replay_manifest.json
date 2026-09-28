@@ -1,0 +1,254 @@
+{
+  "schemaVersion": "multi-symbol-replay-manifest-v1",
+  "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+  "datasetRevision": "v1",
+  "venue": "Binance USD-M Futures",
+  "cohortClassification": "CROSS_SYMBOL_RESEARCH / FORWARD_SELECTED_CANDIDATES",
+  "temporalCausalityNote": "Cohort was identified via 2026-09-27 prospective scanner. Historical replay is for cross-symbol microstructure and adapter verification, not a historical scanner performance claim.",
+  "inSampleWindow": {
+    "requestedStart": "2026-06-23T00:00:00Z",
+    "requestedEnd": "2026-07-02T23:59:59.999Z",
+    "requestedDays": 10,
+    "oosSealed": true,
+    "oosRange": "2026-07-03T00:00:00Z to 2026-07-06T23:59:59.999Z (0 events consumed)"
+  },
+  "symbols": {
+    "ZECUSDT": {
+      "symbol": "ZECUSDT",
+      "bootstrapStatus": "BOOTSTRAP_QUALIFIED",
+      "causalCoveragePct": 100.0,
+      "framesCount": 14400,
+      "frameStreamHash": "1dde0c1ca03efa8e78df800b3fa453ce0e93ff16f4e4f49face963d2a3b2f777",
+      "deterministicReplay": "PASS",
+      "strategies": {
+        "orderflow.momentum.aggression": {
+          "runId": "canonical_is_zecusdt_aggression",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "bd8c335713180d20e910fb69d3ee680ec8786a97d8092861f1bfb356d1f7abde",
+          "tradeCount": 142,
+          "wins": 60,
+          "losses": 82,
+          "winRatePct": 42.25,
+          "grossPnl": "4.9058854021825019219679145653028253591193892951926",
+          "fees": "14.20000",
+          "netPnl": "-9.2941145978174980780320854346971746408806107048080",
+          "expectancy": "-0.065451511252235901957972432638712497470990216231042",
+          "profitFactor": "1.2087875339739856146671695674932400188436523621118",
+          "maxDrawdown": "11.902011166415304267932312793260109952164167611821",
+          "limitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "bdd4401bdaf608e773c6997a819bb41c12de5e66d5cec28dc3ff5ff919c3e6d4",
+            "orders": "b832c355f7b2e4da903632404b93052a9250d31cc05985e03e3deb4c696699d3",
+            "fills": "cea0da4d412624ce973cd6711907b038aec791d48a67f43e4d0c06dbf716efe7",
+            "trades": "b4812063cbff57efc4befcb7746b0d1ab2b52318a5352edbbda04d9dc67e4b10"
+          },
+          "manifestHash": "ab2aebfdd7bd11cd9b444f4bb716cefb2b6c488a8d6a6f164563e1fd92c40975"
+        },
+        "orderflow.absorption.fade": {
+          "runId": "canonical_is_zecusdt_fade",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "bd8c335713180d20e910fb69d3ee680ec8786a97d8092861f1bfb356d1f7abde",
+          "tradeCount": 2,
+          "wins": 0,
+          "losses": 2,
+          "winRatePct": 0.0,
+          "grossPnl": "-0.44575029004508292254387661088329840186315057694241",
+          "fees": "0.08000",
+          "netPnl": "-0.52575029004508292254387661088329840186315057694241",
+          "expectancy": "-0.26287514502254146127193830544164920093157528847120",
+          "profitFactor": "0E+50",
+          "maxDrawdown": "0.52575029004508292254387661088329840186315057694241",
+          "limitation": "MAKER_QUEUE_NOT_HISTORICALLY_PROVEN",
+          "artifactHashes": {
+            "signals": "989deb2a3609e09a51236feb473eedda8cc1aad8ed2e0af5a5163a734a82ca93",
+            "orders": "570bba93c162144d1f3c728d1ff6d5f9e43c477fe2440c506bbc5f4bcab0e617",
+            "fills": "7df13e7f3685456f2a580a1abad5aed1c21ca510faeeac23e89dfb9d3fb9338a",
+            "trades": "82e34980a74ac187c4bfe0e3d690636532b7c9e23bce558a76685ca1bf9eadff"
+          },
+          "manifestHash": "6f961e504092505b48eb72a0cc4f5ddb60e44bf580b86cb8999c16c3bcbcb5da"
+        },
+        "orderflow.cvd.divergence.reversal": {
+          "runId": "canonical_is_zecusdt_reversal",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "bd8c335713180d20e910fb69d3ee680ec8786a97d8092861f1bfb356d1f7abde",
+          "tradeCount": 332,
+          "wins": 123,
+          "losses": 209,
+          "winRatePct": 37.05,
+          "grossPnl": "0.02353117196901709130306634566004414591475758303994",
+          "fees": "33.20000",
+          "netPnl": "-33.176468828030982908696933654339955854085242416960",
+          "expectancy": "-0.099929122975996936471978715826325168235196513304096",
+          "profitFactor": "1.0003089403498229324713174346043806674649279712341",
+          "maxDrawdown": "35.688748391654285938631200426782149244856364199225",
+          "limitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "08691d72191ce9097d21dde836bc37207c53ebb1ffa16ef87045803e769c3aa6",
+            "orders": "a3a48e045886b1ee27cc558cb6517da253262667ed861f986b636c4865b9a7fa",
+            "fills": "2b6c79090bedfc9202fc54788148e33afe19e0d0d98660718f4dd9983fa4d5de",
+            "trades": "2bc8213eb04ee4acf0636f59af9ee22c308779f28e9905acc6396a4421273471"
+          },
+          "manifestHash": "3a841034d22e09c95d6f60f94d22ee70fd328e85eacf6dde98f4cc51194d73cf"
+        }
+      }
+    },
+    "SUIUSDT": {
+      "symbol": "SUIUSDT",
+      "bootstrapStatus": "BOOTSTRAP_PARTIAL",
+      "causalCoveragePct": 92.3641,
+      "framesCount": 13300,
+      "frameStreamHash": "1197a6e4fc5c72414b5dd15a6e67f5345c83c5215c028e20ad399caf16dd1ccd",
+      "deterministicReplay": "PASS",
+      "strategies": {
+        "orderflow.momentum.aggression": {
+          "runId": "canonical_is_suiusdt_aggression",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "c35fc8255e118e1d92f5b80e8e2f868fd68f48f5041b6d263d03537d8956ed3a",
+          "tradeCount": 5,
+          "wins": 1,
+          "losses": 4,
+          "winRatePct": 20.0,
+          "grossPnl": "-0.65008389949833490748742170800718472224666091547386",
+          "fees": "0.50000",
+          "netPnl": "-1.1500838994983349074874217080071847222466609154738",
+          "expectancy": "-0.23001677989966698149748434160143694444933218309476",
+          "profitFactor": "0.36445140149263781278072546161959597884282346443724",
+          "maxDrawdown": "1.1500838994983349074874217080071847222466609154738",
+          "limitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "be675ca900f930505570fba15d7aa254957bd0eb7fd003bfc044ec164363cce9",
+            "orders": "51a9436915abf3453cc97918785b8d8222178171d6cc819ab6b32186faf782bd",
+            "fills": "40d098c6679f0b4dcb36318909661edc6e99bed7afbf58727d4ca16b6841905d",
+            "trades": "c9bcb93008f830d9942eb24fc710bb2ff6deb2abd2537eb275be5c575ada5903"
+          },
+          "manifestHash": "dd2548e17148cadaa397735b14e893ce6af0ee62e68a2d9beb0d84ca310927b5"
+        },
+        "orderflow.absorption.fade": {
+          "runId": "canonical_is_suiusdt_fade",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "c35fc8255e118e1d92f5b80e8e2f868fd68f48f5041b6d263d03537d8956ed3a",
+          "tradeCount": 20,
+          "wins": 7,
+          "losses": 13,
+          "winRatePct": 35.0,
+          "grossPnl": "0.46703745026939249569594365341766496941055555960511",
+          "fees": "0.80000",
+          "netPnl": "-0.33296254973060750430405634658233503058944444039495",
+          "expectancy": "-0.016648127486530375215202817329116751529472222019748",
+          "profitFactor": "1.1722651018148205489416804264193891917829458993060",
+          "maxDrawdown": "1.4000584490552593358058666447707735780709838342646",
+          "limitation": "MAKER_QUEUE_NOT_HISTORICALLY_PROVEN",
+          "artifactHashes": {
+            "signals": "0355f8e6801c27cb699e17977c665e1d3c9ee7540f1ad06b0e36864b0ae29308",
+            "orders": "a4f52587f659cc70cf9c6eb021fb9c806b4e9cd1b4eb0ec2e659fa9eb0c790de",
+            "fills": "9dd55c016ff2b5de66ac17a48b117e106a458a2cbdcf65246c23fe12d4c13289",
+            "trades": "a9c5310147e5cd44941050a01d0279ac9fa8d9e0b6d22d4b3b170577a9be76a3"
+          },
+          "manifestHash": "9798dad8e369754354cf8ce7ddaa73178e774a30823379a4857d718d7f608e18"
+        },
+        "orderflow.cvd.divergence.reversal": {
+          "runId": "canonical_is_suiusdt_reversal",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "c35fc8255e118e1d92f5b80e8e2f868fd68f48f5041b6d263d03537d8956ed3a",
+          "tradeCount": 242,
+          "wins": 85,
+          "losses": 157,
+          "winRatePct": 35.12,
+          "grossPnl": "-4.5593712379963410286473340349259249940245881892515",
+          "fees": "24.20000",
+          "netPnl": "-28.759371237996341028647334034925924994024588189253",
+          "expectancy": "-0.11884037701651380590350138030961126030588672805476",
+          "profitFactor": "0.90837335731904271047816251692478461156576624829736",
+          "maxDrawdown": "29.671216136830127045574220214438142874435042223059",
+          "limitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "4f315bc14574ecda98cc617d55d8466b0ae292d73538d706f64e9e970b7d5de4",
+            "orders": "fd061ef55211eb0296042fe1920b42adda10d264e15df7dd9721bc364a49159f",
+            "fills": "cec0f16ccc3afbd56025155dde9474357b942253dc3042d1fc60ec9d5e8e202e",
+            "trades": "fc67ec1a1d143ebf7374d8f7e444e50e769dc40b32448f81524b13e2d49adf3b"
+          },
+          "manifestHash": "c4e5d950a5625ca8ba8f922757c9f8394926127f7489da27f9dcd8d56540971c"
+        }
+      }
+    },
+    "WLDUSDT": {
+      "symbol": "WLDUSDT",
+      "bootstrapStatus": "BOOTSTRAP_PARTIAL",
+      "causalCoveragePct": 92.3641,
+      "framesCount": 13300,
+      "frameStreamHash": "b9a78009184f929e598f8b1e5f689db2c23cef204dfc5bd0209f905b8fa03386",
+      "deterministicReplay": "PASS",
+      "strategies": {
+        "orderflow.momentum.aggression": {
+          "runId": "canonical_is_wldusdt_aggression",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "097d8637fb15b60525222bd8d7f76276fde0a29474bb7ebf558dd443caa197cb",
+          "tradeCount": 5,
+          "wins": 1,
+          "losses": 4,
+          "winRatePct": 20.0,
+          "grossPnl": "-0.76627328276827458327049715060322437073402918003136",
+          "fees": "0.50000",
+          "netPnl": "-1.2662732827682745832704971506032243707340291800314",
+          "expectancy": "-0.25325465655365491665409943012064487414680583600628",
+          "profitFactor": "0.37159634147962451135400027010601149020582312098522",
+          "maxDrawdown": "1.2995922229346142526919749547663011937381872627017",
+          "limitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "386f57528a7210f7c117c2f8f305efe13ab584f138bf222a9cbcb7ac40dc8130",
+            "orders": "e0f93efe9ffdd92477726807097f1bdef3bbd95375fedb19339137e426893596",
+            "fills": "9889e726a9167978030eccd04d29e85afb6406d139ef8f080d68074bdd95cd42",
+            "trades": "0eb72518f158dd921e3b24d44d42a1ac1591a5ac44381e0b5102f8403de92ac1"
+          },
+          "manifestHash": "82c257c8b3b251361cacf3466847c6fa5058636f1d31996715a364b578d72737"
+        },
+        "orderflow.absorption.fade": {
+          "runId": "canonical_is_wldusdt_fade",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "097d8637fb15b60525222bd8d7f76276fde0a29474bb7ebf558dd443caa197cb",
+          "tradeCount": 19,
+          "wins": 6,
+          "losses": 13,
+          "winRatePct": 31.58,
+          "grossPnl": "-0.54129646923601194918625359131969436724127986566950",
+          "fees": "0.76000",
+          "netPnl": "-1.3012964692360119491862535913196943672412798656695",
+          "expectancy": "-0.068489287854526944694013346911562861433751571877342",
+          "profitFactor": "0.85370235830033090964706270341227897815659917302126",
+          "maxDrawdown": "2.7870618982707664695323957538623052200050946370076",
+          "limitation": "MAKER_QUEUE_NOT_HISTORICALLY_PROVEN",
+          "artifactHashes": {
+            "signals": "60fbe2c66274fc8ae55221220b6d04dd3da899fcf99dc4a075d2517eb73634f5",
+            "orders": "ec81c591e45f71f3beb5a567c9b1b89d9200b0b2bcd5c9dede508dc4627cc569",
+            "fills": "753e7a5e27a76c9167717d694e111d17bb5b6909af26fdaf86a2bf225c3904ee",
+            "trades": "f9914514a462b8a6c563a41e8435b8e20dc493199462e57a7b936e881a3eed25"
+          },
+          "manifestHash": "a5243a443524bed23f7a6d19df058d7a179e29327c525144c52e8e189f05aeeb"
+        },
+        "orderflow.cvd.divergence.reversal": {
+          "runId": "canonical_is_wldusdt_reversal",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "parameterFingerprint": "097d8637fb15b60525222bd8d7f76276fde0a29474bb7ebf558dd443caa197cb",
+          "tradeCount": 310,
+          "wins": 109,
+          "losses": 201,
+          "winRatePct": 35.16,
+          "grossPnl": "-14.334189700240053271660831016705808021938066630723",
+          "fees": "31.00000",
+          "netPnl": "-45.334189700240053271660831016705808021938066630725",
+          "expectancy": "-0.14623932161367759119890590650550260652238086009911",
+          "profitFactor": "0.82401324941539307836591841814373871718591200117394",
+          "maxDrawdown": "47.193266166816055316901513358085768348575326878132",
+          "limitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "3398a0250914edfd5df4d5bc828d3ba49422a866715c663bda87d1fdb65e2c9c",
+            "orders": "b4387d6ed1cf3938f0af1584b65511421c570c73beee109631f1f37c0f23a97b",
+            "fills": "529d4a845853669e46a43ba95b02ca472087a81ca6b833f3422bb16eb221fccd",
+            "trades": "6c068d30402c69ff20c2546181c7c91c00fb76cf21402f06f5cfc19009f478fe"
+          },
+          "manifestHash": "9de51bca351cae923386dc7d6ba2948ce0ce47e53f627f229603068929e041b6"
+        }
+      }
+    }
+  }
+}

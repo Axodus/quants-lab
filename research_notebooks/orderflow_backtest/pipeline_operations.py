@@ -18,6 +18,11 @@ from .multi_symbol_pipeline import (
     BTC_CANONICAL_FRAME_HASH,
     DatasetQualificationRegistry,
 )
+from .evidence_reuse import (
+    CurrentMarketInfo,
+    EvidenceReuseRegistry,
+    OperationalDeploymentContext,
+)
 from .research_capabilities import ResearchActionKind
 
 
@@ -51,12 +56,14 @@ class AxodusResearchOperations:
         dataset_freeze: Path,
         canonical_frame_dir: Path,
         canonical_run_root: Path,
+        evidence_registry: EvidenceReuseRegistry | None = None,
     ) -> None:
         self.data_root = Path(data_root).resolve()
         self.qualification_registry = qualification_registry
         self.dataset_freeze = Path(dataset_freeze).resolve()
         self.canonical_frame_dir = Path(canonical_frame_dir).resolve()
         self.canonical_run_root = Path(canonical_run_root).resolve()
+        self.evidence_registry = evidence_registry or EvidenceReuseRegistry.create_default_registry(self.canonical_run_root)
 
     def handlers(self) -> dict[ResearchActionKind, Any]:
         return {
@@ -68,6 +75,8 @@ class AxodusResearchOperations:
             ResearchActionKind.RUN_FROZEN_BACKTEST: self.run_frozen_orderflow_backtest,
             ResearchActionKind.GET_RUN_STATUS: self.get_run_status,
             ResearchActionKind.READ_CANONICAL_RESULTS: self.read_canonical_results,
+            ResearchActionKind.CHECK_EVIDENCE_REUSE: self.check_evidence_reuse,
+            ResearchActionKind.EVALUATE_DEPLOYMENT_ROUTING: self.evaluate_deployment_routing,
         }
 
     def scan_market(self, arguments: dict[str, Any]) -> dict[str, Any]:
@@ -275,3 +284,103 @@ class AxodusResearchOperations:
             "sourceSha256": _sha256(summary_path),
             "results": summary,
         }
+
+    def check_evidence_reuse(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        symbol = arguments["symbol"]
+        strategy_id = arguments["strategy_id"]
+        strategy_revision = arguments["strategy_revision"]
+        venue = arguments.get("venue", "Binance USD-M Futures")
+        market_type = arguments.get("market_type", "USD-M Futures")
+        is_stale = bool(arguments.get("is_stale", False))
+        is_redesigned = bool(arguments.get("is_redesigned", False))
+
+        current_spec = (
+            InstrumentSpec.from_registry(symbol)
+            if InstrumentSpec.is_registered(symbol)
+            else None
+        )
+
+        classification, reason, blockers = self.evidence_registry.classify(
+            symbol=symbol,
+            strategy_id=strategy_id,
+            strategy_revision=strategy_revision,
+            current_spec=current_spec,
+            current_fee_model=arguments.get("current_fee_model"),
+            current_execution_model=arguments.get("current_execution_model"),
+            current_parameter_fingerprint=arguments.get("current_parameter_fingerprint"),
+            current_frame_builder_revision=arguments.get("current_frame_builder_revision"),
+            venue=venue,
+            market_type=market_type,
+            is_stale=is_stale,
+            is_redesigned=is_redesigned,
+        )
+
+        record = self.evidence_registry.lookup(symbol, strategy_id, strategy_revision, venue, market_type)
+        return {
+            "symbol": symbol,
+            "strategyId": strategy_id,
+            "strategyRevision": strategy_revision,
+            "venue": venue,
+            "marketType": market_type,
+            "reuseClassification": classification.value,
+            "classificationReason": reason,
+            "reusable": classification.value == "VALIDATED_REUSABLE",
+            "blockers": blockers,
+            "hasRecord": record is not None,
+            "validationRecord": record.to_dict() if record is not None else None,
+        }
+
+    def evaluate_deployment_routing(self, arguments: dict[str, Any]) -> dict[str, Any]:
+        symbol = arguments["symbol"]
+        strategy_id = arguments["strategy_id"]
+        strategy_revision = arguments["strategy_revision"]
+        venue = arguments.get("venue", "Binance USD-M Futures")
+        market_type = arguments.get("market_type", "USD-M Futures")
+        scanner_status = arguments.get("scanner_status", "HOT")
+
+        market_info_dict = arguments.get("market_info") or {}
+        market_info = CurrentMarketInfo(
+            symbol=symbol,
+            venue=venue,
+            market_type=market_type,
+            is_listed=market_info_dict.get("is_listed", True),
+            tick_size=market_info_dict.get("tick_size"),
+            step_size=market_info_dict.get("step_size"),
+            instrument_spec_hash=market_info_dict.get("instrument_spec_hash"),
+            fee_schedule=market_info_dict.get("fee_schedule"),
+            max_leverage=market_info_dict.get("max_leverage"),
+            bid_ask_spread_ticks=market_info_dict.get("bid_ask_spread_ticks"),
+            depth_top_levels=market_info_dict.get("depth_top_levels"),
+            liquidity_24h_usd=market_info_dict.get("liquidity_24h_usd"),
+            strategy_revision=market_info_dict.get("strategy_revision"),
+        )
+
+        op_ctx_dict = arguments.get("operational_context") or {}
+        operational_context = OperationalDeploymentContext(
+            testnet_credentials_available=op_ctx_dict.get("testnet_credentials_available", False),
+            mainnet_credentials_available=op_ctx_dict.get("mainnet_credentials_available", False),
+            safety_supervisor_active=op_ctx_dict.get("safety_supervisor_active", False),
+            risk_authority_approved=op_ctx_dict.get("risk_authority_approved", False),
+            capital_authority_approved=op_ctx_dict.get("capital_authority_approved", False),
+            real_capital_authorized=op_ctx_dict.get("real_capital_authorized", False),
+            execution_readiness_passed=op_ctx_dict.get("execution_readiness_passed", False),
+            protection_readiness_passed=op_ctx_dict.get("protection_readiness_passed", False),
+            active_governance_blockers=op_ctx_dict.get("active_governance_blockers", ["DEBT-AUD-A-03"]),
+            active_operational_blockers=op_ctx_dict.get("active_operational_blockers", []),
+        )
+
+        recommendation = self.evidence_registry.evaluate_deployment_readiness(
+            symbol=symbol,
+            strategy_id=strategy_id,
+            strategy_revision=strategy_revision,
+            scanner_status=scanner_status,
+            market_info=market_info,
+            operational_context=operational_context,
+            current_fee_model=arguments.get("current_fee_model"),
+            current_execution_model=arguments.get("current_execution_model"),
+            current_parameter_fingerprint=arguments.get("current_parameter_fingerprint"),
+            current_frame_builder_revision=arguments.get("current_frame_builder_revision"),
+            venue=venue,
+            market_type=market_type,
+        )
+        return recommendation.to_dict()

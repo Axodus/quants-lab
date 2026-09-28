@@ -1,0 +1,670 @@
+{
+  "ZECUSDT": {
+    "symbol": "ZECUSDT",
+    "bootstrap_status": "BOOTSTRAP_QUALIFIED",
+    "causal_coverage_pct": 100.0,
+    "frames_count": 14400,
+    "frame_stream_hash": "1dde0c1ca03efa8e78df800b3fa453ce0e93ff16f4e4f49face963d2a3b2f777",
+    "strategies": {
+      "orderflow.momentum.aggression": {
+        "manifest": {
+          "runId": "canonical_is_zecusdt_aggression",
+          "strategyId": "orderflow.momentum.aggression",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "ZECUSDT",
+          "isStartMs": 1782172800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "bd8c335713180d20e910fb69d3ee680ec8786a97d8092861f1bfb356d1f7abde",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "1dde0c1ca03efa8e78df800b3fa453ce0e93ff16f4e4f49face963d2a3b2f777",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "bdd4401bdaf608e773c6997a819bb41c12de5e66d5cec28dc3ff5ff919c3e6d4",
+            "orders": "b832c355f7b2e4da903632404b93052a9250d31cc05985e03e3deb4c696699d3",
+            "fills": "cea0da4d412624ce973cd6711907b038aec791d48a67f43e4d0c06dbf716efe7",
+            "trades": "b4812063cbff57efc4befcb7746b0d1ab2b52318a5352edbbda04d9dc67e4b10"
+          }
+        },
+        "manifest_hash": "ab2aebfdd7bd11cd9b444f4bb716cefb2b6c488a8d6a6f164563e1fd92c40975",
+        "hashes": {
+          "signals": "bdd4401bdaf608e773c6997a819bb41c12de5e66d5cec28dc3ff5ff919c3e6d4",
+          "orders": "b832c355f7b2e4da903632404b93052a9250d31cc05985e03e3deb4c696699d3",
+          "fills": "cea0da4d412624ce973cd6711907b038aec791d48a67f43e4d0c06dbf716efe7",
+          "trades": "b4812063cbff57efc4befcb7746b0d1ab2b52318a5352edbbda04d9dc67e4b10"
+        },
+        "aggregate": {
+          "trade_count": 142,
+          "wins": 60,
+          "losses": 82,
+          "flat": 0,
+          "long_trades": 64,
+          "short_trades": 78,
+          "gross_pnl": "4.9058854021825019219679145653028253591193892951926",
+          "entry_fees": "7.10000",
+          "exit_fees": "7.10000",
+          "fees": "14.20000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-9.2941145978174980780320854346971746408806107048080",
+          "expectancy": "-0.065451511252235901957972432638712497470990216231042",
+          "profit_factor": "1.2087875339739856146671695674932400188436523621118",
+          "max_drawdown": "11.902011166415304267932312793260109952164167611821",
+          "daily_net_pnl": {
+            "2026-06-23": "1.3557834296675436979811924904353976848257962475164",
+            "2026-06-24": "-0.16371981057275674120783784135041029744396953330452",
+            "2026-06-25": "-1.0826894277435194174261000814908703637624480808109",
+            "2026-06-26": "-1.1302576836901845433084771114909125272019820332355",
+            "2026-06-27": "-2.4651707753466214318811182960944852403977781346488",
+            "2026-06-28": "0.67927935522836470623531335995967145079007547155113",
+            "2026-06-29": "-3.7278263551510009119469878016668631374912637139342",
+            "2026-06-30": "-1.0912760768213769389558931265236290971774988873333",
+            "2026-07-01": "0.49569074919449895579056004564711485530626714127608",
+            "2026-07-02": "-2.1639280025824454533127370721221879683278091818844"
+          },
+          "artifact_hashes": {
+            "signals": "bdd4401bdaf608e773c6997a819bb41c12de5e66d5cec28dc3ff5ff919c3e6d4",
+            "orders": "b832c355f7b2e4da903632404b93052a9250d31cc05985e03e3deb4c696699d3",
+            "fills": "cea0da4d412624ce973cd6711907b038aec791d48a67f43e4d0c06dbf716efe7",
+            "trades": "b4812063cbff57efc4befcb7746b0d1ab2b52318a5352edbbda04d9dc67e4b10"
+          },
+          "run_manifest_hash": "ab2aebfdd7bd11cd9b444f4bb716cefb2b6c488a8d6a6f164563e1fd92c40975"
+        }
+      },
+      "orderflow.absorption.fade": {
+        "manifest": {
+          "runId": "canonical_is_zecusdt_fade",
+          "strategyId": "orderflow.absorption.fade",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "ZECUSDT",
+          "isStartMs": 1782172800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "bd8c335713180d20e910fb69d3ee680ec8786a97d8092861f1bfb356d1f7abde",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "1dde0c1ca03efa8e78df800b3fa453ce0e93ff16f4e4f49face963d2a3b2f777",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "MAKER_QUEUE_NOT_HISTORICALLY_PROVEN",
+          "artifactHashes": {
+            "signals": "989deb2a3609e09a51236feb473eedda8cc1aad8ed2e0af5a5163a734a82ca93",
+            "orders": "570bba93c162144d1f3c728d1ff6d5f9e43c477fe2440c506bbc5f4bcab0e617",
+            "fills": "7df13e7f3685456f2a580a1abad5aed1c21ca510faeeac23e89dfb9d3fb9338a",
+            "trades": "82e34980a74ac187c4bfe0e3d690636532b7c9e23bce558a76685ca1bf9eadff"
+          }
+        },
+        "manifest_hash": "6f961e504092505b48eb72a0cc4f5ddb60e44bf580b86cb8999c16c3bcbcb5da",
+        "hashes": {
+          "signals": "989deb2a3609e09a51236feb473eedda8cc1aad8ed2e0af5a5163a734a82ca93",
+          "orders": "570bba93c162144d1f3c728d1ff6d5f9e43c477fe2440c506bbc5f4bcab0e617",
+          "fills": "7df13e7f3685456f2a580a1abad5aed1c21ca510faeeac23e89dfb9d3fb9338a",
+          "trades": "82e34980a74ac187c4bfe0e3d690636532b7c9e23bce558a76685ca1bf9eadff"
+        },
+        "aggregate": {
+          "trade_count": 2,
+          "wins": 0,
+          "losses": 2,
+          "flat": 0,
+          "long_trades": 1,
+          "short_trades": 1,
+          "gross_pnl": "-0.44575029004508292254387661088329840186315057694241",
+          "entry_fees": "0.04000",
+          "exit_fees": "0.04000",
+          "fees": "0.08000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-0.52575029004508292254387661088329840186315057694241",
+          "expectancy": "-0.26287514502254146127193830544164920093157528847120",
+          "profit_factor": "0E+50",
+          "max_drawdown": "0.52575029004508292254387661088329840186315057694241",
+          "daily_net_pnl": {
+            "2026-06-25": "-0.25130734413081845577553397125739875856935323144157",
+            "2026-06-30": "-0.27444294591426446676834263962589964329379734550084"
+          },
+          "artifact_hashes": {
+            "signals": "989deb2a3609e09a51236feb473eedda8cc1aad8ed2e0af5a5163a734a82ca93",
+            "orders": "570bba93c162144d1f3c728d1ff6d5f9e43c477fe2440c506bbc5f4bcab0e617",
+            "fills": "7df13e7f3685456f2a580a1abad5aed1c21ca510faeeac23e89dfb9d3fb9338a",
+            "trades": "82e34980a74ac187c4bfe0e3d690636532b7c9e23bce558a76685ca1bf9eadff"
+          },
+          "run_manifest_hash": "6f961e504092505b48eb72a0cc4f5ddb60e44bf580b86cb8999c16c3bcbcb5da"
+        }
+      },
+      "orderflow.cvd.divergence.reversal": {
+        "manifest": {
+          "runId": "canonical_is_zecusdt_reversal",
+          "strategyId": "orderflow.cvd.divergence.reversal",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "ZECUSDT",
+          "isStartMs": 1782172800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "bd8c335713180d20e910fb69d3ee680ec8786a97d8092861f1bfb356d1f7abde",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "1dde0c1ca03efa8e78df800b3fa453ce0e93ff16f4e4f49face963d2a3b2f777",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "08691d72191ce9097d21dde836bc37207c53ebb1ffa16ef87045803e769c3aa6",
+            "orders": "a3a48e045886b1ee27cc558cb6517da253262667ed861f986b636c4865b9a7fa",
+            "fills": "2b6c79090bedfc9202fc54788148e33afe19e0d0d98660718f4dd9983fa4d5de",
+            "trades": "2bc8213eb04ee4acf0636f59af9ee22c308779f28e9905acc6396a4421273471"
+          }
+        },
+        "manifest_hash": "3a841034d22e09c95d6f60f94d22ee70fd328e85eacf6dde98f4cc51194d73cf",
+        "hashes": {
+          "signals": "08691d72191ce9097d21dde836bc37207c53ebb1ffa16ef87045803e769c3aa6",
+          "orders": "a3a48e045886b1ee27cc558cb6517da253262667ed861f986b636c4865b9a7fa",
+          "fills": "2b6c79090bedfc9202fc54788148e33afe19e0d0d98660718f4dd9983fa4d5de",
+          "trades": "2bc8213eb04ee4acf0636f59af9ee22c308779f28e9905acc6396a4421273471"
+        },
+        "aggregate": {
+          "trade_count": 332,
+          "wins": 123,
+          "losses": 209,
+          "flat": 0,
+          "long_trades": 200,
+          "short_trades": 132,
+          "gross_pnl": "0.02353117196901709130306634566004414591475758303994",
+          "entry_fees": "16.60000",
+          "exit_fees": "16.60000",
+          "fees": "33.20000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-33.176468828030982908696933654339955854085242416960",
+          "expectancy": "-0.099929122975996936471978715826325168235196513304096",
+          "profit_factor": "1.0003089403498229324713174346043806674649279712341",
+          "max_drawdown": "35.688748391654285938631200426782149244856364199225",
+          "daily_net_pnl": {
+            "2026-06-23": "-4.5355849424122398359356412812337098409453583701627",
+            "2026-06-24": "-6.8761210972110003570726055860272758057564783948092",
+            "2026-06-25": "-3.0115219539117176632123495065664804683342333380128",
+            "2026-06-26": "-1.6758477056075666412848898439734603181953069273503",
+            "2026-06-27": "-2.5573870815926550334969344132825916696380471082170",
+            "2026-06-28": "1.2104752347240535856348345579985603932236154066105",
+            "2026-06-29": "-5.7341407762023962007534522419471944974911874893434",
+            "2026-06-30": "-4.9571367940247746231445906545065366395605319359870",
+            "2026-07-01": "-3.7401437881447370935190971050773190406487007123422",
+            "2026-07-02": "-1.2990599236479490459122075797239479667390135473463"
+          },
+          "artifact_hashes": {
+            "signals": "08691d72191ce9097d21dde836bc37207c53ebb1ffa16ef87045803e769c3aa6",
+            "orders": "a3a48e045886b1ee27cc558cb6517da253262667ed861f986b636c4865b9a7fa",
+            "fills": "2b6c79090bedfc9202fc54788148e33afe19e0d0d98660718f4dd9983fa4d5de",
+            "trades": "2bc8213eb04ee4acf0636f59af9ee22c308779f28e9905acc6396a4421273471"
+          },
+          "run_manifest_hash": "3a841034d22e09c95d6f60f94d22ee70fd328e85eacf6dde98f4cc51194d73cf"
+        }
+      }
+    }
+  },
+  "SUIUSDT": {
+    "symbol": "SUIUSDT",
+    "bootstrap_status": "BOOTSTRAP_PARTIAL",
+    "causal_coverage_pct": 92.3641,
+    "frames_count": 13300,
+    "frame_stream_hash": "1197a6e4fc5c72414b5dd15a6e67f5345c83c5215c028e20ad399caf16dd1ccd",
+    "strategies": {
+      "orderflow.momentum.aggression": {
+        "manifest": {
+          "runId": "canonical_is_suiusdt_aggression",
+          "strategyId": "orderflow.momentum.aggression",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "SUIUSDT",
+          "isStartMs": 1782238800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "c35fc8255e118e1d92f5b80e8e2f868fd68f48f5041b6d263d03537d8956ed3a",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "1197a6e4fc5c72414b5dd15a6e67f5345c83c5215c028e20ad399caf16dd1ccd",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "be675ca900f930505570fba15d7aa254957bd0eb7fd003bfc044ec164363cce9",
+            "orders": "51a9436915abf3453cc97918785b8d8222178171d6cc819ab6b32186faf782bd",
+            "fills": "40d098c6679f0b4dcb36318909661edc6e99bed7afbf58727d4ca16b6841905d",
+            "trades": "c9bcb93008f830d9942eb24fc710bb2ff6deb2abd2537eb275be5c575ada5903"
+          }
+        },
+        "manifest_hash": "dd2548e17148cadaa397735b14e893ce6af0ee62e68a2d9beb0d84ca310927b5",
+        "hashes": {
+          "signals": "be675ca900f930505570fba15d7aa254957bd0eb7fd003bfc044ec164363cce9",
+          "orders": "51a9436915abf3453cc97918785b8d8222178171d6cc819ab6b32186faf782bd",
+          "fills": "40d098c6679f0b4dcb36318909661edc6e99bed7afbf58727d4ca16b6841905d",
+          "trades": "c9bcb93008f830d9942eb24fc710bb2ff6deb2abd2537eb275be5c575ada5903"
+        },
+        "aggregate": {
+          "trade_count": 5,
+          "wins": 1,
+          "losses": 4,
+          "flat": 0,
+          "long_trades": 3,
+          "short_trades": 2,
+          "gross_pnl": "-0.65008389949833490748742170800718472224666091547386",
+          "entry_fees": "0.25000",
+          "exit_fees": "0.25000",
+          "fees": "0.50000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-1.1500838994983349074874217080071847222466609154738",
+          "expectancy": "-0.23001677989966698149748434160143694444933218309476",
+          "profit_factor": "0.36445140149263781278072546161959597884282346443724",
+          "max_drawdown": "1.1500838994983349074874217080071847222466609154738",
+          "daily_net_pnl": {
+            "2026-06-23": "-0.31362956633198034607989745780816064943388164922026",
+            "2026-06-26": "-0.35889967637540453074433656957928802588996763754045",
+            "2026-06-30": "-0.44649534396881541904280661228614740489424673355953",
+            "2026-07-01": "0.27278657968313140726933830382106244175209692451072",
+            "2026-07-02": "-0.30384589250526601888971937215465108378066181966434"
+          },
+          "artifact_hashes": {
+            "signals": "be675ca900f930505570fba15d7aa254957bd0eb7fd003bfc044ec164363cce9",
+            "orders": "51a9436915abf3453cc97918785b8d8222178171d6cc819ab6b32186faf782bd",
+            "fills": "40d098c6679f0b4dcb36318909661edc6e99bed7afbf58727d4ca16b6841905d",
+            "trades": "c9bcb93008f830d9942eb24fc710bb2ff6deb2abd2537eb275be5c575ada5903"
+          },
+          "run_manifest_hash": "dd2548e17148cadaa397735b14e893ce6af0ee62e68a2d9beb0d84ca310927b5"
+        }
+      },
+      "orderflow.absorption.fade": {
+        "manifest": {
+          "runId": "canonical_is_suiusdt_fade",
+          "strategyId": "orderflow.absorption.fade",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "SUIUSDT",
+          "isStartMs": 1782238800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "c35fc8255e118e1d92f5b80e8e2f868fd68f48f5041b6d263d03537d8956ed3a",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "1197a6e4fc5c72414b5dd15a6e67f5345c83c5215c028e20ad399caf16dd1ccd",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "MAKER_QUEUE_NOT_HISTORICALLY_PROVEN",
+          "artifactHashes": {
+            "signals": "0355f8e6801c27cb699e17977c665e1d3c9ee7540f1ad06b0e36864b0ae29308",
+            "orders": "a4f52587f659cc70cf9c6eb021fb9c806b4e9cd1b4eb0ec2e659fa9eb0c790de",
+            "fills": "9dd55c016ff2b5de66ac17a48b117e106a458a2cbdcf65246c23fe12d4c13289",
+            "trades": "a9c5310147e5cd44941050a01d0279ac9fa8d9e0b6d22d4b3b170577a9be76a3"
+          }
+        },
+        "manifest_hash": "9798dad8e369754354cf8ce7ddaa73178e774a30823379a4857d718d7f608e18",
+        "hashes": {
+          "signals": "0355f8e6801c27cb699e17977c665e1d3c9ee7540f1ad06b0e36864b0ae29308",
+          "orders": "a4f52587f659cc70cf9c6eb021fb9c806b4e9cd1b4eb0ec2e659fa9eb0c790de",
+          "fills": "9dd55c016ff2b5de66ac17a48b117e106a458a2cbdcf65246c23fe12d4c13289",
+          "trades": "a9c5310147e5cd44941050a01d0279ac9fa8d9e0b6d22d4b3b170577a9be76a3"
+        },
+        "aggregate": {
+          "trade_count": 20,
+          "wins": 7,
+          "losses": 13,
+          "flat": 0,
+          "long_trades": 12,
+          "short_trades": 8,
+          "gross_pnl": "0.46703745026939249569594365341766496941055555960511",
+          "entry_fees": "0.40000",
+          "exit_fees": "0.40000",
+          "fees": "0.80000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-0.33296254973060750430405634658233503058944444039495",
+          "expectancy": "-0.016648127486530375215202817329116751529472222019748",
+          "profit_factor": "1.1722651018148205489416804264193891917829458993060",
+          "max_drawdown": "1.4000584490552593358058666447707735780709838342646",
+          "daily_net_pnl": {
+            "2026-06-23": "0.37413780792574080685469475187433059621563727240271",
+            "2026-06-24": "-0.22940773657754789830261528374735921905733226487943",
+            "2026-06-25": "0.92236582797645892294973083006146717032323438634640",
+            "2026-06-27": "-0.62000164210035100177843290555799968586153351486022",
+            "2026-06-28": "-0.56965007427960811411397590662094043412598605650509",
+            "2026-06-29": "0.26085896676809196277706846354516473773997965365627",
+            "2026-06-30": "-0.47126569944339218269052629613699819582344391655561"
+          },
+          "artifact_hashes": {
+            "signals": "0355f8e6801c27cb699e17977c665e1d3c9ee7540f1ad06b0e36864b0ae29308",
+            "orders": "a4f52587f659cc70cf9c6eb021fb9c806b4e9cd1b4eb0ec2e659fa9eb0c790de",
+            "fills": "9dd55c016ff2b5de66ac17a48b117e106a458a2cbdcf65246c23fe12d4c13289",
+            "trades": "a9c5310147e5cd44941050a01d0279ac9fa8d9e0b6d22d4b3b170577a9be76a3"
+          },
+          "run_manifest_hash": "9798dad8e369754354cf8ce7ddaa73178e774a30823379a4857d718d7f608e18"
+        }
+      },
+      "orderflow.cvd.divergence.reversal": {
+        "manifest": {
+          "runId": "canonical_is_suiusdt_reversal",
+          "strategyId": "orderflow.cvd.divergence.reversal",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "SUIUSDT",
+          "isStartMs": 1782238800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "c35fc8255e118e1d92f5b80e8e2f868fd68f48f5041b6d263d03537d8956ed3a",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "1197a6e4fc5c72414b5dd15a6e67f5345c83c5215c028e20ad399caf16dd1ccd",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "4f315bc14574ecda98cc617d55d8466b0ae292d73538d706f64e9e970b7d5de4",
+            "orders": "fd061ef55211eb0296042fe1920b42adda10d264e15df7dd9721bc364a49159f",
+            "fills": "cec0f16ccc3afbd56025155dde9474357b942253dc3042d1fc60ec9d5e8e202e",
+            "trades": "fc67ec1a1d143ebf7374d8f7e444e50e769dc40b32448f81524b13e2d49adf3b"
+          }
+        },
+        "manifest_hash": "c4e5d950a5625ca8ba8f922757c9f8394926127f7489da27f9dcd8d56540971c",
+        "hashes": {
+          "signals": "4f315bc14574ecda98cc617d55d8466b0ae292d73538d706f64e9e970b7d5de4",
+          "orders": "fd061ef55211eb0296042fe1920b42adda10d264e15df7dd9721bc364a49159f",
+          "fills": "cec0f16ccc3afbd56025155dde9474357b942253dc3042d1fc60ec9d5e8e202e",
+          "trades": "fc67ec1a1d143ebf7374d8f7e444e50e769dc40b32448f81524b13e2d49adf3b"
+        },
+        "aggregate": {
+          "trade_count": 242,
+          "wins": 85,
+          "losses": 157,
+          "flat": 0,
+          "long_trades": 108,
+          "short_trades": 134,
+          "gross_pnl": "-4.5593712379963410286473340349259249940245881892515",
+          "entry_fees": "12.10000",
+          "exit_fees": "12.10000",
+          "fees": "24.20000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-28.759371237996341028647334034925924994024588189253",
+          "expectancy": "-0.11884037701651380590350138030961126030588672805476",
+          "profit_factor": "0.90837335731904271047816251692478461156576624829736",
+          "max_drawdown": "29.671216136830127045574220214438142874435042223059",
+          "daily_net_pnl": {
+            "2026-06-23": "-0.71761522953855715984299703872734302926009446695831",
+            "2026-06-24": "-5.8835293233854641070220895507266447233441254654067",
+            "2026-06-25": "-6.9402135737156042854194252249781239799036169088793",
+            "2026-06-26": "-4.3418679518678359154489331724499859884624144492895",
+            "2026-06-27": "-2.1490815713284887173075046450178372239255006316517",
+            "2026-06-28": "0.00072496975964106414209615279961945441881350698010",
+            "2026-06-29": "-0.05832741454739698181078658020241289949545542067079",
+            "2026-06-30": "-1.7614585983886503561385787743364948255888975720526",
+            "2026-07-01": "-2.1957293508350289907436989563613108067906940032843",
+            "2026-07-02": "-4.7122731941489555790554162449253909716726027780391"
+          },
+          "artifact_hashes": {
+            "signals": "4f315bc14574ecda98cc617d55d8466b0ae292d73538d706f64e9e970b7d5de4",
+            "orders": "fd061ef55211eb0296042fe1920b42adda10d264e15df7dd9721bc364a49159f",
+            "fills": "cec0f16ccc3afbd56025155dde9474357b942253dc3042d1fc60ec9d5e8e202e",
+            "trades": "fc67ec1a1d143ebf7374d8f7e444e50e769dc40b32448f81524b13e2d49adf3b"
+          },
+          "run_manifest_hash": "c4e5d950a5625ca8ba8f922757c9f8394926127f7489da27f9dcd8d56540971c"
+        }
+      }
+    }
+  },
+  "WLDUSDT": {
+    "symbol": "WLDUSDT",
+    "bootstrap_status": "BOOTSTRAP_PARTIAL",
+    "causal_coverage_pct": 92.3641,
+    "frames_count": 13300,
+    "frame_stream_hash": "b9a78009184f929e598f8b1e5f689db2c23cef204dfc5bd0209f905b8fa03386",
+    "strategies": {
+      "orderflow.momentum.aggression": {
+        "manifest": {
+          "runId": "canonical_is_wldusdt_aggression",
+          "strategyId": "orderflow.momentum.aggression",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "WLDUSDT",
+          "isStartMs": 1782238800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "097d8637fb15b60525222bd8d7f76276fde0a29474bb7ebf558dd443caa197cb",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "b9a78009184f929e598f8b1e5f689db2c23cef204dfc5bd0209f905b8fa03386",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "386f57528a7210f7c117c2f8f305efe13ab584f138bf222a9cbcb7ac40dc8130",
+            "orders": "e0f93efe9ffdd92477726807097f1bdef3bbd95375fedb19339137e426893596",
+            "fills": "9889e726a9167978030eccd04d29e85afb6406d139ef8f080d68074bdd95cd42",
+            "trades": "0eb72518f158dd921e3b24d44d42a1ac1591a5ac44381e0b5102f8403de92ac1"
+          }
+        },
+        "manifest_hash": "82c257c8b3b251361cacf3466847c6fa5058636f1d31996715a364b578d72737",
+        "hashes": {
+          "signals": "386f57528a7210f7c117c2f8f305efe13ab584f138bf222a9cbcb7ac40dc8130",
+          "orders": "e0f93efe9ffdd92477726807097f1bdef3bbd95375fedb19339137e426893596",
+          "fills": "9889e726a9167978030eccd04d29e85afb6406d139ef8f080d68074bdd95cd42",
+          "trades": "0eb72518f158dd921e3b24d44d42a1ac1591a5ac44381e0b5102f8403de92ac1"
+        },
+        "aggregate": {
+          "trade_count": 5,
+          "wins": 1,
+          "losses": 4,
+          "flat": 0,
+          "long_trades": 4,
+          "short_trades": 1,
+          "gross_pnl": "-0.76627328276827458327049715060322437073402918003136",
+          "entry_fees": "0.25000",
+          "exit_fees": "0.25000",
+          "fees": "0.50000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-1.2662732827682745832704971506032243707340291800314",
+          "expectancy": "-0.25325465655365491665409943012064487414680583600628",
+          "profit_factor": "0.37159634147962451135400027010601149020582312098522",
+          "max_drawdown": "1.2995922229346142526919749547663011937381872627017",
+          "daily_net_pnl": {
+            "2026-06-25": "-0.40543094397251121504247399064617734084184403932424",
+            "2026-06-26": "-0.54103796468871863803789237635445333827772201289088",
+            "2026-06-28": "-0.31980437410704473019013078360259369161446312781624"
+          },
+          "artifact_hashes": {
+            "signals": "386f57528a7210f7c117c2f8f305efe13ab584f138bf222a9cbcb7ac40dc8130",
+            "orders": "e0f93efe9ffdd92477726807097f1bdef3bbd95375fedb19339137e426893596",
+            "fills": "9889e726a9167978030eccd04d29e85afb6406d139ef8f080d68074bdd95cd42",
+            "trades": "0eb72518f158dd921e3b24d44d42a1ac1591a5ac44381e0b5102f8403de92ac1"
+          },
+          "run_manifest_hash": "82c257c8b3b251361cacf3466847c6fa5058636f1d31996715a364b578d72737"
+        }
+      },
+      "orderflow.absorption.fade": {
+        "manifest": {
+          "runId": "canonical_is_wldusdt_fade",
+          "strategyId": "orderflow.absorption.fade",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "WLDUSDT",
+          "isStartMs": 1782238800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "097d8637fb15b60525222bd8d7f76276fde0a29474bb7ebf558dd443caa197cb",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "b9a78009184f929e598f8b1e5f689db2c23cef204dfc5bd0209f905b8fa03386",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "MAKER_QUEUE_NOT_HISTORICALLY_PROVEN",
+          "artifactHashes": {
+            "signals": "60fbe2c66274fc8ae55221220b6d04dd3da899fcf99dc4a075d2517eb73634f5",
+            "orders": "ec81c591e45f71f3beb5a567c9b1b89d9200b0b2bcd5c9dede508dc4627cc569",
+            "fills": "753e7a5e27a76c9167717d694e111d17bb5b6909af26fdaf86a2bf225c3904ee",
+            "trades": "f9914514a462b8a6c563a41e8435b8e20dc493199462e57a7b936e881a3eed25"
+          }
+        },
+        "manifest_hash": "a5243a443524bed23f7a6d19df058d7a179e29327c525144c52e8e189f05aeeb",
+        "hashes": {
+          "signals": "60fbe2c66274fc8ae55221220b6d04dd3da899fcf99dc4a075d2517eb73634f5",
+          "orders": "ec81c591e45f71f3beb5a567c9b1b89d9200b0b2bcd5c9dede508dc4627cc569",
+          "fills": "753e7a5e27a76c9167717d694e111d17bb5b6909af26fdaf86a2bf225c3904ee",
+          "trades": "f9914514a462b8a6c563a41e8435b8e20dc493199462e57a7b936e881a3eed25"
+        },
+        "aggregate": {
+          "trade_count": 19,
+          "wins": 6,
+          "losses": 13,
+          "flat": 0,
+          "long_trades": 9,
+          "short_trades": 10,
+          "gross_pnl": "-0.54129646923601194918625359131969436724127986566950",
+          "entry_fees": "0.38000",
+          "exit_fees": "0.38000",
+          "fees": "0.76000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-1.3012964692360119491862535913196943672412798656695",
+          "expectancy": "-0.068489287854526944694013346911562861433751571877342",
+          "profit_factor": "0.85370235830033090964706270341227897815659917302126",
+          "max_drawdown": "2.7870618982707664695323957538623052200050946370076",
+          "daily_net_pnl": {
+            "2026-06-24": "-1.0718376639912726891751098720737209943807121522217",
+            "2026-06-25": "-0.64988831153810834670094890945469894933176418930765",
+            "2026-06-26": "-0.51217060515996340114867986701935229385438612757072",
+            "2026-06-27": "-0.55316531758142203250765710531453298243823216790750",
+            "2026-06-28": "0.43939732907202374158201118593767834722063691359435",
+            "2026-06-29": "0.88311318878832019033115567400503785974202504192889",
+            "2026-06-30": "0.09469131393182026093418498481789621030127359241283",
+            "2026-07-02": "0.06856359724259032749879031778199843549987922340198"
+          },
+          "artifact_hashes": {
+            "signals": "60fbe2c66274fc8ae55221220b6d04dd3da899fcf99dc4a075d2517eb73634f5",
+            "orders": "ec81c591e45f71f3beb5a567c9b1b89d9200b0b2bcd5c9dede508dc4627cc569",
+            "fills": "753e7a5e27a76c9167717d694e111d17bb5b6909af26fdaf86a2bf225c3904ee",
+            "trades": "f9914514a462b8a6c563a41e8435b8e20dc493199462e57a7b936e881a3eed25"
+          },
+          "run_manifest_hash": "a5243a443524bed23f7a6d19df058d7a179e29327c525144c52e8e189f05aeeb"
+        }
+      },
+      "orderflow.cvd.divergence.reversal": {
+        "manifest": {
+          "runId": "canonical_is_wldusdt_reversal",
+          "strategyId": "orderflow.cvd.divergence.reversal",
+          "strategyRevision": "freeze-2026-09-24-adapter-v1",
+          "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+          "datasetRevision": "v1",
+          "symbol": "WLDUSDT",
+          "isStartMs": 1782238800000,
+          "isEndMs": 1783036799999,
+          "frameBuilderRevision": "OrderFlowFrameV1-qualified-v1",
+          "executionModelRevision": "execution-model-v1-conservative",
+          "feeModel": "BTCUSDT maker=0.0002 taker=0.0005",
+          "slippageModel": "BASE",
+          "fundingModel": "qualified-btcusdt-funding-v1",
+          "positionSizingModel": "fixed-notional-1000-usd",
+          "runnerRevision": "canonical-strategy-replay-v1",
+          "parameterFingerprint": "097d8637fb15b60525222bd8d7f76276fde0a29474bb7ebf558dd443caa197cb",
+          "adapterRevision": "freeze-2026-09-24-adapter-v1",
+          "frameStreamHash": "b9a78009184f929e598f8b1e5f689db2c23cef204dfc5bd0209f905b8fa03386",
+          "oosEventsConsumed": 0,
+          "executionModelLimitation": "TAKER_FRICTION_DOMINATED",
+          "artifactHashes": {
+            "signals": "3398a0250914edfd5df4d5bc828d3ba49422a866715c663bda87d1fdb65e2c9c",
+            "orders": "b4387d6ed1cf3938f0af1584b65511421c570c73beee109631f1f37c0f23a97b",
+            "fills": "529d4a845853669e46a43ba95b02ca472087a81ca6b833f3422bb16eb221fccd",
+            "trades": "6c068d30402c69ff20c2546181c7c91c00fb76cf21402f06f5cfc19009f478fe"
+          }
+        },
+        "manifest_hash": "9de51bca351cae923386dc7d6ba2948ce0ce47e53f627f229603068929e041b6",
+        "hashes": {
+          "signals": "3398a0250914edfd5df4d5bc828d3ba49422a866715c663bda87d1fdb65e2c9c",
+          "orders": "b4387d6ed1cf3938f0af1584b65511421c570c73beee109631f1f37c0f23a97b",
+          "fills": "529d4a845853669e46a43ba95b02ca472087a81ca6b833f3422bb16eb221fccd",
+          "trades": "6c068d30402c69ff20c2546181c7c91c00fb76cf21402f06f5cfc19009f478fe"
+        },
+        "aggregate": {
+          "trade_count": 310,
+          "wins": 109,
+          "losses": 201,
+          "flat": 0,
+          "long_trades": 163,
+          "short_trades": 147,
+          "gross_pnl": "-14.334189700240053271660831016705808021938066630723",
+          "entry_fees": "15.50000",
+          "exit_fees": "15.50000",
+          "fees": "31.00000",
+          "slippage": "0",
+          "funding": "0",
+          "net_pnl": "-45.334189700240053271660831016705808021938066630725",
+          "expectancy": "-0.14623932161367759119890590650550260652238086009911",
+          "profit_factor": "0.82401324941539307836591841814373871718591200117394",
+          "max_drawdown": "47.193266166816055316901513358085768348575326878132",
+          "daily_net_pnl": {
+            "2026-06-23": "-0.16082314943775309364404600676570969732757391552440",
+            "2026-06-24": "-4.7630588358804281114947584542381835387847777961633",
+            "2026-06-25": "-4.7678669689819572319602257127351429563718470703916",
+            "2026-06-26": "-5.4147253931854149605470986641005443754256582019441",
+            "2026-06-27": "-1.9273062159336489141677162653905047653601842044337",
+            "2026-06-28": "2.5823447146618576875707700788302468389903180123664",
+            "2026-06-29": "-7.2626397860561494182254189779171957399948636436943",
+            "2026-06-30": "-3.5598115753214457664210463163990332655175743622176",
+            "2026-07-01": "-13.111532073958330060255593660909628749037427379505",
+            "2026-07-02": "-6.9487704161467834025156970370801117731084780692168"
+          },
+          "artifact_hashes": {
+            "signals": "3398a0250914edfd5df4d5bc828d3ba49422a866715c663bda87d1fdb65e2c9c",
+            "orders": "b4387d6ed1cf3938f0af1584b65511421c570c73beee109631f1f37c0f23a97b",
+            "fills": "529d4a845853669e46a43ba95b02ca472087a81ca6b833f3422bb16eb221fccd",
+            "trades": "6c068d30402c69ff20c2546181c7c91c00fb76cf21402f06f5cfc19009f478fe"
+          },
+          "run_manifest_hash": "9de51bca351cae923386dc7d6ba2948ce0ce47e53f627f229603068929e041b6"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "files_processed": 552,
+  "l2_rows_processed": 138350593,
+  "l2_logical_events": 22654005,
+  "trade_rows_processed": 9140146,
+  "generated_frames": 14740,
+  "qualified_frames": 14740,
+  "missing_frames": 0,
+  "rejected_frames": 0,
+  "crossed_books": 0,
+  "empty_books": 0,
+  "invalid_levels": 0,
+  "future_l2_violations": 0,
+  "future_trade_violations": 0,
+  "first_frame_ms": 1782498059999,
+  "last_frame_ms": 1783382399999,
+  "runtime_seconds": 228.42484039900592,
+  "frame_stream_hash": "f295c07be55e1672bd6fea7df72fceae259c98261a8405b3c0eb495e5595ff9d"
+}

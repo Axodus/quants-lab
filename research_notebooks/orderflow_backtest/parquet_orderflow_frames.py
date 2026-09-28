@@ -420,11 +420,17 @@ class FixedPointCausalParquetFrameBuilder(CausalParquetFrameBuilder):
             raise ValueError(f"price is not aligned to {self.instrument_spec.symbol} tick size")
         if np.any(quantity % quantity_increment != 0):
             raise ValueError(f"quantity is not aligned to {self.instrument_spec.symbol} step size")
-        return np.column_stack((
+        rows = np.column_stack((
             ints("event_time"), ints("transaction_time"), event_type,
             ints("first_update_id"), ints("final_update_id"), ints("prev_final_update_id"),
             ints("last_update_id"), side, price, quantity,
         ))
+        # A Parquet batch can contain the first event after the bounded replay
+        # window.  Exclude it before handing rows to the kernel so the kernel
+        # never interprets a normal end boundary as an OOS violation.  The
+        # filter is event atomic because event_time is part of the grouping
+        # identity and all price-level rows for an event share that timestamp.
+        return rows[rows[:, 0] <= self.is_end_ms]
 
     def _load_kernel(self):
         import subprocess

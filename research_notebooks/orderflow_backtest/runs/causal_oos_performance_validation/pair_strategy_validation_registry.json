@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "pair-strategy-validation-registry-v1",
+  "cells": {
+    "ZECUSDT::orderflow.momentum.aggression": {
+      "symbol": "ZECUSDT",
+      "strategyId": "orderflow.momentum.aggression",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782432000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "a59b1142a9705cd55336fd3df8553647bea18cec4992d746d65ac830b55fb474",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "3a7c5bb0686b6f8d60ab228aea3369ca382969e356b4ca74d4e9d388744e9202",
+        "orders": "09e9bfc310f34990ee298a3015383041466df49ff57e57875b69328af375db9c",
+        "fills": "0c53ecc56166d65486dabb16c1e7f40519c0b7cabaf5cff967def758889409c6",
+        "trades": "ff1c9273fe7592cf240b6ad7ebf6657393c28841ff476923f0452b950d7df3ed"
+      },
+      "runManifestHash": "e9ba9a0eb9a8008711ea9822c73a2a22f59282f4b171420f3784c953899fa5e5",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "SUFFICIENT_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "ZECUSDT::orderflow.absorption.fade": {
+      "symbol": "ZECUSDT",
+      "strategyId": "orderflow.absorption.fade",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782432000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "a59b1142a9705cd55336fd3df8553647bea18cec4992d746d65ac830b55fb474",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "2e076ded22587da7db5472a01a97af420597753ccfbb9f47116a027ced65e860",
+        "orders": "fb1e1d1bdb5ba72961ffc9c7858ecfcb85d0e9662986d1171905d736abd9c75f",
+        "fills": "3d1f4c8e67a3bb8854dc2b6bac67b4d699f56d79a6e1fa59d34ba3f09a92576b",
+        "trades": "063cbd1dfe41f712bbbe50a31c83ed67904c24e11803e904f05c6eba89452bce"
+      },
+      "runManifestHash": "7d951f66cbc2d985a2ea72b651a17ebf0720e7163a775c298bddd6f93a98978a",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "VERY_LOW_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "ZECUSDT::orderflow.cvd.divergence.reversal": {
+      "symbol": "ZECUSDT",
+      "strategyId": "orderflow.cvd.divergence.reversal",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782432000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "a59b1142a9705cd55336fd3df8553647bea18cec4992d746d65ac830b55fb474",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "d553571c45ea63efc96570f5493a44aab7ca79799db05f73a870244310b99225",
+        "orders": "d34844d377280f4eb7c9e2d6b77217ddf9dfda41eefd3d376809a15183ede735",
+        "fills": "3099d42faae4645a47dfe171cde936473c13bea926a2a48fe6382ffa925648a3",
+        "trades": "080f4778e8d453827cec79938e99b083ff6fd61ec74d143a2b1fe90ceabe6245"
+      },
+      "runManifestHash": "7b74201a4dd10c53435b846039add847c8ec96707701f7fed169c141834b74b9",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "SUFFICIENT_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "SUIUSDT::orderflow.momentum.aggression": {
+      "symbol": "SUIUSDT",
+      "strategyId": "orderflow.momentum.aggression",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782498000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "811c76d2cd4e9f48af7496da6b2c854a2d51bc8e9eaad0b0e6cd9930e79f1bda",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "9657eb5eea9c124b4d9399c48a57fb178399e11230523beb6448eb0a5a279e7b",
+        "orders": "ed6dff8807bf8ccb309eed3468eead9fe746d25542d7ab798036bd2285983b23",
+        "fills": "7c7aeffb24eb0067a786aa67ea037f8397f05380eecae51e8e1be3565c1cf137",
+        "trades": "ddc4013d786ee5ce94617796e9ec6c5e57545ae1d4dcd2a1a12bda459f3551c7"
+      },
+      "runManifestHash": "70f4703c804363d6ac4ce9ed9a1ce684f7d26deed0a43546f36e0c18ea100364",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "LOW_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "SUIUSDT::orderflow.absorption.fade": {
+      "symbol": "SUIUSDT",
+      "strategyId": "orderflow.absorption.fade",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782498000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "811c76d2cd4e9f48af7496da6b2c854a2d51bc8e9eaad0b0e6cd9930e79f1bda",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "647fbfaff7d7efeba8e81cf1f0635020ee3d13640898e43b70fc46543056eb35",
+        "orders": "3bd8865b0f0d28c8ae0d5e8dc3b70c19ed72b6d6ddb0e0c899e29bb27c80ed9d",
+        "fills": "fe290cf316d1f2a5581e9e5a25f9edfdb0f7335da096bd8f6bc906cdbab0e3a6",
+        "trades": "f449f6ceafb4bef79977772061c0cd6affdcc4ba5d0be4720575981d94d7465c"
+      },
+      "runManifestHash": "696d711bc5c8a5d81dbcc6ea1e2dfbf33e1ffa1584c56133c2fc9344bf97f939",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "SUFFICIENT_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "SUIUSDT::orderflow.cvd.divergence.reversal": {
+      "symbol": "SUIUSDT",
+      "strategyId": "orderflow.cvd.divergence.reversal",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782498000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "811c76d2cd4e9f48af7496da6b2c854a2d51bc8e9eaad0b0e6cd9930e79f1bda",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "89b6405cc6dc1248d3195e4cce55d68dff65cb23a8e33dbb57d97937ce0d0031",
+        "orders": "b285cbbc478cd12a025002d85bdcea9319fd1fbb62322a613d0369b3631c54e4",
+        "fills": "e64c5ac6fb5a6c3842831064bb967cd98bf8f7bbeafa18703f22b9813ec28de3",
+        "trades": "bdedbcbf92cba2fde12524888c2342f2f30685e94de7a99ebee96d0243fa27f6"
+      },
+      "runManifestHash": "d30e252947d8220097456a537895200791e799f17cd351ba382d3bf7054ed214",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "SUFFICIENT_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "WLDUSDT::orderflow.momentum.aggression": {
+      "symbol": "WLDUSDT",
+      "strategyId": "orderflow.momentum.aggression",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782498000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "86763525c6483e616009b9a08af77232d27d497710d060d083e0ca9ec014cdf3",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "4be6a843dc633d6674fd2f7eb6f3ac67b71239c76d81bb1f09b4b25d69729a7b",
+        "orders": "d5f467f66039cb950619fe2227123dd2bfe7375871bb656e2c53fba0b2841b96",
+        "fills": "d7316823df329fb41ef271dc3c50518364b1cb86e18a2d42d1623751947e70c1",
+        "trades": "ff3b9ca8589d86304c55401c7d203c82de24aaa8d8351851de3a83c46dfe9327"
+      },
+      "runManifestHash": "d251caf8a3d3218ef9101f3aa9d8f94a7d977d3b9068ea4bcccc5f0fb2857f2a",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "VERY_LOW_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "WLDUSDT::orderflow.absorption.fade": {
+      "symbol": "WLDUSDT",
+      "strategyId": "orderflow.absorption.fade",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782498000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "86763525c6483e616009b9a08af77232d27d497710d060d083e0ca9ec014cdf3",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "ce17868b43ef3c3228ca4c6a2a82d153ec1dcd1accddf3a1b1fe8947a73ee851",
+        "orders": "ad47eff7b9678e7443d7ddec6e0ce972d4ace09b50f0d4f5fe2213aac212d81c",
+        "fills": "05d55a07275bf64ae704c9afbb882787f9f7f5939c53e06030882e4a5f2323e0",
+        "trades": "1c74e180d51a1864c36a72a34d6f59d812c54428b94ab3411ec5a69201b78cc3"
+      },
+      "runManifestHash": "28b67948c92dac2ea353609f8f2389b13a5daa6635d63891ea8ebed49813a16c",
+      "validationStatus": "OOS_EVIDENCE_POSITIVE",
+      "frequencyClassification": "SUFFICIENT_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_VIABLE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    },
+    "WLDUSDT::orderflow.cvd.divergence.reversal": {
+      "symbol": "WLDUSDT",
+      "strategyId": "orderflow.cvd.divergence.reversal",
+      "strategyRevision": "freeze-2026-09-24-adapter-v1",
+      "venue": "Binance USD-M Futures",
+      "marketType": "PERPETUAL",
+      "isGateResult": "PASS",
+      "oosWindow": {
+        "startMs": 1782498000000,
+        "endMs": 1783382399999
+      },
+      "instrumentSpecHash": "86763525c6483e616009b9a08af77232d27d497710d060d083e0ca9ec014cdf3",
+      "datasetId": "orderflow-binance-futures-14d-20260623-20260706-v1",
+      "datasetRevision": "v1",
+      "canonicalArtifactHashes": {
+        "signals": "2b3715393d479894e3c19cb0708dea0502d49337579ab681836b70b08df64b4e",
+        "orders": "0658f1922cc5c74e199fd9acc2883c230a918e2eed426abf15ce30126cb2344b",
+        "fills": "888acb43a2a852bd7c867ba51d9b7154255b60b9397023877864dd53ea2ed55c",
+        "trades": "ac7efa960ef49104c8e5f5478bb76df695a73939c9e83d522cff2a31ca130539"
+      },
+      "runManifestHash": "10bfa3f2e79558e1aac8500a039bf542308ec6fbc2d47aaeeaa4e59e12f1010c",
+      "validationStatus": "OOS_EVIDENCE_NEGATIVE",
+      "frequencyClassification": "SUFFICIENT_FREQUENCY",
+      "economicClassification": "ECONOMICALLY_FRAGILE",
+      "reuseStatus": "VALIDATED_REUSABLE",
+      "testnetEligibility": "TESTNET_BLOCKED",
+      "mainnetEligibility": "MAINNET_BLOCKED",
+      "activeBlockers": [
+        "BLOCKER-01 OPEN / DO NOT USE",
+        "real capital authority absent"
+      ]
+    }
+  }
+}

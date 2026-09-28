@@ -25,6 +25,8 @@ class ResearchActionKind(str, Enum):
     RUN_FROZEN_BACKTEST    = "run_frozen_orderflow_backtest"
     GET_RUN_STATUS         = "get_run_status"
     READ_CANONICAL_RESULTS = "read_canonical_results"
+    CHECK_EVIDENCE_REUSE   = "check_evidence_reuse"
+    EVALUATE_DEPLOYMENT_ROUTING = "evaluate_deployment_routing"
 
 
 # ------------------------------------------------------------------ #
@@ -72,6 +74,16 @@ CAPABILITY_DEFINITIONS: dict[ResearchActionKind, dict[str, Any]] = {
     ResearchActionKind.GET_RUN_STATUS: {"required": set(), "optional": {"receipt_id"}, "side_effects": []},
     ResearchActionKind.READ_CANONICAL_RESULTS: {
         "required": {"symbol", "dataset_id", "dataset_revision"}, "optional": {"strategy_id", "dataset_freeze_sha256"}, "side_effects": [],
+    },
+    ResearchActionKind.CHECK_EVIDENCE_REUSE: {
+        "required": {"symbol", "strategy_id", "strategy_revision"},
+        "optional": {"venue", "market_type", "is_stale", "is_redesigned", "current_fee_model", "current_execution_model", "current_parameter_fingerprint", "current_frame_builder_revision"},
+        "side_effects": [],
+    },
+    ResearchActionKind.EVALUATE_DEPLOYMENT_ROUTING: {
+        "required": {"symbol", "strategy_id", "strategy_revision"},
+        "optional": {"scanner_status", "venue", "market_type", "market_info", "operational_context", "current_fee_model", "current_execution_model", "current_parameter_fingerprint", "current_frame_builder_revision"},
+        "side_effects": [],
     },
 }
 
@@ -405,6 +417,52 @@ class ResearchCapabilityBoundary:
             action=ResearchActionKind.READ_CANONICAL_RESULTS.value, authorized=True,
             reason="PASS: read-only result retrieval",
             payload={"mutations": 0},
+        )
+
+    def _check_check_evidence_reuse(self, kw: dict) -> ResearchCapabilityResult:
+        strategy_id = kw.get("strategy_id", "")
+        if strategy_id not in ALLOWED_BACKTEST_STRATEGIES:
+            return ResearchCapabilityResult(
+                action=ResearchActionKind.CHECK_EVIDENCE_REUSE.value,
+                authorized=False,
+                reason=f"UNKNOWN_STRATEGY: {strategy_id!r} is not in the frozen strategy registry",
+                payload={},
+            )
+        if not kw.get("symbol"):
+            return ResearchCapabilityResult(
+                action=ResearchActionKind.CHECK_EVIDENCE_REUSE.value,
+                authorized=False,
+                reason="MISSING_SYMBOL",
+                payload={},
+            )
+        return ResearchCapabilityResult(
+            action=ResearchActionKind.CHECK_EVIDENCE_REUSE.value,
+            authorized=True,
+            reason="PASS: read-only evidence reuse check",
+            payload={"mutations": 0},
+        )
+
+    def _check_evaluate_deployment_routing(self, kw: dict) -> ResearchCapabilityResult:
+        strategy_id = kw.get("strategy_id", "")
+        if strategy_id not in ALLOWED_BACKTEST_STRATEGIES:
+            return ResearchCapabilityResult(
+                action=ResearchActionKind.EVALUATE_DEPLOYMENT_ROUTING.value,
+                authorized=False,
+                reason=f"UNKNOWN_STRATEGY: {strategy_id!r} is not in the frozen strategy registry",
+                payload={},
+            )
+        if not kw.get("symbol"):
+            return ResearchCapabilityResult(
+                action=ResearchActionKind.EVALUATE_DEPLOYMENT_ROUTING.value,
+                authorized=False,
+                reason="MISSING_SYMBOL",
+                payload={},
+            )
+        return ResearchCapabilityResult(
+            action=ResearchActionKind.EVALUATE_DEPLOYMENT_ROUTING.value,
+            authorized=True,
+            reason="PASS: read-only deployment readiness evaluation",
+            payload={"mutations": 0, "exchange_order_mutations": 0},
         )
 
 

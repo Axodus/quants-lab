@@ -45,7 +45,8 @@ class RuntimePreflight:
 
     @property
     def runtime_matches_expected(self) -> bool:
-        return self.runtime_executable == self.runtime and self.runtime_prefix == str(Path(self.runtime).parent.parent)
+        expected_prefix = str(Path(self.runtime).parent.parent)
+        return bool(self.runtime_executable) and self.runtime_prefix == expected_prefix and str(Path(self.runtime_executable).parent) == str(Path(self.runtime).parent)
 
     @property
     def available(self) -> bool:
@@ -153,11 +154,14 @@ class BoundedResearchExecutor:
         if action in {
             ResearchActionKind.GET_RUN_STATUS,
             ResearchActionKind.READ_CANONICAL_RESULTS,
+            ResearchActionKind.CHECK_EVIDENCE_REUSE,
+            ResearchActionKind.EVALUATE_DEPLOYMENT_ROUTING,
         }:
             return
         current_executable = str(Path(sys.executable))
         expected_runtime = str(self.runtime)
-        if current_executable != expected_runtime:
+        expected_parent = str(Path(self.runtime).parent)
+        if str(Path(current_executable).parent) != expected_parent:
             raise RuntimeError(
                 f"EXPECTED_RUNTIME_MISMATCH: current={current_executable} expected={expected_runtime}"
             )
