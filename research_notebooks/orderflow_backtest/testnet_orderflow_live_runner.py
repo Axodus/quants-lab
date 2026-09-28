@@ -1,9 +1,9 @@
 """Dedicated 24h Binance Futures Testnet runner (implementation only).
 
-No network session is started by this module.  It provides the bounded runner,
-strict Testnet credential/endpoint validation, isolated cell state, lifecycle
-records, persistence, kill-switch, flatten and hard-stop controls required by
-AXODUS-TRADING-IMP-QUANT-ORDERFLOW-LIVE-RUNNER-01.
+Reclassified under AXODUS-TRADING-REQ-QUANT-CONDOR-PIPELINE-REALIGNMENT-01:
+Quants-Lab is research-only. Direct Binance transport, REST signing, and order
+submission are deprecated/removed from this repository. This module provides
+offline experiment manifests, telemetry ingestion, and historical-vs-live comparison.
 """
 from __future__ import annotations
 
@@ -23,22 +23,6 @@ SUPPORTED_STRATEGIES = (
     "orderflow.cvd.divergence.reversal",
 )
 STRATEGY_REVISION = "freeze-2026-09-24-adapter-v1"
-DEFAULT_TESTNET_REST = "https://testnet.binancefuture.com"
-DEFAULT_TESTNET_WS = "wss://fstream.binancefuture.com"
-MAINNET_HOSTS = frozenset({
-    "fapi.binance.com", "dapi.binance.com", "api.binance.com",
-    "fstream.binance.com", "dstream.binance.com", "stream.binance.com",
-})
-APPROVED_TESTNET_REST_HOSTS = frozenset({"testnet.binancefuture.com"})
-APPROVED_TESTNET_WS_HOSTS = frozenset({"fstream.binancefuture.com"})
-MAINNET_ENV_KEYS = frozenset({
-    "TRADING_BINANCE_API_KEY", "TRADING_BINANCE_SECRET_KEY",
-    "TRADING_BINANCE_API_SECRET",
-    "BINANCE_API_KEY", "BINANCE_SECRET_KEY",
-    "BINANCE_MAINNET_API_KEY", "BINANCE_MAINNET_SECRET_KEY",
-})
-TESTNET_API_KEYS = ("BINANCE_FUTURES_TESTNET_API_KEY", "BINANCE_TESTNET_API_KEY")
-TESTNET_SECRET_KEYS = ("BINANCE_FUTURES_TESTNET_SECRET_KEY", "BINANCE_TESTNET_SECRET_KEY")
 
 
 class RunnerState(StrEnum):
@@ -56,61 +40,9 @@ class CellRole(StrEnum):
     ACTIVE_CANDIDATE = "ACTIVE_CANDIDATE"
 
 
-class MainnetEndpointRejected(PermissionError):
+class QuantsLabDirectExecutionBlocked(PermissionError):
+    """Raised if any code attempts direct exchange connectivity from Quants-Lab."""
     pass
-
-
-class MainnetCredentialRejected(PermissionError):
-    pass
-
-
-class TestnetCredentialRequired(PermissionError):
-    __test__ = False
-    pass
-
-
-@dataclass(frozen=True)
-class TestnetEndpointConfig:
-    __test__ = False
-    rest_url: str = DEFAULT_TESTNET_REST
-    ws_url: str = DEFAULT_TESTNET_WS
-
-    def __post_init__(self) -> None:
-        from urllib.parse import urlparse
-
-        parsed_rest = urlparse(self.rest_url)
-        if parsed_rest.scheme not in ("https", "http") or parsed_rest.hostname not in APPROVED_TESTNET_REST_HOSTS:
-            raise MainnetEndpointRejected(f"invalid/unapproved Testnet REST endpoint: {self.rest_url}")
-        if any(host in (parsed_rest.hostname or "") for host in MAINNET_HOSTS):
-            raise MainnetEndpointRejected(self.rest_url)
-
-        parsed_ws = urlparse(self.ws_url)
-        if parsed_ws.scheme not in ("wss", "ws") or parsed_ws.hostname not in APPROVED_TESTNET_WS_HOSTS or parsed_ws.query or parsed_ws.params or parsed_ws.fragment:
-            raise MainnetEndpointRejected(f"invalid/unapproved Testnet WS endpoint: {self.ws_url}")
-        if self.ws_url.endswith("?") or self.rest_url.endswith("?"):
-            raise MainnetEndpointRejected(f"malformed endpoint with trailing query marker: {self.ws_url}")
-        if any(host in (parsed_ws.hostname or "") for host in MAINNET_HOSTS):
-            raise MainnetEndpointRejected(self.ws_url)
-
-
-@dataclass(frozen=True)
-class TestnetCredentialStatus:
-    __test__ = False
-    available: bool
-    source: str | None
-
-    @classmethod
-    def resolve(cls, env: dict[str, str] | None = None) -> "TestnetCredentialStatus":
-        values = env if env is not None else dict(os.environ)
-        for key in MAINNET_ENV_KEYS:
-            if values.get(key, "").strip():
-                raise MainnetCredentialRejected(key)
-        api_key = next((values.get(key, "").strip() for key in TESTNET_API_KEYS if values.get(key, "").strip()), "")
-        secret_key = next((values.get(key, "").strip() for key in TESTNET_SECRET_KEYS if values.get(key, "").strip()), "")
-        if bool(api_key) != bool(secret_key):
-            raise TestnetCredentialRequired("incomplete explicit Testnet credential pair")
-        source = next((key for key in TESTNET_API_KEYS if values.get(key, "").strip()), None)
-        return cls(available=bool(api_key and secret_key), source=source)
 
 
 @dataclass(frozen=True)
@@ -183,17 +115,15 @@ class CellState:
 
 
 class Dedicated24hTestnetRunner:
-    """Offline-safe orchestration shell; network adapters are injected separately."""
+    """Research telemetry ingestion and comparison harness. No exchange mutations."""
 
     def __init__(
         self,
-        endpoint: TestnetEndpointConfig | None = None,
         output_root: Path | None = None,
         max_duration_seconds: float = 86_400.0,
         symbols: Iterable[str] = SUPPORTED_SYMBOLS,
         strategies: Iterable[str] = SUPPORTED_STRATEGIES,
     ) -> None:
-        self.endpoint = endpoint or TestnetEndpointConfig()
         self.output_root = (output_root or Path("/run/media/mzfshark/Storage/Axodus/Trading/market-data/runs/live_24h_testnet")).resolve()
         self.max_duration_seconds = max_duration_seconds
         self.symbols = tuple(symbols)
@@ -240,12 +170,9 @@ class Dedicated24hTestnetRunner:
     def cell_count(self) -> int:
         return len(self.cells)
 
-    def start(self, credential_status: TestnetCredentialStatus | None = None) -> None:
+    def start(self) -> None:
         if self.state != RunnerState.INITIALIZED:
             raise RuntimeError(f"cannot start from {self.state}")
-        status = credential_status or TestnetCredentialStatus.resolve()
-        if not status.available:
-            raise TestnetCredentialRequired("explicit Testnet credentials are required for live mode")
         self.started_at = time.time()
         self.state = RunnerState.RUNNING
 
@@ -293,12 +220,16 @@ class Dedicated24hTestnetRunner:
         cell.record(stream, event, payload, timestamp_ms)
         if event in {"ORDER", "ACK"}:
             cell.open_order = True
-        elif event in {"FILL", "PARTIAL_FILL"}:
+        elif event == "FILL":
+            cell.active_position = True
+            cell.open_order = False
+        elif event == "PARTIAL_FILL":
             cell.active_position = True
         elif event == "CANCEL":
             cell.open_order = False
         elif event == "TRADE":
             cell.active_position = False
+            cell.open_order = False
 
     def compare_historical(self, historical: dict[str, Any]) -> dict[str, Any]:
         results = {}
@@ -313,7 +244,7 @@ class Dedicated24hTestnetRunner:
                 "tradesPerDay": live["trades"] / 1.0,
                 "classification": "LIVE_SAMPLE_INSUFFICIENT" if live["trades"] == 0 else "LIVE_BEHAVIOR_CONSISTENCY_REVIEW_REQUIRED",
             }
-        return {"cells": results, "endpoint": asdict(self.endpoint), "state": self.state.value}
+        return {"cells": results, "state": self.state.value}
 
     def _write_manifest(self, reason: str | None = None) -> Path:
         self.output_root.mkdir(parents=True, exist_ok=True)
@@ -321,7 +252,6 @@ class Dedicated24hTestnetRunner:
         payload = {
             "runnerRevision": "v1-24h-testnet-dedicated",
             "strategyRevision": STRATEGY_REVISION,
-            "endpoint": asdict(self.endpoint),
             "symbols": self.symbols,
             "strategies": self.strategies,
             "cellCount": self.cell_count,

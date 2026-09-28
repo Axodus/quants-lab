@@ -127,9 +127,14 @@ def test_reusable_cell_can_reach_testnet_but_not_mainnet_by_default():
         operational_context=OperationalDeploymentContext(),
     )
     assert result.reuse_classification == ReuseClassification.VALIDATED_REUSABLE.value
-    assert result.testnet == "ELIGIBLE"
-    assert result.mainnet == "BLOCKED"
-    assert "DEBT-AUD-A-03" in result.blockers
+    assert result.deployment_state == DeploymentState.DEPLOYMENT_CANDIDATE_READY.value
+    assert result.testnet == "CONDOR_OWNED"
+    assert result.mainnet == "CONDOR_OWNED"
+    candidate = registry.export_deployment_candidate(
+        "BTCUSDT", "orderflow.momentum.aggression", "freeze-2026-09-24-adapter-v1"
+    )
+    assert candidate.deployment_candidate is True
+    assert candidate.symbol == "BTCUSDT"
 
 
 def test_route_hot_asset_is_per_strategy():
@@ -194,3 +199,33 @@ def test_bounded_executor_persists_read_only_reuse_receipt(tmp_path: Path):
     assert result["classification"] == ReuseClassification.NOT_VALIDATED.value
     receipts = list((tmp_path / "state").glob("*.json"))
     assert len(receipts) == 1
+
+
+def test_deployment_candidate_contract_validates_and_rejects_secrets():
+    registry = EvidenceReuseRegistry.create_default_registry()
+    # Negative research cannot be candidate
+    btc_mom = registry.lookup("BTCUSDT", "orderflow.momentum.aggression", "freeze-2026-09-24-adapter-v1")
+    assert btc_mom is not None
+    cand_negative = btc_mom.to_deployment_candidate()
+    assert cand_negative.deployment_candidate is False
+    assert cand_negative.research_status == "VALIDATED_NEGATIVE"
+
+    # Positive record converts
+    rec_pos = ValidationCellRecord(
+        symbol="WLDUSDT",
+        strategy_id="orderflow.absorption.fade",
+        strategy_revision="freeze-2026-09-24-adapter-v1",
+        validation_status="OOS_EVIDENCE_POSITIVE",
+    )
+    cand_pos = rec_pos.to_deployment_candidate()
+    assert cand_pos.deployment_candidate is True
+    assert cand_pos.research_status == "VALIDATED_POSITIVE"
+
+    # Candidate with leaked secret fails
+    cand_secret = rec_pos.to_deployment_candidate()
+    cand_dict = cand_secret.to_dict()
+    cand_dict["execution_requirements"]["api_key"] = "leaked"
+    from orderflow_backtest.evidence_reuse import DeploymentCandidate
+    import pytest
+    with pytest.raises(ValueError, match="DEPLOYMENT_CANDIDATE_SECRET_FIELD"):
+        DeploymentCandidate(**cand_dict).validate()

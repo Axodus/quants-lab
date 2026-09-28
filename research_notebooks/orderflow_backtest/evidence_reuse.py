@@ -48,13 +48,60 @@ class ReuseClassification(str, Enum):
     NOT_VALIDATED = "NOT_VALIDATED"
 
 
+class ResearchStatus(str, Enum):
+    """Research authority states owned by Quants-Lab."""
+
+    NOT_VALIDATED = "NOT_VALIDATED"
+    VALIDATED_POSITIVE = "VALIDATED_POSITIVE"
+    VALIDATED_NEGATIVE = "VALIDATED_NEGATIVE"
+    INCONCLUSIVE = "INCONCLUSIVE"
+    STALE = "STALE"
+    INCOMPATIBLE = "INCOMPATIBLE"
+
+
+@dataclass(frozen=True)
+class DeploymentCandidate:
+    """Credential-free research handoff consumed by Condor.
+
+    This is evidence, not an execution authorization. Condor owns all
+    environment, risk, capital, and adapter gates after ingestion.
+    """
+
+    symbol: str
+    venue: str
+    market_type: str
+    strategy_id: str
+    strategy_revision: str
+    strategy_parameter_hash: str
+    research_status: str
+    is_evidence_ref: dict[str, Any]
+    oos_evidence_ref: dict[str, Any] | None
+    economic_disposition: str
+    instrument_spec_ref: str
+    instrument_spec_hash: str
+    fee_model_ref: str
+    deployment_candidate: bool
+    execution_requirements: dict[str, Any]
+    research_artifact_hashes: dict[str, str]
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+    def validate(self) -> None:
+        serialized = json.dumps(self.to_dict(), sort_keys=True, default=str).lower()
+        forbidden = ("api_key", "secret_key", "private_key", "password", "credential")
+        if any(token in serialized for token in forbidden):
+            raise ValueError("DEPLOYMENT_CANDIDATE_SECRET_FIELD")
+        if self.research_status != ResearchStatus.VALIDATED_POSITIVE.value and self.deployment_candidate:
+            raise ValueError("DEPLOYMENT_CANDIDATE_REQUIRES_POSITIVE_RESEARCH_STATUS")
+
+
+
 class DeploymentState(str, Enum):
     HISTORICAL_VALIDATION_REQUIRED = "HISTORICAL_VALIDATION_REQUIRED"
     HISTORICAL_VALIDATION_REUSABLE = "HISTORICAL_VALIDATION_REUSABLE"
-    TESTNET_ELIGIBLE = "TESTNET_ELIGIBLE"
-    TESTNET_VALIDATION_REQUIRED = "TESTNET_VALIDATION_REQUIRED"
-    MAINNET_ELIGIBLE = "MAINNET_ELIGIBLE"
-    DEPLOYMENT_BLOCKED = "DEPLOYMENT_BLOCKED"
+    DEPLOYMENT_CANDIDATE_READY = "DEPLOYMENT_CANDIDATE_READY"
+    DEPLOYMENT_BLOCKED_BY_RESEARCH = "DEPLOYMENT_BLOCKED_BY_RESEARCH"
 
 
 @dataclass
@@ -75,6 +122,8 @@ class ValidationCellRecord:
     is_evidence: dict[str, Any] = field(default_factory=dict)
     oos_evidence: dict[str, Any] | None = None
     validation_status: str = "NOT_VALIDATED"
+    research_status: str = ResearchStatus.NOT_VALIDATED.value
+    deployment_candidate: bool = False
     validation_date: str = ""
     dataset_id: str = ""
     dataset_window: dict[str, str] = field(default_factory=dict)
@@ -91,6 +140,50 @@ class ValidationCellRecord:
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+    def normalized_research_status(self) -> ResearchStatus:
+        if self.research_status != ResearchStatus.NOT_VALIDATED.value:
+            return ResearchStatus(self.research_status)
+        mapping = {
+            "ACCEPTED": ResearchStatus.VALIDATED_POSITIVE,
+            "ACCEPTED_AS_NEGATIVE_IS": ResearchStatus.VALIDATED_NEGATIVE,
+            "ACCEPTED_AS_INCONCLUSIVE_IS": ResearchStatus.INCONCLUSIVE,
+            "OOS_EVIDENCE_POSITIVE": ResearchStatus.VALIDATED_POSITIVE,
+            "OOS_EVIDENCE_NEGATIVE": ResearchStatus.VALIDATED_NEGATIVE,
+            "IS_EVIDENCE_NEGATIVE": ResearchStatus.VALIDATED_NEGATIVE,
+            "STALE": ResearchStatus.STALE,
+            "INCOMPATIBLE": ResearchStatus.INCOMPATIBLE,
+        }
+        return mapping.get(self.validation_status, ResearchStatus.NOT_VALIDATED)
+
+    def to_deployment_candidate(self) -> DeploymentCandidate:
+        status = self.normalized_research_status()
+        candidate = DeploymentCandidate(
+            symbol=self.symbol,
+            venue=self.venue,
+            market_type=self.market_type,
+            strategy_id=self.strategy_id,
+            strategy_revision=self.strategy_revision,
+            strategy_parameter_hash=self.parameter_fingerprint,
+            research_status=status.value,
+            is_evidence_ref=dict(self.is_evidence),
+            oos_evidence_ref=dict(self.oos_evidence) if self.oos_evidence is not None else None,
+            economic_disposition=str(self.is_evidence.get("economicClassification", self.is_evidence.get("disposition", "UNKNOWN"))),
+            instrument_spec_ref=self.symbol,
+            instrument_spec_hash=self.instrument_spec_hash,
+            fee_model_ref=self.fee_model,
+            deployment_candidate=(status == ResearchStatus.VALIDATED_POSITIVE),
+            execution_requirements={
+                "execution_model": self.execution_model,
+                "position_sizing_model": self.position_sizing_model,
+                "maker_taker_semantics": self.is_evidence.get("maker_taker_semantics"),
+                "post_only": self.is_evidence.get("post_only"),
+                "order_type": self.is_evidence.get("order_type"),
+            },
+            research_artifact_hashes=dict(self.artifact_hashes),
+        )
+        candidate.validate()
+        return candidate
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> ValidationCellRecord:
@@ -394,53 +487,16 @@ class EvidenceReuseRegistry:
         else:
             compat = {"compatible": False, "status": "NOT_CHECKED", "checks": {}, "failures": ["NO_VALIDATED_RECORD"]}
 
-        testnet_eligible = False
-        testnet_blockers: list[str] = []
-        if classification != ReuseClassification.VALIDATED_REUSABLE:
-            testnet_blockers.append("HISTORICAL_VALIDATION_NOT_REUSABLE")
-        if not compat.get("compatible", False):
-            testnet_blockers.append("CURRENT_MARKET_INCOMPATIBLE")
-        if record is not None and record.validation_status in {"IS_EVIDENCE_NEGATIVE", "ACCEPTED_AS_NEGATIVE_IS", "FAILED"}:
-            testnet_blockers.append(f"STRATEGY_VALIDATION_STATUS_{record.validation_status}")
-
-        if not testnet_blockers:
-            testnet_eligible = True
-            testnet_status = "ELIGIBLE"
-        else:
-            testnet_status = "BLOCKED"
-            all_blockers.extend([b for b in testnet_blockers if b not in all_blockers])
-
-        mainnet_eligible = False
-        mainnet_blockers: list[str] = []
-        if classification != ReuseClassification.VALIDATED_REUSABLE:
-            mainnet_blockers.append("HISTORICAL_VALIDATION_NOT_REUSABLE")
-        if record is None or record.oos_evidence is None or record.validation_status != "ACCEPTED":
-            mainnet_blockers.append("OOS_PERFORMANCE_VALIDATION_REQUIRED")
-        if not compat.get("compatible", False):
-            mainnet_blockers.append("CURRENT_MARKET_INCOMPATIBLE")
-        if not operational_context.safety_supervisor_active:
-            mainnet_blockers.append("SAFETY_SUPERVISOR_NOT_ACTIVE")
-        if not operational_context.risk_authority_approved:
-            mainnet_blockers.append("RISK_AUTHORITY_APPROVAL_REQUIRED")
-        if not operational_context.capital_authority_approved:
-            mainnet_blockers.append("CAPITAL_AUTHORITY_APPROVAL_REQUIRED")
-        if not operational_context.real_capital_authorized:
-            mainnet_blockers.append("REAL_CAPITAL_NOT_AUTHORIZED")
-        if not operational_context.execution_readiness_passed:
-            mainnet_blockers.append("EXECUTION_READINESS_GATE_REQUIRED")
-        if not operational_context.protection_readiness_passed:
-            mainnet_blockers.append("PROTECTION_READINESS_GATE_REQUIRED")
-        if operational_context.active_governance_blockers:
-            mainnet_blockers.extend(operational_context.active_governance_blockers)
-        if operational_context.active_operational_blockers:
-            mainnet_blockers.extend(operational_context.active_operational_blockers)
-
-        if not mainnet_blockers and testnet_eligible:
-            mainnet_eligible = True
-            mainnet_status = "ELIGIBLE"
-        else:
-            mainnet_status = "BLOCKED"
-            all_blockers.extend([b for b in mainnet_blockers if b not in all_blockers])
+        # Quants-Lab owns research evidence only. Condor owns all deployment,
+        # environment, risk, capital, and adapter eligibility gates.
+        research_status = record.normalized_research_status() if record is not None else ResearchStatus.NOT_VALIDATED
+        candidate_ready = (
+            record is not None
+            and research_status == ResearchStatus.VALIDATED_POSITIVE
+            and classification == ReuseClassification.VALIDATED_REUSABLE
+        )
+        if not candidate_ready:
+            all_blockers.append("DEPLOYMENT_AUTHORITY_DELEGATED_TO_CONDOR")
 
         if classification == ReuseClassification.NOT_VALIDATED:
             deployment_state = DeploymentState.HISTORICAL_VALIDATION_REQUIRED
@@ -448,18 +504,12 @@ class EvidenceReuseRegistry:
         elif classification in {ReuseClassification.VALIDATED_BUT_STALE, ReuseClassification.VALIDATED_BUT_INCOMPATIBLE}:
             deployment_state = DeploymentState.HISTORICAL_VALIDATION_REQUIRED
             recommended_action = f"REVALIDATION_REQUIRED: {reason}"
-        elif mainnet_eligible:
-            deployment_state = DeploymentState.MAINNET_ELIGIBLE
-            recommended_action = "RECOMMEND_MAINNET_DEPLOYMENT: all gates satisfied; await explicit Axodus authorization"
-        elif testnet_eligible:
-            deployment_state = DeploymentState.TESTNET_ELIGIBLE
-            recommended_action = "RECOMMEND_TESTNET_DEPLOYMENT: historical validation reusable; deploy to Testnet for operational soak"
-        elif classification == ReuseClassification.VALIDATED_REUSABLE:
-            deployment_state = DeploymentState.HISTORICAL_VALIDATION_REUSABLE
-            recommended_action = "PROCEED_TO_DEPLOYMENT_READINESS_GATE: resolve operational/governance prerequisites"
+        elif candidate_ready:
+            deployment_state = DeploymentState.DEPLOYMENT_CANDIDATE_READY
+            recommended_action = "HAND_OFF_DEPLOYMENT_CANDIDATE_TO_CONDOR: Condor owns current compatibility, risk, environment, and capital gates"
         else:
-            deployment_state = DeploymentState.DEPLOYMENT_BLOCKED
-            recommended_action = f"DEPLOYMENT_BLOCKED: {reason}"
+            deployment_state = DeploymentState.DEPLOYMENT_BLOCKED_BY_RESEARCH
+            recommended_action = f"DEPLOYMENT_BLOCKED_BY_RESEARCH: {reason}"
 
         deduped_blockers: list[str] = []
         for b in all_blockers:
@@ -475,11 +525,28 @@ class EvidenceReuseRegistry:
             deployment_state=deployment_state.value,
             current_compatibility=compat.get("status", "FAIL"),
             current_compatibility_details=compat,
-            testnet=testnet_status,
-            mainnet=mainnet_status,
+            testnet="CONDOR_OWNED",
+            mainnet="CONDOR_OWNED",
             blockers=deduped_blockers,
             recommended_next_action=recommended_action,
         )
+
+    def export_deployment_candidate(
+        self,
+        symbol: str,
+        strategy_id: str,
+        strategy_revision: str,
+        venue: str = "Binance USD-M Futures",
+        market_type: str = "USD-M Futures",
+    ) -> DeploymentCandidate:
+        """Export positive research evidence for Condor-owned deployment gates."""
+        record = self.lookup(symbol, strategy_id, strategy_revision, venue, market_type)
+        if record is None:
+            raise ValueError("NO_VALIDATED_RESEARCH_RECORD")
+        candidate = record.to_deployment_candidate()
+        if not candidate.deployment_candidate:
+            raise ValueError("RESEARCH_NOT_POSITIVE: deployment candidate not available")
+        return candidate
 
     def route_hot_asset(
         self,

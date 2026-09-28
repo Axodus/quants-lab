@@ -8,67 +8,10 @@ import pytest
 from orderflow_backtest.testnet_orderflow_live_runner import (
     CellRole,
     Dedicated24hTestnetRunner,
-    MainnetCredentialRejected,
-    MainnetEndpointRejected,
     RunnerState,
     SUPPORTED_STRATEGIES,
     SUPPORTED_SYMBOLS,
-    TestnetCredentialRequired,
-    TestnetCredentialStatus,
-    TestnetEndpointConfig,
 )
-
-
-def test_mainnet_endpoints_strictly_rejected():
-    for bad in (
-        "https://fapi.binance.com",
-        "https://api.binance.com",
-        "wss://fstream.binance.com",
-        "wss://stream.binance.com",
-        "https://binance.com/fapi/v1",
-        "wss://fstream.binancefuture.com?",
-        "https://arbitrary.host.com",
-    ):
-        with pytest.raises(MainnetEndpointRejected):
-            if bad.startswith("ws"):
-                TestnetEndpointConfig(ws_url=bad)
-            else:
-                TestnetEndpointConfig(rest_url=bad)
-
-
-def test_testnet_endpoint_accepted():
-    cfg = TestnetEndpointConfig()
-    assert cfg.rest_url == "https://testnet.binancefuture.com"
-    assert cfg.ws_url == "wss://fstream.binancefuture.com"
-
-
-def test_mainnet_credentials_strictly_rejected():
-    for key in (
-        "TRADING_BINANCE_API_KEY",
-        "TRADING_BINANCE_API_SECRET",
-        "BINANCE_API_KEY",
-        "BINANCE_MAINNET_API_KEY",
-    ):
-        with pytest.raises(MainnetCredentialRejected):
-            TestnetCredentialStatus.resolve({key: "real_secret_key"})
-
-
-def test_testnet_credentials_resolution():
-    # Incomplete
-    with pytest.raises(TestnetCredentialRequired):
-        TestnetCredentialStatus.resolve({"BINANCE_FUTURES_TESTNET_API_KEY": "abc"})
-
-    # Absent
-    status = TestnetCredentialStatus.resolve({})
-    assert not status.available
-
-    # Valid explicit Testnet
-    valid = TestnetCredentialStatus.resolve({
-        "BINANCE_FUTURES_TESTNET_API_KEY": "test_key",
-        "BINANCE_FUTURES_TESTNET_SECRET_KEY": "test_secret",
-    })
-    assert valid.available
-    assert valid.source == "BINANCE_FUTURES_TESTNET_API_KEY"
 
 
 def test_twelve_cells_orchestration_and_btc_control(tmp_path: Path):
