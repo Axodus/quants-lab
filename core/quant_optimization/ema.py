@@ -17,12 +17,12 @@ BASE_REVISION = 'ema-5x9-v2'
 
 def get_search_space():
     return SearchSpace((
-        IntegerParameter('ema_fast', 3, 9, default=5),
-        IntegerParameter('ema_slow', 7, 21, default=9),
+        IntegerParameter('ema_fast', 9, 9, default=9),
+        IntegerParameter('ema_slow', 21, 21, default=21),
         DecimalParameter('pullback_tolerance_bps', '0', '10', '1', default='2'),
-        DecimalParameter('take_profit_bps', '10', '60', '5', default='15', domain='RISK'),
-        DecimalParameter('stop_loss_bps', '5', '30', '5', default='10', domain='RISK'),
-        IntegerParameter('cooldown_bars', 0, 10, default=0, domain='CONTROL'),
+        DecimalParameter('take_profit_bps', '12', '30', '1', default='15', domain='RISK'),
+        DecimalParameter('stop_loss_bps', '5', '10', '1', default='10', domain='RISK'),
+        IntegerParameter('cooldown_bars', 7, 7, default=7, domain='CONTROL'),
     ), (('ema_fast', 'ema_slow'),))
 
 

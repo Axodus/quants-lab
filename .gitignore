@@ -167,3 +167,7 @@ cython_debug/
 # Outputs
 app/outputs/
 app/data/cache/
+research_store/artifacts/*.json
+research_store/cache/*.json
+research_store/studies/**/trials/**.json
+research_store*
