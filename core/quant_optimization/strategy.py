@@ -2,6 +2,12 @@
 from dataclasses import dataclass
 from typing import Callable
 from .ema import STRATEGY_ID, BASE_REVISION, EMAPullbackResearchAdapter, source_hash
+from core.quant_strategies.microstructure.microprice_displacement import (
+    BASE_REVISION as MICROPRICE_BASE_REVISION,
+    STRATEGY_ID as MICROPRICE_STRATEGY_ID,
+    MicropriceDisplacementStrategy,
+    source_hash as microprice_source_hash,
+)
 from .models import OptimizationError
 
 
@@ -14,8 +20,17 @@ class StrategyDefinition:
 
 
 def default_registry():
-    definition=StrategyDefinition(STRATEGY_ID,BASE_REVISION,source_hash(),EMAPullbackResearchAdapter)
-    return {(definition.strategy_id,definition.base_revision):definition}
+    ema_definition = StrategyDefinition(STRATEGY_ID, BASE_REVISION, source_hash(), EMAPullbackResearchAdapter)
+    microprice_definition = StrategyDefinition(
+        MICROPRICE_STRATEGY_ID,
+        MICROPRICE_BASE_REVISION,
+        microprice_source_hash(),
+        MicropriceDisplacementStrategy.from_parameters,
+    )
+    return {
+        (ema_definition.strategy_id, ema_definition.base_revision): ema_definition,
+        (microprice_definition.strategy_id, microprice_definition.base_revision): microprice_definition,
+    }
 
 
 def resolve(registry,spec):

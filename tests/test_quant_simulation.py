@@ -9,6 +9,7 @@ from core.quant_simulation import (
     ExecutionAssumptionProfile,
     NoActionStrategy,
     ReferenceThresholdStrategy,
+    SimulatedDecision,
     SimulationEngine,
     SimulationInvalidatedError,
     SimulationValidationError,
@@ -126,6 +127,46 @@ class QuantSimulationTests(unittest.TestCase):
             execution_model=DeterministicExecutionModel(ExecutionAssumptionProfile(fee_bps=Decimal("10"), spread_bps=Decimal("20"), slippage_bps=Decimal("5"))),
         )
         self.assertLess(Decimal(frictional.metrics["netPnl"]), Decimal(frictionless.metrics["netPnl"]))
+
+    def test_execution_uses_explicit_bbo_when_available(self):
+        model = DeterministicExecutionModel(
+            ExecutionAssumptionProfile(
+                profile_id="deterministic-explicit-bbo-v1",
+                fee_bps=Decimal("5"),
+                spread_bps=Decimal("200"),
+                slippage_bps=Decimal("0"),
+            )
+        )
+        state = {
+            "marketTime": "2024-01-01T00:00:00.000Z",
+            "marketPrice": "101",
+            "features": [
+                {"featureId": "best_bid", "value": "100"},
+                {"featureId": "best_ask", "value": "102"},
+            ],
+        }
+
+        buy = model.execute("order:buy", SimulatedDecision("ENTER", "BUY", Decimal("1"), "decision:buy"), state)[0]
+        sell = model.execute("order:sell", SimulatedDecision("ENTER", "SELL", Decimal("1"), "decision:sell"), state)[0]
+
+        self.assertEqual(buy.price, Decimal("102"))
+        self.assertEqual(sell.price, Decimal("100"))
+        self.assertEqual(buy.spread_cost, Decimal("1"))
+        self.assertEqual(sell.spread_cost, Decimal("1"))
+        self.assertEqual(buy.slippage_cost, Decimal("0"))
+        self.assertEqual(sell.slippage_cost, Decimal("0"))
+
+    def test_execution_rejects_crossed_explicit_bbo(self):
+        model = DeterministicExecutionModel(ExecutionAssumptionProfile())
+        state = {
+            "marketTime": "2024-01-01T00:00:00.000Z",
+            "marketPrice": "101",
+            "best_bid": "102",
+            "best_ask": "100",
+        }
+
+        with self.assertRaisesRegex(ValueError, "execution BBO is crossed"):
+            model.execute("order:crossed", SimulatedDecision("ENTER", "BUY", Decimal("1"), "decision:crossed"), state)
 
     def test_look_ahead_and_live_state_are_rejected(self):
         exp_ref = self.experiment.to_reference()
