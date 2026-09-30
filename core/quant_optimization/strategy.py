@@ -8,6 +8,12 @@ from core.quant_strategies.microstructure.microprice_displacement import (
     MicropriceDisplacementStrategy,
     source_hash as microprice_source_hash,
 )
+from core.quant_strategies.microtrend import (
+    BASE_REVISION as MICROTREND_BASE_REVISION,
+    STRATEGY_ID as MICROTREND_STRATEGY_ID,
+    MicrotrendScalperStrategy,
+    source_hash as microtrend_source_hash,
+)
 from .models import OptimizationError
 
 
@@ -27,9 +33,16 @@ def default_registry():
         microprice_source_hash(),
         MicropriceDisplacementStrategy.from_parameters,
     )
+    microtrend_definition = StrategyDefinition(
+        MICROTREND_STRATEGY_ID,
+        MICROTREND_BASE_REVISION,
+        microtrend_source_hash(),
+        MicrotrendScalperStrategy.from_parameters,
+    )
     return {
         (ema_definition.strategy_id, ema_definition.base_revision): ema_definition,
         (microprice_definition.strategy_id, microprice_definition.base_revision): microprice_definition,
+        (microtrend_definition.strategy_id, microtrend_definition.base_revision): microtrend_definition,
     }
 
 
