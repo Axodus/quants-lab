@@ -248,7 +248,7 @@ class OptimizationTests(unittest.TestCase):
         self.assertEqual(temporal['count'],2)
 
     def test_initial_configs_bounded_resume(self):
-        initial=(self.params,dict(self.params,ema_fast=4))
+        initial=(self.params,dict(self.params,pullback_tolerance_bps='4'))
         spec=replace(self.spec,n_trials=2,initial_parameter_sets=initial)
         paused,_=self.engine.optimize('initial',spec,max_new_trials=1)
         self.assertEqual(paused['n_trials_attempted'],1)

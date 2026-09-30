@@ -1,0 +1,17 @@
+{
+  "instrument_spec": "/run/media/mzfshark/Storage/Axodus/Trading/market-data/research/microstructure-foundation-certification/BTCUSDT.instrument.json",
+  "book_paths": [
+    "/run/media/mzfshark/Storage/Axodus/Trading/market-data/normalized/canonical/2026-06-23/00/BTCUSDT_orderbook.parquet"
+  ],
+  "trade_paths": [
+    "/run/media/mzfshark/Storage/Axodus/Trading/market-data/normalized/canonical/2026-06-23/00/BTCUSDT_trades.parquet"
+  ],
+  "output_root": "/run/media/mzfshark/Storage/Axodus/Trading/market-data/research/microstructure-foundation-fix/run2",
+  "duration_ms": 20000,
+  "emit_every_ms": 250,
+  "bootstrap_paths": [
+    "/run/media/mzfshark/Storage/Axodus/Trading/market-data/normalized/canonical/2026-06-22/22/BTCUSDT_orderbook.parquet",
+    "/run/media/mzfshark/Storage/Axodus/Trading/market-data/normalized/canonical/2026-06-22/23/BTCUSDT_orderbook.parquet"
+  ],
+  "dataset_ref": "CryptoHFTData/Binance-USD-M/BTCUSDT/2026-06-23T00:00:00Z_20s"
+}
