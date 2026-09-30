@@ -10,7 +10,16 @@ from core.quant_foundations.canonical import sha256_digest
 from core.quant_foundations.models import ExperimentDefinition, ExperimentReference, ExperimentResult
 
 from .execution import DeterministicExecutionModel, ExecutionModel
-from .models import ExecutionAssumptionProfile, SimulatedDecision, SimulationResult, StrategySimulator, _market_price, decimal, text
+from .models import (
+    ClosedTradeResult,
+    ExecutionAssumptionProfile,
+    SimulatedDecision,
+    SimulationResult,
+    StrategySimulator,
+    _market_price,
+    decimal,
+    text,
+)
 
 
 class SimulationValidationError(ValueError):
@@ -26,6 +35,18 @@ class _Position:
     quantity: Decimal = Decimal("0")
     average_entry: Decimal = Decimal("0")
     realized_pnl: Decimal = Decimal("0")
+    active_trade_id: str | None = None
+    entry_timestamp: str | None = None
+    entry_side: str | None = None
+    entry_quantity: Decimal = Decimal("0")
+    entry_value: Decimal = Decimal("0")
+    entry_fees: Decimal = Decimal("0")
+    entry_slippage: Decimal = Decimal("0")
+    closed_quantity: Decimal = Decimal("0")
+    closed_gross_pnl: Decimal = Decimal("0")
+    exit_value: Decimal = Decimal("0")
+    exit_fees: Decimal = Decimal("0")
+    exit_slippage: Decimal = Decimal("0")
 
 
 class SimulationEngine:
@@ -55,6 +76,7 @@ class SimulationEngine:
         cash = capital
         orders: list[dict[str, Any]] = []
         fills: list[dict[str, Any]] = []
+        closed_trades: list[dict[str, Any]] = []
         equity_series: list[dict[str, str]] = []
         limitations: list[str] = []
         pending: list[tuple[int, str, SimulatedDecision]] = []
@@ -68,9 +90,14 @@ class SimulationEngine:
                     limitations.append(f"unfilled:{order_id}")
                     continue
                 for fill in fill_items:
-                    self._apply_fill(fill, position, cash_holder := [cash])
+                    closed_trade = self._apply_fill(fill, position, cash_holder := [cash])
                     cash = cash_holder[0]
                     fills.append(fill.to_canonical_dict())
+                    if closed_trade is not None:
+                        closed_trades.append(closed_trade.to_canonical_dict())
+                        callback = getattr(strategy, "on_trade_closed", None)
+                        if callable(callback):
+                            callback(closed_trade)
                 status = "FILLED" if fill_items[0].quantity == decision.quantity else "PARTIALLY_FILLED"
                 orders.append({"orderId": order_id, "status": status, "decisionId": decision.decision_id})
                 if status == "PARTIALLY_FILLED":
@@ -99,12 +126,25 @@ class SimulationEngine:
         metrics = {"initialEquity": text(capital), "finalEquity": text(final_equity), "netPnl": text(final_equity - capital),
                    "totalReturn": text((final_equity - capital) / capital), "maxDrawdown": text(max_drawdown),
                    "fees": text(sum((decimal(item["fee"], "fee") for item in fills), Decimal("0"))),
-                   "fillCount": str(len(fills)), "orderCount": str(len(orders))}
+                   "fillCount": str(len(fills)), "orderCount": str(len(orders)),
+                   "closedTradeCount": str(len(closed_trades))}
         identity = run_id or f"run:{sha256_digest({"experiment": experiment.definition_digest, "dataset": dataset_reference, "profile": profile.to_canonical_dict()})}"
-        return SimulationResult(identity, "COMPLETED", experiment.experiment_id, experiment.experiment_revision,
-                                experiment.strategy_revision_id, dict(dataset_reference), profile.to_canonical_dict(),
-                                tuple(orders), tuple(fills), tuple(equity_series), metrics, tuple(sorted(set(limitations))),
-                                {"experimentDefinitionDigest": experiment.definition_digest, "runtime": dict(experiment.runtime_provenance)})
+        return SimulationResult(
+            run_id=identity,
+            status="COMPLETED",
+            experiment_id=experiment.experiment_id,
+            experiment_revision=experiment.experiment_revision,
+            strategy_revision_id=experiment.strategy_revision_id,
+            dataset_reference=dict(dataset_reference),
+            execution_profile=profile.to_canonical_dict(),
+            orders=tuple(orders),
+            fills=tuple(fills),
+            equity_series=tuple(equity_series),
+            metrics=metrics,
+            limitations=tuple(sorted(set(limitations))),
+            provenance={"experimentDefinitionDigest": experiment.definition_digest, "runtime": dict(experiment.runtime_provenance)},
+            closed_trades=tuple(closed_trades),
+        )
 
     @staticmethod
     def _validate_lineage(experiment: ExperimentDefinition, reference: ExperimentReference, dataset: Mapping[str, Any], strategy_revision: Mapping[str, Any]) -> None:
@@ -126,7 +166,7 @@ class SimulationEngine:
                 raise SimulationInvalidatedError("future feature value detected")
 
     @staticmethod
-    def _apply_fill(fill, position: _Position, cash_holder: list[Decimal]) -> None:
+    def _apply_fill(fill, position: _Position, cash_holder: list[Decimal]) -> ClosedTradeResult | None:
         signed = fill.quantity if fill.side == "BUY" else -fill.quantity
         old = position.quantity
         cash_holder[0] -= signed * fill.price + fill.fee
@@ -134,11 +174,70 @@ class SimulationEngine:
             total = abs(old) + abs(signed)
             position.average_entry = ((abs(old) * position.average_entry) + (abs(signed) * fill.price)) / total
             position.quantity += signed
+            if old == 0:
+                position.active_trade_id = f"trade:{fill.fill_id}"
+                position.entry_timestamp = fill.event_time
+                position.entry_side = fill.side
+                position.entry_quantity = fill.quantity
+                position.entry_value = fill.quantity * fill.price
+            else:
+                position.entry_quantity += fill.quantity
+                position.entry_value += fill.quantity * fill.price
+            position.entry_fees += fill.fee
+            position.entry_slippage += fill.slippage_cost
+            return None
         else:
             closing = min(abs(old), abs(signed))
-            position.realized_pnl += closing * (fill.price - position.average_entry) * (1 if old > 0 else -1)
+            exit_fraction = closing / fill.quantity
+            gross = closing * (fill.price - position.average_entry) * (1 if old > 0 else -1)
+            position.realized_pnl += gross
+            position.closed_quantity += closing
+            position.closed_gross_pnl += gross
+            position.exit_value += closing * fill.price
+            position.exit_fees += fill.fee * exit_fraction
+            position.exit_slippage += fill.slippage_cost * exit_fraction
             position.quantity += signed
-            if position.quantity == 0:
-                position.average_entry = Decimal("0")
-            elif old * position.quantity < 0:
-                position.average_entry = fill.price
+            if position.quantity != 0 and old * position.quantity > 0:
+                return None
+
+            if not position.active_trade_id or not position.entry_timestamp or not position.entry_side:
+                raise SimulationInvalidatedError("position closed without an active trade lifecycle")
+            if position.closed_quantity <= 0:
+                raise SimulationInvalidatedError("closed trade has no closed quantity")
+            if position.entry_quantity <= 0:
+                raise SimulationInvalidatedError("closed trade has no entry quantity")
+
+            fees = position.entry_fees + position.exit_fees
+            gross_pnl = position.closed_gross_pnl
+            closed_trade = ClosedTradeResult(
+                trade_id=position.active_trade_id,
+                side=position.entry_side,
+                quantity=position.closed_quantity,
+                entry_timestamp=position.entry_timestamp,
+                exit_timestamp=fill.event_time,
+                entry_price=position.entry_value / position.entry_quantity,
+                exit_price=position.exit_value / position.closed_quantity,
+                gross_pnl=gross_pnl,
+                fees=fees,
+                slippage_cost=position.entry_slippage + position.exit_slippage,
+                net_pnl=gross_pnl - fees,
+            )
+
+            remaining_quantity = abs(position.quantity)
+            remaining_fee = fill.fee * (Decimal("1") - exit_fraction)
+            remaining_slippage = fill.slippage_cost * (Decimal("1") - exit_fraction)
+            new_side = fill.side if remaining_quantity else None
+            position.average_entry = fill.price if remaining_quantity else Decimal("0")
+            position.active_trade_id = f"trade:{fill.fill_id}:reversal" if remaining_quantity else None
+            position.entry_timestamp = fill.event_time if remaining_quantity else None
+            position.entry_side = new_side
+            position.entry_quantity = remaining_quantity
+            position.entry_value = remaining_quantity * fill.price
+            position.entry_fees = remaining_fee
+            position.entry_slippage = remaining_slippage
+            position.closed_quantity = Decimal("0")
+            position.closed_gross_pnl = Decimal("0")
+            position.exit_value = Decimal("0")
+            position.exit_fees = Decimal("0")
+            position.exit_slippage = Decimal("0")
+            return closed_trade

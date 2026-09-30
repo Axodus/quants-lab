@@ -92,6 +92,59 @@ class SimulatedFill:
 
 
 @dataclass(frozen=True)
+class ClosedTradeResult:
+    """Canonical finalized economics for one fully closed simulated trade.
+
+    ``gross_pnl`` is calculated from the actual simulated fill prices, so the
+    modeled slippage is already reflected in that value. ``slippage_cost`` is
+    retained as an explicit attribution field; ``net_pnl`` subtracts fees from
+    the already slippage-aware gross result.
+    """
+
+    trade_id: str
+    side: Side
+    quantity: Decimal
+    entry_timestamp: str
+    exit_timestamp: str
+    entry_price: Decimal
+    exit_price: Decimal
+    gross_pnl: Decimal
+    fees: Decimal
+    slippage_cost: Decimal
+    net_pnl: Decimal
+
+    def __post_init__(self) -> None:
+        if not self.trade_id:
+            raise ValueError("trade_id is required")
+        if self.side not in {"BUY", "SELL"}:
+            raise ValueError("closed trade side must be BUY or SELL")
+        if decimal(self.quantity, "quantity") <= 0:
+            raise ValueError("closed trade quantity must be positive")
+        for name in ("entry_price", "exit_price", "gross_pnl", "fees", "slippage_cost", "net_pnl"):
+            decimal(getattr(self, name), name)
+        if self.fees < 0 or self.slippage_cost < 0:
+            raise ValueError("closed trade costs must be non-negative")
+        if self.net_pnl != self.gross_pnl - self.fees:
+            raise ValueError("closed trade net_pnl must equal slippage-aware gross_pnl minus fees")
+
+    def to_canonical_dict(self) -> dict[str, Any]:
+        return {
+            "tradeId": self.trade_id,
+            "side": self.side,
+            "quantity": text(self.quantity),
+            "entryTimestamp": self.entry_timestamp,
+            "exitTimestamp": self.exit_timestamp,
+            "entryPrice": text(self.entry_price),
+            "exitPrice": text(self.exit_price),
+            "grossPnl": text(self.gross_pnl),
+            "fees": text(self.fees),
+            "slippageCost": text(self.slippage_cost),
+            "netPnl": text(self.net_pnl),
+            "slippageSemantics": "INCLUDED_IN_FILL_PRICES",
+        }
+
+
+@dataclass(frozen=True)
 class SimulationResult:
     run_id: str
     status: Literal["COMPLETED", "PARTIAL", "FAILED", "INVALIDATED"]
@@ -106,6 +159,7 @@ class SimulationResult:
     metrics: Mapping[str, str]
     limitations: tuple[str, ...] = ()
     provenance: Mapping[str, Any] = field(default_factory=dict)
+    closed_trades: tuple[Mapping[str, Any], ...] = ()
 
     @property
     def result_digest(self) -> str:
@@ -116,7 +170,8 @@ class SimulationResult:
                 "experimentRevision": self.experiment_revision, "strategyRevisionId": self.strategy_revision_id,
                 "datasetReference": dict(self.dataset_reference), "executionProfile": dict(self.execution_profile),
                 "orders": list(self.orders), "fills": list(self.fills), "equitySeries": list(self.equity_series),
-                "metrics": dict(self.metrics), "limitations": list(self.limitations), "provenance": dict(self.provenance)}
+                "metrics": dict(self.metrics), "limitations": list(self.limitations), "provenance": dict(self.provenance),
+                "closedTrades": list(self.closed_trades)}
 
     def to_experiment_result(self, experiment_reference) -> Any:
         """Project one completed simulation into the canonical Quant result contract."""
@@ -140,6 +195,12 @@ class SimulationResult:
 
 class StrategySimulator(Protocol):
     def decide(self, market_state: Mapping[str, Any], position_quantity: Decimal) -> SimulatedDecision: ...
+
+
+class ClosedTradeFeedbackStrategy(Protocol):
+    """Optional lifecycle extension implemented only by strategies that need it."""
+
+    def on_trade_closed(self, closed_trade: ClosedTradeResult) -> None: ...
 
 
 class NoActionStrategy:

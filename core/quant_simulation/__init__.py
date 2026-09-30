@@ -3,6 +3,7 @@
 from .engine import SimulationEngine, SimulationInvalidatedError, SimulationValidationError
 from .execution import DeterministicExecutionModel, ExecutionModel
 from .models import (
+    ClosedTradeResult,
     ExecutionAssumptionProfile,
     NoActionStrategy,
     ReferenceThresholdStrategy,
@@ -11,6 +12,7 @@ from .models import (
 )
 
 __all__ = [
+    "ClosedTradeResult",
     "DeterministicExecutionModel",
     "ExecutionAssumptionProfile",
     "ExecutionModel",
